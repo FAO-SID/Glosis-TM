@@ -1,0 +1,43 @@
+---
+title: "Soil Data Injection with Shiny and PostgreSQL"
+author: "Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+documentclass: book
+bibliography:
+- book.bib
+- packages.bib
+description: |
+  This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
+  set in the _output.yml file.
+  The HTML output format for this example is bookdown::gitbook,
+link-citations: yes
+github-repo: "rstudio/Glosis_shiny"
+---
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+# **Introduction**
+
+This document provides a detailed technical manual on setting up a **Docker-based** PostgreSQL and Shiny application for soil data injection. It covers:
+
+- Installation and deployment using **Docker**
+- Database configuration and credentials
+- Data injection workflow from **Excel (xlsx) files**
+- Explanation of the **fill_tables.R** script
+
+## System Requirements
+- Docker Desktop installed
+- R and RStudio installed (for local debugging)
+- PostgreSQL with PostGIS extension
+
+
+---
+
+### **6. `03-data-injection.Rmd` (Excel File Injection)**

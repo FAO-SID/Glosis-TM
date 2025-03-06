@@ -1,0 +1,4 @@
+book_filename: "SoilDataInjection"
+delete_merged_file: true
+output_dir: "output"
+rmd_files: ["index.Rmd", "01-installation.Rmd", "02-database-configuration.Rmd", "03-data-injection.Rmd", "04-fill-tables.Rmd"]
