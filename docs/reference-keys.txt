@@ -1,3 +1,11 @@
+fig:docker-desktop
+fig:docker-fail
+fig:glosis-shiny
+fig:template
+fig:plot-tab
+fig:specimen-tab
+fig:procedures-tab
+fig:codelist-tab
 introduction
 system-requirements
 data-injection.rmd-excel-file-injection
