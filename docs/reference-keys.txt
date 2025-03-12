@@ -48,3 +48,4 @@ fig:processing
 create-a-new-database.
 upload-data-to-inject.
 delete-an-existing-database.-processing-database.-.illustration
+delete-an-existing-database.-database-injection-.illustration
