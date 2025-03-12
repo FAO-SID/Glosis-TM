@@ -1,6 +1,6 @@
 # **Data injection into the GloSIS database**
 
-The translation of soil data into the GloSIS database has been fully automated within the `glosis-shiny` application. The steps to complete this process include creating a database to store the data and selecting a soil data `.xlsx` file that meets the requirements outlined in the previous section.
+The translation of soil data into the GloSIS database has been fully automated within the `glosis-shiny` application. The steps to complete this process include creating a database to store the data and selecting a soil data `.xlsx` file that meets the requirements outlined in the previous section. **Errors in this step are exclusively linked to improper data formatting in the `.xlsx` file**. In such cases, please review the `.xlsx` file to identify any mistakes made during its preparation.
 
 When creating a new database, the system connects to the GloSIS GitHub repository to obtain the latest stable version of the database (`ISO_28258_v_stable.sql`) and uses it to generate an empty template for populating the data. During this process, the `ISO_28258_v_stable.sql` file is stored in the `init-scripts` folder within the working directory.
 
@@ -12,14 +12,13 @@ Open the `glosis-shiny` application in your web browser at `http://localhost:383
 
 The window contains a `SELECT DATABASE` dropdown menu listing all existing databases in the system (empty if running for the first time), a `Connect` button to connect to the selected database, a `New Database` button to create a new database, and a `Remove` button to delete an existing database.
 
-
 The first step is to create a new database to store the soil data using the `New Database` button (Figure \@ref(fig:newdb)).
 
 ```{r newdb, echo=FALSE, out.width="100%",fig.cap = "Creation of a new database."}
 knitr::include_graphics("figures/newdb.png")
 ```
 
-A dialog window will pop up asking for the database name (Figure \@ref(fig:dbname)). Enter a name in the field and click the `Confirm` button. A message will appear asking for and administrative password. Leave this option empty and click `Confirm`. 
+A dialog window will pop up asking for the database name (Figure \@ref(fig:dbname)). Enter a name in the field and click the `Confirm` button. A message will appear asking for and administrative password. Leave this option empty and click `Confirm`.
 
 ```{r dbname, echo=FALSE, out.width="100%",fig.cap = "Name the database."}
 knitr::include_graphics("figures/dbname.png")
@@ -30,7 +29,7 @@ A new message in green will appear in the sidebar, indicating that the database 
 ```{r dbcreated, echo=FALSE, out.width="100%",fig.cap = "Name the database."}
 knitr::include_graphics("figures/dbcreated.png")
 ```
- 
+
 The new database will be stored in the `data` folder within the working directory and will become available in the `SELECT DATABASE` dropdown menu.
 
 ## Data injection
@@ -45,7 +44,7 @@ A message will appear indicating that the data is being processed for inclusion 
 knitr::include_graphics("figures/processing.png")
 ```
 
-Once the process is complete, the database will display the data for each table (Figure \@ref(fig:injected)). 
+Once the process is complete, the database will display the data for each table (Figure \@ref(fig:injected)).
 
 ```{r injected, echo=FALSE, out.width="100%",fig.cap = "GloSIS database populated showing the records for the table of physic and chemical analytical results."}
 knitr::include_graphics("figures/injected.png")
@@ -59,10 +58,6 @@ Databases can also be deleted using this application. However, database deletion
 
 The `Delete` button is only available when disconnected from databases. To delete a database, select the database to remove from the `SELECT DATABASE` menu and click the `Delete` button. After confirmation (Figure \@ref(fig:deletedb)), the database will be permanently removed.
 
-
 ```{r deletedb, echo=FALSE, out.width="100%",fig.cap = "Deletion of a database."}
 knitr::include_graphics("figures/deletedb.png")
 ```
-
-
-
