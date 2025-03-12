@@ -25,3 +25,15 @@ specimen-data-sheet
 procedures-sheet
 codelist-sheet
 dashboard
+fig:dashboard
+visualization
+view-data-on-the-dashboard
+view-data-on-the-data-viewer-app
+fig:dashboard1
+fig:dashboard3
+fig:dashboard4
+fig:dashboardcreate
+fig:dashboardgoto
+fig:viewerbutton
+fig:viewer
+fig:viewer2

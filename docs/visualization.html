@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Soil Data Injection with Shiny and PostgreSQL</title>
+  <title>5 Visualization | Soil Data Injection with Shiny and PostgreSQL</title>
   <meta name="description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Soil Data Injection with Shiny and PostgreSQL" />
+  <meta property="og:title" content="5 Visualization | Soil Data Injection with Shiny and PostgreSQL" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
@@ -19,7 +19,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/Glosis_shiny" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Soil Data Injection with Shiny and PostgreSQL" />
+  <meta name="twitter:title" content="5 Visualization | Soil Data Injection with Shiny and PostgreSQL" />
   
   <meta name="twitter:description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
@@ -36,7 +36,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="data-injection-into-the-glosis-database.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -189,18 +189,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="visualization" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> <strong>Visualization</strong><a href="visualization.html#visualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Two visualization tools are included in this app: a <code>Dashboard</code> viewer and a <code>Data Viewer</code> application in Shiny. Both are designed to display data from the GloSIS database in a user-friendly format, and the <code>Data Viewer</code> also allows the export of soil data points to <code>.csv</code>, <code>.xlsx</code>, and the clipboard.</p>
+<div id="view-data-on-the-dashboard" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> <strong>View Data on the Dashboard</strong><a href="visualization.html#view-data-on-the-dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The first visualization tool is a dashboard generated in <code>.html</code> format. This dashboard is useful for verifying whether the data has been correctly updated in the database, identifying potential errors in positioning, and detecting data outliers. The file contains all selected data from the GloSIS database, which may result in a large file size depending on the number of records.</p>
+<p>A <code>Create Dashboard</code> button appears after populating the GloSIS database with soil data (Figure <a href="visualization.html#fig:dashboardcreate">5.1</a>).</p>
+<div class="figure"><span style="display:block;" id="fig:dashboardcreate"></span>
+<img src="figures/dashboard_create.png" alt="`Create Dashboard button` on the left panel of the data injection app." width="100%" />
+<p class="caption">
+Figure 5.1: <code>Create Dashboard button</code> on the left panel of the data injection app.
+</p>
+</div>
+<p>Clicking this button generates a <code>.html</code> file stored in the<code>init-scripts</code>folder within the working directory, using the same name as the database. The application then renders the file, and a new button,<code>Go to Dashboard</code>, will appear (Figure <a href="visualization.html#fig:dashboardgoto">5.2</a>).</p>
+<div class="figure"><span style="display:block;" id="fig:dashboardgoto"></span>
+<img src="figures/dashboard_goto.png" alt="`Go to Dashboard` button in &lt;span style='color:green;'&gt;green&lt;/span&gt; color." width="100%" />
+<p class="caption">
+Figure 5.2: <code>Go to Dashboard</code> button in <span style="color:green;">green</span> color.
+</p>
+</div>
+<p>Clicking this button opens a new tab displaying soil data, in <code>.html</code>format, in three sections (Figure <a href="visualization.html#fig:dashboard1">5.3</a>):</p>
+<ul>
+<li><strong>Location</strong> – Details about the position of the soil data points.<br />
+</li>
+<li><strong>Attributes</strong> – Data on soil properties.<br />
+</li>
+<li><strong>Boxplot</strong> – Histograms showing the distribution of soil properties across profiles and depths for quick visual comparisons.</li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:dashboard1"></span>
+<img src="figures/dashboard1.png" alt="Visualization of the soil data in the dashboard.." width="100%" />
+<p class="caption">
+Figure 5.3: Visualization of the soil data in the dashboard..
+</p>
+</div>
+<p>Tables and the map are internally linked, allowing users to select specific soils either on the map or in the tables, with their location and attributes automatically filtered. The <code>Make a selection</code> button on the map can be used for this task when selecting directly from the map (Figure <a href="visualization.html#fig:dashboard4">5.4</a>).</p>
+<div class="figure"><span style="display:block;" id="fig:dashboard4"></span>
+<img src="figures/dashboard4.png" alt="Boxplot visualization of filtered soil data attributes." width="100%" />
+<p class="caption">
+Figure 5.4: Boxplot visualization of filtered soil data attributes.
+</p>
+</div>
+</div>
+<div id="view-data-on-the-data-viewer-app" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> <strong>View data on the Data Viewer App</strong><a href="visualization.html#view-data-on-the-data-viewer-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The second visualization tool is accessible via the <code>Go to Data Viewer</code> button (Figure <a href="visualization.html#fig:viewer">5.5</a>) at the bottom of the <code>glosis-shiny</code> app. Clicking this button opens a new tab (Figure <a href="visualization.html#fig:viewer">5.5</a>) with a dropdown menu listing available databases. These databases are those previously created within the <code>glosis-shiny</code> app. The button <code>Go to GloSIS database</code> brings you back to the <code>glosis-shiny</code> app for data injection.</p>
+<div class="figure"><span style="display:block;" id="fig:viewer"></span>
+<img src="figures/viewer.png" alt="Visualization app." width="100%" />
+<p class="caption">
+Figure 5.5: Visualization app.
+</p>
+</div>
+After selecting a database, clicking <code>Connect</code> displays the soil data both in a tabular format and as a map showing the locations of soil samples (Figure <a href="visualization.html#fig:viewer2">5.6</a>).
+<div class="figure"><span style="display:block;" id="fig:viewer2"></span>
+<img src="figures/viewer2.png" alt="Visualization app showing soil data from the selected database." width="100%" />
+<p class="caption">
+Figure 5.6: Visualization app showing soil data from the selected database.
+</p>
+</div>
+<p>Similar to the dashboard, this tool is designed primarily for data verification and correction. Data can be exported to other file formats.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="data-injection-into-the-glosis-database.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
