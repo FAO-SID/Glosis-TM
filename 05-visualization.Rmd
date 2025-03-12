@@ -2,7 +2,7 @@
 
 Two visualization tools are included in this app: a `Dashboard` viewer and a `Data Viewer` application in Shiny. Both are designed to display data from the GloSIS database in a user-friendly format, and the `Data Viewer` also allows the export of soil data points to `.csv`, `.xlsx`, and the clipboard.
 
-## **View Data on the Dashboard**
+## View Data on the Dashboard
 
 The first visualization tool is a dashboard generated in `.html` format. This dashboard is useful for verifying whether the data has been correctly updated in the database, identifying potential errors in positioning, and detecting data outliers. The file contains all selected data from the GloSIS database, which may result in a large file size depending on the number of records.
 
@@ -35,7 +35,7 @@ knitr::include_graphics("figures/dashboard4.png")
 ```
 
 
-## **View data on the Data Viewer App**
+## View data on the Data Viewer App
 
 The second visualization tool is accessible via the `Go to Data Viewer` button (Figure \@ref(fig:viewer)) at the bottom of the `glosis-shiny` app. Clicking this button opens a new tab (Figure \@ref(fig:viewer)) with a dropdown menu listing available databases. These databases are those previously created within the `glosis-shiny` app. The button `Go to GloSIS database` brings you back to the `glosis-shiny` app for data injection.
 
