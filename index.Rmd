@@ -38,6 +38,3 @@ This document provides a detailed technical manual on setting up a **Docker-base
 - PostgreSQL with PostGIS extension
 
 
----
-
-## **6. `03-data-injection.Rmd` (Excel File Injection)**
