@@ -197,6 +197,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-injection-into-the-glosis-database" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> <strong>Data injection into the GloSIS database</strong><a href="data-injection-into-the-glosis-database.html#data-injection-into-the-glosis-database" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The translation of soil data into the GloSIS database has been fully automated within the <code>glosis-shiny</code> application. The steps to complete this process include creating a database to store the data and selecting a soil data <code>.xlsx</code> file that meets the requirements outlined in the previous section.</p>
+<p>When creating a new database, the system connects to the GloSIS GitHub repository to obtain the latest stable version of the database (<code>ISO_28258_v_stable.sql</code>) and uses it to generate an empty template for populating the data. During this process, the <code>ISO_28258_v_stable.sql</code> file is stored in the <code>init-scripts</code> folder within the working directory.</p>
+<p>Details on using the application for data injection are presented in the following sections of this chapter.</p>
 <div id="create-a-new-database" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Create a new database<a href="data-injection-into-the-glosis-database.html#create-a-new-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Open the <code>glosis-shiny</code> application in your web browser at <code>http://localhost:3838/iso28258/</code>. This site will display the main window of the application.</p>

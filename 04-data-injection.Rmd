@@ -1,5 +1,11 @@
 # **Data injection into the GloSIS database**
 
+The translation of soil data into the GloSIS database has been fully automated within the `glosis-shiny` application. The steps to complete this process include creating a database to store the data and selecting a soil data `.xlsx` file that meets the requirements outlined in the previous section.
+
+When creating a new database, the system connects to the GloSIS GitHub repository to obtain the latest stable version of the database (`ISO_28258_v_stable.sql`) and uses it to generate an empty template for populating the data. During this process, the `ISO_28258_v_stable.sql` file is stored in the `init-scripts` folder within the working directory.
+
+Details on using the application for data injection are presented in the following sections of this chapter.
+
 ## Create a new database
 
 Open the `glosis-shiny` application in your web browser at `http://localhost:3838/iso28258/`. This site will display the main window of the application.
