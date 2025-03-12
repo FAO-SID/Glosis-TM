@@ -1,9 +1,10 @@
 
-# **Database PostgreSQL Database Configuration**
+# **GloSIS Database**
 
-This section provides details on the PostgreSQL Database.
+This section provides details on the GloSIS database in PostgreSQL.
 
-## PostgreSQL Database Configuration
+## GloSIS Database Configuration
+
 
 ## Database Credentials
 The connection to PostgreSQL requires the specification of the . The application defines default values for `Database Credentials`.

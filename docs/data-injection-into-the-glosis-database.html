@@ -16,7 +16,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta property="og:description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
-  <meta name="github-repo" content="rstudio/Glosis_shiny" />
+  <meta name="github-repo" content="FAO-SID/Glosis-TM" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="5 Data injection into the GloSIS database | Soil Data Injection with Shiny and PostgreSQL" />
@@ -153,11 +153,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#deploying-services"><i class="fa fa-check"></i><b>2.3</b> Deploying Services</a></li>
 <li class="chapter" data-level="2.4" data-path="installation-and-setup.html"><a href="installation-and-setup.html#accessing-the-services"><i class="fa fa-check"></i><b>2.4</b> Accessing the Services</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="database-postgresql-database-configuration.html"><a href="database-postgresql-database-configuration.html"><i class="fa fa-check"></i><b>3</b> <strong>Database PostgreSQL Database Configuration</strong></a>
+<li class="chapter" data-level="3" data-path="glosis-database.html"><a href="glosis-database.html"><i class="fa fa-check"></i><b>3</b> <strong>GloSIS Database</strong></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="database-postgresql-database-configuration.html"><a href="database-postgresql-database-configuration.html#postgresql-database-configuration"><i class="fa fa-check"></i><b>3.1</b> PostgreSQL Database Configuration</a></li>
-<li class="chapter" data-level="3.2" data-path="database-postgresql-database-configuration.html"><a href="database-postgresql-database-configuration.html#database-credentials"><i class="fa fa-check"></i><b>3.2</b> Database Credentials</a></li>
-<li class="chapter" data-level="3.3" data-path="database-postgresql-database-configuration.html"><a href="database-postgresql-database-configuration.html#database-schema"><i class="fa fa-check"></i><b>3.3</b> Database Schema</a></li>
+<li class="chapter" data-level="3.1" data-path="glosis-database.html"><a href="glosis-database.html#glosis-database-configuration"><i class="fa fa-check"></i><b>3.1</b> GloSIS Database Configuration</a></li>
+<li class="chapter" data-level="3.2" data-path="glosis-database.html"><a href="glosis-database.html#database-credentials"><i class="fa fa-check"></i><b>3.2</b> Database Credentials</a></li>
+<li class="chapter" data-level="3.3" data-path="glosis-database.html"><a href="glosis-database.html#database-schema"><i class="fa fa-check"></i><b>3.3</b> Database Schema</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>4</b> <strong>Data preparation</strong></a>
 <ul>
@@ -170,8 +170,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html"><i class="fa fa-check"></i><b>5</b> <strong>Data injection into the GloSIS database</strong></a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#create-a-new-database."><i class="fa fa-check"></i><b>5.1</b> Create a new database.</a></li>
-<li class="chapter" data-level="5.2" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#upload-data-to-inject."><i class="fa fa-check"></i><b>5.2</b> Upload data to inject.</a></li>
-<li class="chapter" data-level="5.3" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#delete-an-existing-database.-processing-database.-.illustration"><i class="fa fa-check"></i><b>5.3</b> Delete an existing database. {#processing-database. .#illustration}</a></li>
+<li class="chapter" data-level="5.2" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#data-injection."><i class="fa fa-check"></i><b>5.2</b> Data injection.</a></li>
+<li class="chapter" data-level="5.3" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#delete-an-existing-database."><i class="fa fa-check"></i><b>5.3</b> Delete an existing database.</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>6</b> <strong>Visualization</strong></a>
 <ul>
@@ -211,27 +211,28 @@ Figure 5.1: Creation of a new database.
 </p>
 </div>
 </div>
-<div id="upload-data-to-inject." class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Upload data to inject.<a href="data-injection-into-the-glosis-database.html#upload-data-to-inject." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>At this point, the main body of the application will show the column names for each table but the registers are still empty. It the database has previous data, the tables will show the already inserted data. The data of the <code>.xlsx</code> will be transferred to the new created database. Select the database to be filled in the <code>Select Database</code> dropdown menu and click on the <code>Connect</code> buttom. A new section <code>ÌNJECT DATA (.xlsx)</code> will appear in the sidebar. This includes a <code>Browse</code> button to select the <code>.xlsx</code> data to insert into de database.</p>
-<p>To inject new data, click on the</p>
-<p>After uploading the <code>.xlsx</code> file a message will appear indicating that the data is being processed for its inclusion in the database (Figure <a href="data-injection-into-the-glosis-database.html#fig:processing">5.2</a>). The database will show the results for each table when finished.</p>
+<div id="data-injection." class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Data injection.<a href="data-injection-into-the-glosis-database.html#data-injection." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Select the database to be filled in the <code>Select Database</code> dropdown menu and click on the <code>Connect</code> button. At this point, the main body of the application will show the column names for each table but the registers are still empty. If the database has previous data, the tables will show the already inserted data. A new section <code>ÌNJECT DATA (.xlsx)</code> will appear in the sidebar. This includes a <code>Browse</code> button to select the <code>.xlsx</code> data to insert into de database. Click on this button to select the <code>.xlsx</code> file to use and click on the <code>use</code>button. The file will be uploaded and injected into the database. A message indicating that the data is being processed for its inclusion in the database will appear (Figure <a href="data-injection-into-the-glosis-database.html#fig:processing">5.2</a>).</p>
+<p>Select the database to be filled from the <code>Select Database</code> dropdown menu and click on the <code>Connect</code> button. At this point, the main body of the application will display the column names for each table, but the records will still be empty. If the database already contains data, the tables will show the previously inserted records.</p>
+<p>A new section, <code>INJECT DATA (.xlsx)</code>, will appear in the sidebar. This section includes a <code>Browse</code> button to select the <code>.xlsx</code> file containing the data to be inserted into the database. Click this button to choose the <code>.xlsx</code> file, then click the <code>Use</code> button. The file will be uploaded and injected into the database.</p>
+<p>A message will appear indicating that the data is being processed for inclusion in the database (Figure <span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(fig:processing)).</p>
 <div class="figure"><span style="display:block;" id="fig:processing"></span>
-<img src="figures/processing.png" alt="Information in the Specimen Data sheet." width="100%" />
+<img src="figures/processing.png" alt="Message indicating data is being processed for injection into the database." width="100%" />
 <p class="caption">
-Figure 5.2: Information in the Specimen Data sheet.
+Figure 5.2: Message indicating data is being processed for injection into the database.
 </p>
 </div>
+<p>Once the process is complete, the database will display the data for each table. The database can be accessed from other applications and updated with new record using the same <code>glosis-shiny</code> application.</p>
 </div>
-<div id="delete-an-existing-database.-processing-database.-.illustration" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Delete an existing database. {#processing-database. .#illustration}<a href="data-injection-into-the-glosis-database.html#delete-an-existing-database.-processing-database.-.illustration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>Specimen Data</code> sheet (Figure <a href="data-injection-into-the-glosis-database.html#fig:specimen-tab">5.3</a>) contains detailed soil information at the sample level, including data from each individual horizon or layer, their boundaries, and associated soil properties derived from laboratory analyses.</p>
-<p>For each sampled horizon or layer, the sheet includes unique identifiers for the profile, element, and specimen (<code>profile_code</code>,<code>element_code</code>,<code>specimen_code</code>). These identifiers should follow a structured naming convention, typically consisting of the soil profile name followed by a numeric sequence corresponding to the sampled horizon or layer. However, they can be freely named as long as they remain unique. The sheet also specifies the type of observation (<code>Layer</code>or <code>Horizon</code>), as well as the upper and lower depth boundaries (<code>upper_depth</code>, <code>lower_depth</code>). A <code>Horizon</code> refers to a genetically classified horizon in the soil profile, while a <code>Layer</code> represents a soil sample collected based on alternative criteria, such as a fixed depth interval rather than pedogenetic origin.</p>
-<p>Additionally, the sheet records the corresponding physical and chemical values of soil properties obtained from laboratory analyses, including pH, Soil Organic Carbon, clay content, and other relevant properties.</p>
-<div class="figure"><span style="display:block;" id="fig:specimen-tab"></span>
-<img src="figures/specimen_tab.png" alt="Information in the Specimen Data sheet." width="100%" />
+<div id="delete-an-existing-database." class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Delete an existing database.<a href="data-injection-into-the-glosis-database.html#delete-an-existing-database." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this application, databases can also be deleted. The deletion of databases has to be taken with caution and under a security confirmation such a password. For educational porposes, the password has been left black by default but it can be changes for development purposes.
+The <code>Delete</code> button is only available when disconnected from databases. To delete a button, select de database to cancel in the <code>SELECT DATABASE</code> dropdown menu and click on the <code>Delete</code> button. After confirmation (Figure <a href="data-injection-into-the-glosis-database.html#fig:deletedb">5.3</a>), the database will be removed completely.</p>
+<div class="figure"><span style="display:block;" id="fig:deletedb"></span>
+<img src="figures/deletedb.png" alt="Deletion of a database." width="100%" />
 <p class="caption">
-Figure 5.3: Information in the Specimen Data sheet.
+Figure 5.3: Deletion of a database.
 </p>
 </div>
 

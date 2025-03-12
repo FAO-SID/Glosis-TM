@@ -4,22 +4,22 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Dashboard | Soil Data Injection with Shiny and PostgreSQL</title>
+  <title>3 GloSIS Database | Soil Data Injection with Shiny and PostgreSQL</title>
   <meta name="description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Dashboard | Soil Data Injection with Shiny and PostgreSQL" />
+  <meta property="og:title" content="3 GloSIS Database | Soil Data Injection with Shiny and PostgreSQL" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
-  <meta name="github-repo" content="rstudio/Glosis_shiny" />
+  <meta name="github-repo" content="FAO-SID/Glosis-TM" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Dashboard | Soil Data Injection with Shiny and PostgreSQL" />
+  <meta name="twitter:title" content="3 GloSIS Database | Soil Data Injection with Shiny and PostgreSQL" />
   
   <meta name="twitter:description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
@@ -29,15 +29,15 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-11" />
+<meta name="date" content="2025-03-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-injection-into-the-glosis-database.html"/>
-
+<link rel="prev" href="installation-and-setup.html"/>
+<link rel="next" href="data-preparation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -62,7 +62,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -72,7 +72,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -145,7 +145,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> <strong>Introduction</strong></a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#system-requirements"><i class="fa fa-check"></i><b>1.1</b> System Requirements</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-injection.rmd-excel-file-injection"><i class="fa fa-check"></i><b>1.2</b> <strong>6. <code>03-data-injection.Rmd</code> (Excel File Injection)</strong></a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="installation-and-setup.html"><a href="installation-and-setup.html"><i class="fa fa-check"></i><b>2</b> <strong>Installation and Setup</strong></a>
 <ul>
@@ -154,21 +153,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#deploying-services"><i class="fa fa-check"></i><b>2.3</b> Deploying Services</a></li>
 <li class="chapter" data-level="2.4" data-path="installation-and-setup.html"><a href="installation-and-setup.html#accessing-the-services"><i class="fa fa-check"></i><b>2.4</b> Accessing the Services</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="database-postgresql-database-configuration.html"><a href="database-postgresql-database-configuration.html"><i class="fa fa-check"></i><b>3</b> <strong>Database PostgreSQL Database Configuration</strong></a>
+<li class="chapter" data-level="3" data-path="glosis-database.html"><a href="glosis-database.html"><i class="fa fa-check"></i><b>3</b> <strong>GloSIS Database</strong></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="database-postgresql-database-configuration.html"><a href="database-postgresql-database-configuration.html#postgresql-database-configuration"><i class="fa fa-check"></i><b>3.1</b> PostgreSQL Database Configuration</a></li>
-<li class="chapter" data-level="3.2" data-path="database-postgresql-database-configuration.html"><a href="database-postgresql-database-configuration.html#database-credentials"><i class="fa fa-check"></i><b>3.2</b> Database Credentials</a></li>
-<li class="chapter" data-level="3.3" data-path="database-postgresql-database-configuration.html"><a href="database-postgresql-database-configuration.html#database-schema"><i class="fa fa-check"></i><b>3.3</b> Database Schema</a></li>
+<li class="chapter" data-level="3.1" data-path="glosis-database.html"><a href="glosis-database.html#glosis-database-configuration"><i class="fa fa-check"></i><b>3.1</b> GloSIS Database Configuration</a></li>
+<li class="chapter" data-level="3.2" data-path="glosis-database.html"><a href="glosis-database.html#database-credentials"><i class="fa fa-check"></i><b>3.2</b> Database Credentials</a></li>
+<li class="chapter" data-level="3.3" data-path="glosis-database.html"><a href="glosis-database.html#database-schema"><i class="fa fa-check"></i><b>3.3</b> Database Schema</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html"><i class="fa fa-check"></i><b>4</b> <strong>Data injection into the GloSIS database</strong></a>
+<li class="chapter" data-level="4" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>4</b> <strong>Data preparation</strong></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#understanding-the-xlsx-template"><i class="fa fa-check"></i><b>4.1</b> Understanding the XLSX Template</a></li>
-<li class="chapter" data-level="4.2" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#plot-data-sheet"><i class="fa fa-check"></i><b>4.2</b> Plot Data Sheet</a></li>
-<li class="chapter" data-level="4.3" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#specimen-data-sheet"><i class="fa fa-check"></i><b>4.3</b> Specimen Data Sheet</a></li>
-<li class="chapter" data-level="4.4" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#procedures-sheet"><i class="fa fa-check"></i><b>4.4</b> Procedures Sheet</a></li>
-<li class="chapter" data-level="4.5" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#codelist-sheet"><i class="fa fa-check"></i><b>4.5</b> Codelist Sheet</a></li>
+<li class="chapter" data-level="4.1" data-path="data-preparation.html"><a href="data-preparation.html#understanding-the-xlsx-template"><i class="fa fa-check"></i><b>4.1</b> Understanding the XLSX Template</a></li>
+<li class="chapter" data-level="4.2" data-path="data-preparation.html"><a href="data-preparation.html#plot-data-sheet"><i class="fa fa-check"></i><b>4.2</b> Plot Data Sheet</a></li>
+<li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>4.3</b> Specimen Data Sheet</a></li>
+<li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>4.4</b> Procedures Sheet</a></li>
+<li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#codelist-sheet"><i class="fa fa-check"></i><b>4.5</b> Codelist Sheet</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="dashboard.html"><a href="dashboard.html"><i class="fa fa-check"></i><b>5</b> <strong>Dashboard</strong></a></li>
+<li class="chapter" data-level="5" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html"><i class="fa fa-check"></i><b>5</b> <strong>Data injection into the GloSIS database</strong></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#create-a-new-database."><i class="fa fa-check"></i><b>5.1</b> Create a new database.</a></li>
+<li class="chapter" data-level="5.2" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#data-injection."><i class="fa fa-check"></i><b>5.2</b> Data injection.</a></li>
+<li class="chapter" data-level="5.3" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html#delete-an-existing-database."><i class="fa fa-check"></i><b>5.3</b> Delete an existing database.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>6</b> <strong>Visualization</strong></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visualization.html"><a href="visualization.html#view-data-on-the-dashboard"><i class="fa fa-check"></i><b>6.1</b> <strong>View Data on the Dashboard</strong></a></li>
+<li class="chapter" data-level="6.2" data-path="visualization.html"><a href="visualization.html#view-data-on-the-data-viewer-app"><i class="fa fa-check"></i><b>6.2</b> <strong>View data on the Data Viewer App</strong></a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -186,18 +195,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dashboard" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> <strong>Dashboard</strong><a href="dashboard.html#dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The dashboard button appears when the GloSIS database has been correctly populated. This</p>
+<div id="glosis-database" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> <strong>GloSIS Database</strong><a href="glosis-database.html#glosis-database" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This section provides details on the GloSIS database in PostgreSQL.</p>
+<div id="glosis-database-configuration" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> GloSIS Database Configuration<a href="glosis-database.html#glosis-database-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="database-credentials" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Database Credentials<a href="glosis-database.html#database-credentials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The connection to PostgreSQL requires the specification of the . The application defines default values for <code>Database Credentials</code>.
+These are stored in <code>credentials.R</code> and used by the <code>glosis-shiny</code> application:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="glosis-database.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">database_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
+<span id="cb10-2"><a href="glosis-database.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">host_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgis&quot;</span></span>
+<span id="cb10-3"><a href="glosis-database.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">port_number</span> <span class="op">&lt;</span>- <span class="st">&quot;5432&quot;</span></span>
+<span id="cb10-4"><a href="glosis-database.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">user_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
+<span id="cb10-5"><a href="glosis-database.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">password_name</span> <span class="op">&lt;</span>- <span class="st">&quot;glosis&quot;</span></span></code></pre></div>
+</div>
+<div id="database-schema" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Database Schema<a href="glosis-database.html#database-schema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The database schema follows ISO 28258 (GloSIS) standards. The main tables include:</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-injection-into-the-glosis-database.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="installation-and-setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-preparation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
