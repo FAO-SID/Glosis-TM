@@ -7,7 +7,10 @@ fig:specimen-tab
 fig:procedures-tab
 fig:codelist-tab
 fig:newdb
+fig:dbname
+fig:dbcreated
 fig:processing
+fig:injected
 fig:deletedb
 fig:dashboardcreate
 fig:dashboardgoto
@@ -33,9 +36,9 @@ specimen-data-sheet
 procedures-sheet
 codelist-sheet
 data-injection-into-the-glosis-database
-create-a-new-database.
-data-injection.
-delete-an-existing-database.
+create-a-new-database
+data-injection
+delete-an-existing-database
 visualization
 view-data-on-the-dashboard
 view-data-on-the-data-viewer-app
