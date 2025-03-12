@@ -12,17 +12,17 @@ A `Create Dashboard` button appears after populating the GloSIS database with so
 knitr::include_graphics("figures/dashboard_create.png")
 ```
 
-Clicking this button generates a `.html` file stored in the`init-scripts`folder within the working directory, using the same name as the database. The application then renders the file, and a new button,`Go to Dashboard`, will appear (Figure \@ref(fig:dashboardgoto)).
+Clicking this button generates a `.html` file stored in the `init-scripts` folder within the working directory, using the same name as the database. The application then renders the file, and a new button,`Go to Dashboard`, will appear (Figure \@ref(fig:dashboardgoto)).
 
 ```{r dashboardgoto, echo=FALSE, out.width="100%", fig.cap = "`Go to Dashboard` button in <span style='color:green;'>green</span> color."}
 knitr::include_graphics("figures/dashboard_goto.png")
 ```
 
-Clicking this button opens a new tab displaying soil data, in `.html`format, in three sections (Figure \@ref(fig:dashboard1)):
+Clicking this button opens a `.html`format file in a new tab displaying soil data in three sections (Figure \@ref(fig:dashboard1)):
 
--   **Location** -- Details about the position of the soil data points.\
+-   **Location** -- Contains details about the position of the soil data points.\
 -   **Attributes** -- Data on soil properties.\
--   **Boxplot** -- Histograms showing the distribution of soil properties across profiles and depths for quick visual comparisons.
+-   **Boxplot** -- Data with value bars showing the distribution of soil properties across profiles and depths for quick visual comparisons.
 
 ```{r dashboard1, echo=FALSE, out.width="100%",fig.cap = "Visualization of the soil data in the dashboard.."}
 knitr::include_graphics("figures/dashboard1.png")

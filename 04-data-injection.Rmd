@@ -1,0 +1,46 @@
+# **Data injection into the GloSIS database**
+
+## Create a new database.
+
+Open the `glosis-shiny` application in your web browser at `http://localhost:3838/iso28258/`. This site will display the main window of the application.
+
+The window contains a dropdown menu listing all existing databases in the system (empty if running for the first time), a button to connect to the selected database, a button to create a new database, and a Remove button to delete an existing database.
+
+The first step is to create a new database to store the soil data. The `New Database` button is intended for this task (Figure \@ref(fig:newdb)). When clicked, a dialog window will pop up asking for the database name. Enter a name in the field and click the `Confirm` button. A message will appear indicating that the database has been successfully created. In case the database already exists, the message will also indicates it. The new database will be stored in the `data` folder within the working directory and will become active in the `Select Database` dropdown menu.
+
+The first step is to create a new database to store the soil data using the `New Database` button (Figure @ref(fig:newdb)). A dialog window will pop up asking for the database name. Enter a name in the field and click the `Confirm` button. A message will appear indicating that the database has been successfully created. If the database already exists, the message will indicate this as well.
+
+The new database will be stored in the `data` folder within the working directory and will become available in the `Select Database` dropdown menu.
+
+```{r newdb, echo=FALSE, out.width="100%",fig.cap = "Creation of a new database."}
+knitr::include_graphics("figures/newdb.png")
+```
+
+## Upload data to inject.
+
+Select the database to be filled in the `Select Database` dropdown menu and click on the `Connect` button. At this point, the main body of the application will show the column names for each table but the registers are still empty. If the database has previous data, the tables will show the already inserted data. A new section `ÌNJECT DATA (.xlsx)` will appear in the sidebar. This includes a `Browse` button to select the `.xlsx` data to insert into de database. Click on this button to select the `.xlsx` file to use and click on the `use`button. The file will be uploaded and injected into the database. A message indicating that the data is being processed for its inclusion in the database will appear (Figure \@ref(fig:processing)).
+
+
+Select the database to be filled from the `Select Database` dropdown menu and click on the `Connect` button. At this point, the main body of the application will display the column names for each table, but the records will still be empty. If the database already contains data, the tables will show the previously inserted records.
+
+A new section, `INJECT DATA (.xlsx)`, will appear in the sidebar. This section includes a `Browse` button to select the `.xlsx` file containing the data to be inserted into the database. Click this button to choose the `.xlsx` file, then click the `Use` button. The file will be uploaded and injected into the database.
+
+A message will appear indicating that the data is being processed for inclusion in the database (Figure @ref(fig:processing)).
+
+```{r processing, echo=FALSE, out.width="100%",fig.cap = "Message indicating data is being processed for injection into the database."}
+knitr::include_graphics("figures/processing.png")
+```
+
+Once the process is complete, the database will display the data for each table. The database can be accessed from other applications and updated with new record using the same `glosis-shiny` application.
+
+## Delete an existing database. {#database-injection .#illustration}
+
+The `Specimen Data` sheet (Figure \@ref(fig:specimen-tab)) contains detailed soil information at the sample level, including data from each individual horizon or layer, their boundaries, and associated soil properties derived from laboratory analyses.
+
+For each sampled horizon or layer, the sheet includes unique identifiers for the profile, element, and specimen (`profile_code`,`element_code`,`specimen_code`). These identifiers should follow a structured naming convention, typically consisting of the soil profile name followed by a numeric sequence corresponding to the sampled horizon or layer. However, they can be freely named as long as they remain unique. The sheet also specifies the type of observation (`Layer`or `Horizon`), as well as the upper and lower depth boundaries (`upper_depth`, `lower_depth`). A `Horizon` refers to a genetically classified horizon in the soil profile, while a `Layer` represents a soil sample collected based on alternative criteria, such as a fixed depth interval rather than pedogenetic origin.
+
+Additionally, the sheet records the corresponding physical and chemical values of soil properties obtained from laboratory analyses, including pH, Soil Organic Carbon, clay content, and other relevant properties.
+
+```{r specimen-tab, echo=FALSE, out.width="100%",fig.cap = "Information in the Specimen Data sheet."}
+knitr::include_graphics("figures/specimen_tab.png")
+```

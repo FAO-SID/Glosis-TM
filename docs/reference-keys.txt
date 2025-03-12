@@ -37,3 +37,14 @@ fig:dashboardgoto
 fig:viewerbutton
 fig:viewer
 fig:viewer2
+data-preparation
+create-a-new-database
+upload-data-to-inject
+specimen-data-sheet-1
+procedures-sheet-1
+codelist-sheet-1
+fig:newdb
+fig:processing
+create-a-new-database.
+upload-data-to-inject.
+delete-an-existing-database.-processing-database.-.illustration

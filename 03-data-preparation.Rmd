@@ -1,5 +1,5 @@
 
-# **Data injection into the GloSIS database**
+# **Data preparation**
 
 The GloSIS database is structured as a complex relational PostgreSQL database. Its intricate design can pose challenges for users who are not familiar with SQL or PostgreSQL programming, making it difficult to directly translate soil data into this format.  
 
