@@ -6,6 +6,7 @@ rmd_files:
   - 01-installation.Rmd
   - 02-database-configuration.Rmd
   - 03-data-preparation.Rmd
+  - 03_2-exercise.Rmd
   - 04-data-injection.Rmd
   - 05-visualization.Rmd
   - 07-references.Rmd

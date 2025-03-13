@@ -8,6 +8,8 @@ fig:procedures-tab
 fig:codelist-tab
 tab:soil-coordinates
 tab:plotparameters1
+tab:plotparameters2
+tab:procedures
 fig:newdb
 fig:dbname
 fig:dbcreated

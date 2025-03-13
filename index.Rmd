@@ -1,5 +1,5 @@
 ---
-title: "Soil Data Injection with Shiny and PostgreSQL"
+title: "Technical Manual for Data Injection into the GloSIS Database"
 author: "Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini"
 date: "`r Sys.Date()`"
 output: 
