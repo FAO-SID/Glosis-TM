@@ -5,31 +5,31 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Page not found | Soil Data Injection with Shiny and PostgreSQL</title>
-  <meta name="description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
+  <meta name="description" content="<p>This is a bookdown with the instructions to use the glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
-The HTML output format for this example is bookdown::gitbook,</p>" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+The HTML output format for this manual is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Page not found | Soil Data Injection with Shiny and PostgreSQL" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
+  <meta property="og:description" content="<p>This is a bookdown with the instructions to use the glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
-The HTML output format for this example is bookdown::gitbook,</p>" />
+The HTML output format for this manual is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="FAO-SID/Glosis-TM" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Page not found | Soil Data Injection with Shiny and PostgreSQL" />
   
-  <meta name="twitter:description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
+  <meta name="twitter:description" content="<p>This is a bookdown with the instructions to use the glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
-The HTML output format for this example is bookdown::gitbook,</p>" />
+The HTML output format for this manual is bookdown::gitbook,</p>" />
   
 
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-12" />
+<meta name="date" content="2025-03-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -129,7 +129,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -166,6 +189,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>4.3</b> Specimen Data Sheet</a></li>
 <li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>4.4</b> Procedures Sheet</a></li>
 <li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#codelist-sheet"><i class="fa fa-check"></i><b>4.5</b> Codelist Sheet</a></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#exercise-on-data-preparation"><i class="fa fa-check"></i><b>4.6</b> Exercise on data preparation</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="data-preparation.html"><a href="data-preparation.html#filling-out-the-plot-data-sheet"><i class="fa fa-check"></i><b>4.6.1</b> Filling out the plot data sheet</a></li>
+<li class="chapter" data-level="4.6.2" data-path="data-preparation.html"><a href="data-preparation.html#filling-out-the-specimen-data-sheet"><i class="fa fa-check"></i><b>4.6.2</b> Filling out the specimen data sheet</a></li>
+<li class="chapter" data-level="4.6.3" data-path="data-preparation.html"><a href="data-preparation.html#filling-out-the-procedures-data-sheet"><i class="fa fa-check"></i><b>4.6.3</b> Filling out the procedures data sheet</a></li>
+<li class="chapter" data-level="4.6.4" data-path="data-preparation.html"><a href="data-preparation.html#special-considerations"><i class="fa fa-check"></i><b>4.6.4</b> <em>Special Considerations</em>:</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html"><i class="fa fa-check"></i><b>5</b> <strong>Data injection into the GloSIS database</strong></a>
 <ul>
@@ -178,6 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="visualization.html"><a href="visualization.html#view-data-on-the-dashboard"><i class="fa fa-check"></i><b>6.1</b> View Data on the Dashboard</a></li>
 <li class="chapter" data-level="6.2" data-path="visualization.html"><a href="visualization.html#view-data-on-the-data-viewer-app"><i class="fa fa-check"></i><b>6.2</b> View data on the Data Viewer App</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><strong>References</strong></a></li>
 </ul>
 
       </nav>
@@ -221,42 +252,42 @@ the table of contents to find the page you are looking for.</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

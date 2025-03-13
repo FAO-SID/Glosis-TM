@@ -6,6 +6,8 @@ fig:plot-tab
 fig:specimen-tab
 fig:procedures-tab
 fig:codelist-tab
+tab:soil-coordinates
+tab:plotparameters1
 fig:newdb
 fig:dbname
 fig:dbcreated
@@ -35,6 +37,11 @@ plot-data-sheet
 specimen-data-sheet
 procedures-sheet
 codelist-sheet
+exercise-on-data-preparation
+filling-out-the-plot-data-sheet
+filling-out-the-specimen-data-sheet
+filling-out-the-procedures-data-sheet
+special-considerations
 data-injection-into-the-glosis-database
 create-a-new-database
 data-injection

@@ -5,31 +5,31 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Soil Data Injection with Shiny and PostgreSQL</title>
-  <meta name="description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
+  <meta name="description" content="<p>This is a bookdown with the instructions to use the glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
-The HTML output format for this example is bookdown::gitbook,</p>" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+The HTML output format for this manual is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Soil Data Injection with Shiny and PostgreSQL" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
+  <meta property="og:description" content="<p>This is a bookdown with the instructions to use the glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
-The HTML output format for this example is bookdown::gitbook,</p>" />
+The HTML output format for this manual is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="FAO-SID/Glosis-TM" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Soil Data Injection with Shiny and PostgreSQL" />
   
-  <meta name="twitter:description" content="<p>This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
+  <meta name="twitter:description" content="<p>This is a bookdown with the instructions to use the glosis-shiny app to inject data into postgres.
 set in the _output.yml file.
-The HTML output format for this example is bookdown::gitbook,</p>" />
+The HTML output format for this manual is bookdown::gitbook,</p>" />
   
 
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-12" />
+<meta name="date" content="2025-03-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -129,7 +129,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -166,6 +189,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>4.3</b> Specimen Data Sheet</a></li>
 <li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>4.4</b> Procedures Sheet</a></li>
 <li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#codelist-sheet"><i class="fa fa-check"></i><b>4.5</b> Codelist Sheet</a></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#exercise-on-data-preparation"><i class="fa fa-check"></i><b>4.6</b> Exercise on data preparation</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="data-preparation.html"><a href="data-preparation.html#filling-out-the-plot-data-sheet"><i class="fa fa-check"></i><b>4.6.1</b> Filling out the plot data sheet</a></li>
+<li class="chapter" data-level="4.6.2" data-path="data-preparation.html"><a href="data-preparation.html#filling-out-the-specimen-data-sheet"><i class="fa fa-check"></i><b>4.6.2</b> Filling out the specimen data sheet</a></li>
+<li class="chapter" data-level="4.6.3" data-path="data-preparation.html"><a href="data-preparation.html#filling-out-the-procedures-data-sheet"><i class="fa fa-check"></i><b>4.6.3</b> Filling out the procedures data sheet</a></li>
+<li class="chapter" data-level="4.6.4" data-path="data-preparation.html"><a href="data-preparation.html#special-considerations"><i class="fa fa-check"></i><b>4.6.4</b> <em>Special Considerations</em>:</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-injection-into-the-glosis-database.html"><a href="data-injection-into-the-glosis-database.html"><i class="fa fa-check"></i><b>5</b> <strong>Data injection into the GloSIS database</strong></a>
 <ul>
@@ -178,6 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="visualization.html"><a href="visualization.html#view-data-on-the-dashboard"><i class="fa fa-check"></i><b>6.1</b> View Data on the Dashboard</a></li>
 <li class="chapter" data-level="6.2" data-path="visualization.html"><a href="visualization.html#view-data-on-the-data-viewer-app"><i class="fa fa-check"></i><b>6.2</b> View data on the Data Viewer App</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><strong>References</strong></a></li>
 </ul>
 
       </nav>
@@ -198,17 +229,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Soil Data Injection with Shiny and PostgreSQL</h1>
 <p class="author"><em>Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini</em></p>
-<p class="date"><em>2025-03-12</em></p>
+<p class="date"><em>2025-03-13</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> <strong>Introduction</strong><a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This document provides a detailed technical manual on setting up a <strong>Docker-based</strong> PostgreSQL and Shiny application for soil data injection. It covers:</p>
-<ul>
-<li>Installation and deployment using <strong>Docker</strong></li>
-<li>Database configuration and credentials</li>
-<li>Data injection workflow from <strong>Excel (xlsx) files</strong></li>
-<li>Explanation of the <strong>fill_tables.R</strong> script</li>
-</ul>
+<p>The Global Soil Information System (GloSIS) is a key initiative under the Global Soil Partnership (GSP), designed to integrate and standardize soil data globally. However, soil information is often scattered across paper reports, scientific articles, and national archives, making it difficult to access, compare, and utilize effectively. Additionally, variability in laboratory analytical procedures, sampling methods, and classification systems leads to inconsistencies that hinder accurate global assessments. Harmonization is essential to standardize data formats, analytical methods, and reporting frameworks, ensuring comparability, accessibility, and reliability.</p>
+<p>To address these challenges, the GloSIS database is structured as a harmonized relational database in PostgreSQL, following ISO 28258 standards for soil data storage. However, its complexity can pose difficulties for users unfamiliar with SQL or PostgreSQL programming, making it challenging to convert existing soil data into this standardized format.</p>
+<p>This Technical Manual provides guidance on implementing a PostgreSQL database aligned with the GloSIS schema and introduces the <code>glosis-shiny</code> service—a tool designed to simplify the conversion of soil data into the GloSIS format. By automating and harmonizing data integration, this application streamlines the workflow, making the process accessible to users without advanced SQL expertise. This step is crucial for building the GloSIS infrastructure, ensuring that soil data from various sources can be shared, compared, and utilized effectively on a global scale.</p>
+<p>This document provides a detailed technical manual on setting up two <strong>Docker-based</strong> services: 1) PostgreSQL database, and 2) R Shiny application for soil data injection and visualization of soil data. It covers the installation and deployment of the applications using <strong>Docker</strong>, the process of data preparation for the
+- Database configuration and credentials
+- Data injection workflow from <strong>Excel (xlsx) files</strong>
+- Explanation of the <strong>fill_tables.R</strong> script</p>
 <div id="system-requirements" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> System Requirements<a href="index.html#system-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -216,7 +247,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>R and RStudio installed (for local debugging)</li>
 <li>PostgreSQL with PostGIS extension</li>
 </ul>
+<p>This document uses three soils profiles from undisturbed forests from the PhD dissertation <em>Soils,water and nutrients in a forest ecosystem in Suriname</em> <span class="citation">(<a href="#ref-poels1987" role="doc-biblioref">Poels 1987</a>)</span>, available at <a href="https://edepot.wur.nl/202240" class="uri">https://edepot.wur.nl/202240</a>, as an example for soil data harmonization.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-poels1987" class="csl-entry">
+Poels, R. L. H. 1987. <span>“Soils, Water and Nutrients in a Forest Ecosystem in Suriname.”</span> PhD thesis, Wageningen, Netherlands: Agricultural University, Wageningen.
 </div>
 </div>
             </section>
@@ -239,42 +277,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

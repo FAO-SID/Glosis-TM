@@ -2,32 +2,33 @@
 title: "Soil Data Injection with Shiny and PostgreSQL"
 author: "Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini"
 date: "`r Sys.Date()`"
-output: bookdown::gitbook
+output: 
+  bookdown::gitbook:
+    css: style.css
 site: bookdown::bookdown_site
 documentclass: book
-bibliography:
-- book.bib
-- packages.bib
-description: |
-  This is a bookdown with the instructions to use the Glosis-shiny app to inject data into postgres.
-  set in the _output.yml file.
-  The HTML output format for this example is bookdown::gitbook,
+bibliography: references.bib
+biblio-style: "apalike"
 link-citations: yes
+nocite: '@*'
+description: |
+  This is a bookdown with the instructions to use the glosis-shiny app to inject data into postgres.
+  set in the _output.yml file.
+  The HTML output format for this manual is bookdown::gitbook,
+
 github-repo: "FAO-SID/Glosis-TM"
 ---
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
 
 # **Introduction**
 
-This document provides a detailed technical manual on setting up a **Docker-based** PostgreSQL and Shiny application for soil data injection. It covers:
+The Global Soil Information System (GloSIS) is a key initiative under the Global Soil Partnership (GSP), designed to integrate and standardize soil data globally. However, soil information is often scattered across paper reports, scientific articles, and national archives, making it difficult to access, compare, and utilize effectively. Additionally, variability in laboratory analytical procedures, sampling methods, and classification systems leads to inconsistencies that hinder accurate global assessments. Harmonization is essential to standardize data formats, analytical methods, and reporting frameworks, ensuring comparability, accessibility, and reliability.
 
-- Installation and deployment using **Docker**
+To address these challenges, the GloSIS database is structured as a harmonized relational database in PostgreSQL, following ISO 28258 standards for soil data storage. However, its complexity can pose difficulties for users unfamiliar with SQL or PostgreSQL programming, making it challenging to convert existing soil data into this standardized format.
+
+This Technical Manual provides guidance on implementing a PostgreSQL database aligned with the GloSIS schema and introduces the `glosis-shiny` service—a tool designed to simplify the conversion of soil data into the GloSIS format. By automating and harmonizing data integration, this application streamlines the workflow, making the process accessible to users without advanced SQL expertise. This step is crucial for building the GloSIS infrastructure, ensuring that soil data from various sources can be shared, compared, and utilized effectively on a global scale.
+
+This document provides a detailed technical manual on setting up two **Docker-based** services: 1) PostgreSQL database, and 2) R Shiny application for soil data injection and visualization of soil data. It covers the installation and deployment of the applications using **Docker**, the process of data preparation for the 
 - Database configuration and credentials
 - Data injection workflow from **Excel (xlsx) files**
 - Explanation of the **fill_tables.R** script
@@ -36,5 +37,7 @@ This document provides a detailed technical manual on setting up a **Docker-base
 - Docker Desktop installed
 - R and RStudio installed (for local debugging)
 - PostgreSQL with PostGIS extension
+
+This document uses three soils profiles from undisturbed forests from the PhD dissertation *Soils,water and nutrients in a forest ecosystem in Suriname* [@poels1987], available at https://edepot.wur.nl/202240, as an example for soil data harmonization. 
 
 

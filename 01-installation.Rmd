@@ -1,9 +1,9 @@
 
 # **Installation and Setup**
 
-This section explains how to set up the necessary environment to run the **GloSIS soil data injection system**, including **Docker**, **PostgreSQL with PostGIS**, and the **Shiny-based data injection application**. The installation process is fully containerized using Docker, which means all dependencies and configurations are pre-defined and work consistently across different systems.
+This section explains how to set up the necessary environment to run the **GloSIS soil database** injection application, including **Docker**, **PostgreSQL with PostGIS**. The installation process is fully containerized using Docker, which means all dependencies and configurations are pre-defined and work consistently across different systems.
 
-The system consists of two main components: a **PostgreSQL database with PostGIS**, which stores the soil data following the **ISO 28258 (GloSIS) standard**, and a **Shiny web application**, which allows users to inject structured Excel files into the database. These components are deployed together using **Docker Compose**, making the setup process straightforward and ensuring everything runs in a controlled environment.
+The system consists of two main components: a **PostgreSQL database with PostGIS**, which stores the soil data following the **ISO 28258** standard, and a **Shiny application**, which allows users to inject structured Excel files into the database. These components are deployed together using **Docker Compose**, making the setup process straightforward and ensuring everything runs in a controlled environment.
 
 ---
 
@@ -112,14 +112,14 @@ The first time you run this command, the process may take a few minutes as Docke
 
 To check whether the containers are running correctly, open the Docker Desktop graphical interface (Figure \@ref(fig:docker-desktop)).
 
-```{r docker-desktop, echo=FALSE, out.width="100%",fig.cap = "Docker-desktop graphical interface."}
+```{r docker-desktop, echo=FALSE, out.width="60%",fig.cap = "Docker-desktop graphical interface."}
 library(knitr)
 knitr::include_graphics("figures/docker_desktop.png")
 ```
 
 Note that, in Figure \@ref(fig:docker-desktop), both the project and services icons are in green colour. If some of the services fails from running, either the service icon or the project icon appear in orange color (Figure \@ref(fig:docker-fail)).
 
-```{r docker-fail, echo=FALSE, out.width="100%",fig.cap = "Docker-desktop graphical interface with shiny container not running."}
+```{r docker-fail, echo=FALSE, out.width="60%",fig.cap = "Docker-desktop graphical interface with shiny container not running."}
 library(knitr)
 knitr::include_graphics("figures/docker_fail.png")
 ```
@@ -159,7 +159,7 @@ http://localhost:3838/
 This will open the graphical interface where you can upload and inject soil data into PostgreSQL from structured Excel files (Figure \@ref(fig:glosis-shiny)).
 
 
-```{r glosis-shiny, echo=FALSE, out.width="100%",fig.cap = "Graphical interface for the `glosis-shiny' service."}
+```{r glosis-shiny, echo=FALSE, out.width="60%",fig.cap = "Graphical interface for the `glosis-shiny' service."}
 library(knitr)
 knitr::include_graphics("figures/glosis_shiny.png")
 ```

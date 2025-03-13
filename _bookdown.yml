@@ -1,4 +1,11 @@
-book_filename: "SoilDataInjection"
+book_filename: "Glosis database"
 delete_merged_file: true
 output_dir: "docs"
-rmd_files: ["index.Rmd", "01-installation.Rmd", "02-database-configuration.Rmd", "03-data-preparation.Rmd", "04-data-injection.Rmd", "05-visualization.Rmd"]
+rmd_files:
+  - index.Rmd
+  - 01-installation.Rmd
+  - 02-database-configuration.Rmd
+  - 03-data-preparation.Rmd
+  - 04-data-injection.Rmd
+  - 05-visualization.Rmd
+  - 07-references.Rmd

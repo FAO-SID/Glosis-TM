@@ -8,13 +8,13 @@ The first visualization tool is a dashboard generated in `.html` format. This da
 
 A `Create Dashboard` button appears after populating the GloSIS database with soil data (Figure \@ref(fig:dashboardcreate)).
 
-```{r dashboardcreate, echo=FALSE, out.width="100%", fig.cap = "`Create Dashboard button` on the left panel of the data injection app."}
+```{r dashboardcreate, echo=FALSE, out.width="60%", fig.cap = "`Create Dashboard button` on the left panel of the data injection app."}
 knitr::include_graphics("figures/dashboard_create.png")
 ```
 
 Clicking this button generates a `.html` file stored in the `init-scripts` folder within the working directory, using the same name as the database. The application then renders the file, and a new button,`Go to Dashboard`, will appear (Figure \@ref(fig:dashboardgoto)).
 
-```{r dashboardgoto, echo=FALSE, out.width="100%", fig.cap = "`Go to Dashboard` button in <span style='color:green;'>green</span> color."}
+```{r dashboardgoto, echo=FALSE, out.width="60%", fig.cap = "`Go to Dashboard` button in <span style='color:green;'>green</span> color."}
 knitr::include_graphics("figures/dashboard_goto.png")
 ```
 
@@ -24,13 +24,13 @@ Clicking this button opens a `.html`format file in a new tab displaying soil dat
 -   **Attributes** -- Data on soil properties.\
 -   **Boxplot** -- Data with value bars showing the distribution of soil properties across profiles and depths for quick visual comparisons.
 
-```{r dashboard1, echo=FALSE, out.width="100%",fig.cap = "Visualization of the soil data in the dashboard.."}
+```{r dashboard1, echo=FALSE, out.width="60%",fig.cap = "Visualization of the soil data in the dashboard.."}
 knitr::include_graphics("figures/dashboard1.png")
 ```
 
 Tables and the map are internally linked, allowing users to select specific soils either on the map or in the tables, with their location and attributes automatically filtered. The `Make a selection` button on the map can be used for this task when selecting directly from the map (Figure \@ref(fig:dashboard4)).
 
-```{r dashboard4, echo=FALSE, out.width="100%",fig.cap = "Boxplot visualization of filtered soil data attributes."}
+```{r dashboard4, echo=FALSE, out.width="60%",fig.cap = "Boxplot visualization of filtered soil data attributes."}
 knitr::include_graphics("figures/dashboard4.png")
 ```
 
@@ -40,14 +40,14 @@ knitr::include_graphics("figures/dashboard4.png")
 The second visualization tool is accessible via the `Go to Data Viewer` button (Figure \@ref(fig:viewer)) at the bottom of the `glosis-shiny` app. Clicking this button opens a new tab (Figure \@ref(fig:viewer)) with a dropdown menu listing available databases. These databases are those previously created within the `glosis-shiny` app. The button `Go to GloSIS database` brings you back to the `glosis-shiny` app for data injection.
 
 
-```{r viewer, echo=FALSE, out.width="100%",fig.cap = "Visualization app."}
+```{r viewer, echo=FALSE, out.width="60%",fig.cap = "Visualization app."}
 knitr::include_graphics("figures/viewer.png")
 ```
 
 
 
 After selecting a database, clicking `Connect` displays the soil data both in a tabular format and as a map showing the locations of soil samples (Figure \@ref(fig:viewer2)). 
-```{r viewer2, echo=FALSE, out.width="100%",fig.cap = "Visualization app showing soil data from the selected database."}
+```{r viewer2, echo=FALSE, out.width="60%",fig.cap = "Visualization app showing soil data from the selected database."}
 knitr::include_graphics("figures/viewer2.png")
 ```
 

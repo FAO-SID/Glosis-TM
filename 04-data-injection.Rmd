@@ -14,19 +14,19 @@ The window contains a `SELECT DATABASE` dropdown menu listing all existing datab
 
 The first step is to create a new database to store the soil data using the `New Database` button (Figure \@ref(fig:newdb)).
 
-```{r newdb, echo=FALSE, out.width="100%",fig.cap = "Creation of a new database."}
+```{r newdb, echo=FALSE, out.width="60%",fig.cap = "Creation of a new database."}
 knitr::include_graphics("figures/newdb.png")
 ```
 
 A dialog window will pop up asking for the database name (Figure \@ref(fig:dbname)). Enter a name in the field and click the `Confirm` button. A message will appear asking for and administrative password. Leave this option empty and click `Confirm`.
 
-```{r dbname, echo=FALSE, out.width="100%",fig.cap = "Name the database."}
+```{r dbname, echo=FALSE, out.width="60%",fig.cap = "Name the database."}
 knitr::include_graphics("figures/dbname.png")
 ```
 
 A new message in green will appear in the sidebar, indicating that the database has been successfully created (Figure \@ref(fig:dbcreated)). If the database already exists, the message will indicate this as well.
 
-```{r dbcreated, echo=FALSE, out.width="100%",fig.cap = "Name the database."}
+```{r dbcreated, echo=FALSE, out.width="60%",fig.cap = "Name the database."}
 knitr::include_graphics("figures/dbcreated.png")
 ```
 
@@ -40,13 +40,13 @@ A new section, `INJECT DATA (.xlsx)`, will appear in the sidebar. This section i
 
 A message will appear indicating that the data is being processed for inclusion in the database (Figure \@ref(fig:processing)).
 
-```{r processing, echo=FALSE, out.width="100%",fig.cap = "Message indicating data is being processed for injection into the database."}
+```{r processing, echo=FALSE, out.width="60%",fig.cap = "Message indicating data is being processed for injection into the database."}
 knitr::include_graphics("figures/processing.png")
 ```
 
 Once the process is complete, the database will display the data for each table (Figure \@ref(fig:injected)).
 
-```{r injected, echo=FALSE, out.width="100%",fig.cap = "GloSIS database populated showing the records for the table of physic and chemical analytical results."}
+```{r injected, echo=FALSE, out.width="60%",fig.cap = "GloSIS database populated showing the records for the table of physic and chemical analytical results."}
 knitr::include_graphics("figures/injected.png")
 ```
 
@@ -58,6 +58,6 @@ Databases can also be deleted using this application. However, database deletion
 
 The `Delete` button is only available when disconnected from databases. To delete a database, select the database to remove from the `SELECT DATABASE` menu and click the `Delete` button. After confirmation (Figure \@ref(fig:deletedb)), the database will be permanently removed.
 
-```{r deletedb, echo=FALSE, out.width="100%",fig.cap = "Deletion of a database."}
+```{r deletedb, echo=FALSE, out.width="60%",fig.cap = "Deletion of a database."}
 knitr::include_graphics("figures/deletedb.png")
 ```
