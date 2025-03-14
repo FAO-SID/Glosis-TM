@@ -29,15 +29,15 @@ To address these challenges, the GloSIS database is structured as a harmonized r
 This Technical Manual provides guidance on implementing a PostgreSQL database aligned with the GloSIS schema and introduces the `glosis-shiny` service—a tool designed to simplify the conversion of soil data into the GloSIS format. By automating and harmonizing data integration, this application streamlines the workflow, making the process accessible to users without advanced SQL expertise. This step is crucial for building the GloSIS infrastructure, ensuring that soil data from various sources can be shared, compared, and utilized effectively on a global scale.
 
 This document provides a detailed technical manual on setting up two **Docker-based** services: 1) PostgreSQL database, and 2) R Shiny application for soil data injection and visualization of soil data. It covers the installation and deployment of the applications using **Docker**, the process of data preparation for the 
-- Database configuration and credentials
+- Database configuration
 - Data injection workflow from **Excel (xlsx) files**
-- Explanation of the **fill_tables.R** script
+- Visualization of the data
 
 ## System Requirements
 - Docker Desktop installed
 - R and RStudio installed (for local debugging)
 - PostgreSQL with PostGIS extension
 
-This document uses three soils profiles from undisturbed forests from the PhD dissertation *Soils,water and nutrients in a forest ecosystem in Suriname* [@poels1987], available at https://edepot.wur.nl/202240, as an example for soil data harmonization. 
+This document uses three soils profiles from undisturbed forests from the PhD dissertation *Soils,water and nutrients in a forest ecosystem in Suriname* [@poels1987], available at https://edepot.wur.nl/202240, as an exercise for soil data harmonization. 
 
 

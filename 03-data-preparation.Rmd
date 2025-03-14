@@ -22,12 +22,9 @@ The Excel file consists of multiple sheets that include the corresponding inform
 
 4.  **Codelist**: This sheet shows a compilation of all the standardized soil property names, laboratory methods, and units of measurement according to the GloSIS `codelist` for soil properties)
 
-The template (Figure \@ref(fig:template)) acts as a graphical interface where you can register your soil data.
+5.  **Original Data**: This sheet is optional but serves as a record of the original sampling values for soil descriptions and analytical properties..
 
-```{r template, echo=FALSE, out.width="60%",fig.cap = "xlsx template."}
-library(knitr)
-knitr::include_graphics("figures/template.png")
-```
+The template acts as a graphical interface where you can register your soil data.
 
 In the following sections, we provide a detailed overview of each of these sheets.
 
@@ -42,7 +39,7 @@ The `n_layers` column indicates the number of samples collected at different dep
 The next columns refer to the georeference of the sample including `latitude`, `longitude`, and `altitude`, along with details on positional accuracy (`positional_accuracy`), spatial extent (`extent`), and the corresponding map sheet reference (`map_sheet_code`). The spatial coordinates `latitude` and `longitude` **must** be in geographic decimal degrees using the **EPSG:4326** coordinate system.
 
 ```{r plot-tab, echo=FALSE, out.width="60%",fig.cap = "Information in the Plot_Data Tab."}
-knitr::include_graphics("figures/plot_tab.png")
+knitr::include_graphics("figures/sheet1.png")
 ```
 
 ## Specimen Data Sheet
@@ -54,15 +51,18 @@ For each sampled horizon or layer, the sheet includes unique identifiers for the
 Additionally, the sheet records the corresponding physical and chemical values of soil properties obtained from laboratory analyses, including pH, Soil Organic Carbon, clay content, and other relevant properties.
 
 ```{r specimen-tab, echo=FALSE, out.width="60%",fig.cap = "Information in the Specimen Data sheet."}
-knitr::include_graphics("figures/specimen_tab.png")
+knitr::include_graphics("figures/sheet2.png")
 ```
+
+As an illustration, the columns with red values in Figure \@ref(fig:specimen-tab) indicate soil parameters that required unit conversions to align with GloSIS standard units of measurement, compared to their original values (Figure \@ref(fig:original-tab)).
+
 
 ## Procedures Sheet
 
 The `Procedures` sheet (Figure \@ref(fig:procedures-tab)) establishes the connection between measured soil properties, standardized soil property names, laboratory methods, and units of measurement. It links the measured soil property names with their corresponding standardized identifiers (`property_phys_chem_id`) and incorporates information about the associated laboratory procedure identifier (`procedure_phys_chem_id`) and the standard unit of measurement (`unit_of_measure_id`) in the GloSIS standard `Codelist`sheet. The first column must contain the names of the measured soil properties for each sample, and must follow the sequence of soil properties included in the `Specimen Data`. The second, third, and fourth columns provide information on the standardized property names, laboratory methods, and units of measurement, respectively. The `Procedures` sheet facilitates accurate comparisons across datasets, allowing users to trace how each soil property was measured and in which units the results are reported. If soil measurements were recorded in units different from the standard, they must be converted to the harmonized units of measurement before entering the data in the `Specimen Data` sheet. This structured approach enhances data harmonization within the GloSIS framework.
 
-```{r procedures-tab, echo=FALSE, out.width="60%",fig.cap = "Information in the Procedures sheet."}
-knitr::include_graphics("figures/procedures_tab.png")
+```{r procedures-tab, echo=FALSE, out.width="40%",fig.cap = "Information in the Procedures sheet."}
+knitr::include_graphics("figures/sheet3.png")
 ```
 
 ## Codelist Sheet
@@ -71,9 +71,15 @@ The `Codelist` sheet (Figure \@ref(fig:codelist-tab)) contains a comprehensive l
 
 However, the codelist is continuously updated to incorporate new soil analytical properties, laboratory methods, and measurement units, enhancing the system's capacity for integrating diverse soil datasets.
 
-```{r codelist-tab, echo=FALSE, out.width="60%",fig.cap = "Properties, methods and units of measurement in the Codelist sheet"}
-knitr::include_graphics("figures/codelist_tab.png")
+```{r codelist-tab, echo=FALSE, out.width="40%",fig.cap = "Properties, methods and units of measurement in the Codelist sheet"}
+knitr::include_graphics("figures/sheet4.png")
 ```
+
+## Original Data Sheet
+
+The `Original Data` sheet stores all raw data from soil analyses and descriptions. While optional, it is recommended for maintaining a record of original values, particularly when unit conversions or transformations are required. This sheet helps ensure data traceability and good documentation practices. Values in the `Original Data` sheet can be linked via formulas to the `Specimen Data` sheet, allowing for automated transformation and integration of adjusted values in this latter sheet while preserving the original records.
+
+
 
 Ensuring the correct utilization of the template is essential for the successful execution of the data injection process. Proper adherence to the template structure guarantees data integrity, compatibility, and seamless integration into the PostgreSQL GloSIS Database.
 

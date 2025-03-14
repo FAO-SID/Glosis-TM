@@ -29,7 +29,7 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-13" />
+<meta name="date" content="2025-03-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,6 +58,10 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -189,6 +193,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>4.3</b> Specimen Data Sheet</a></li>
 <li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>4.4</b> Procedures Sheet</a></li>
 <li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#codelist-sheet"><i class="fa fa-check"></i><b>4.5</b> Codelist Sheet</a></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>4.6</b> Original Data Sheet</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="exercise-on-data-preparation.html"><a href="exercise-on-data-preparation.html"><i class="fa fa-check"></i><b>5</b> <strong>Exercise on data preparation</strong></a>
 <ul>
@@ -229,7 +234,7 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Technical Manual for Data Injection into the GloSIS Database</h1>
 <p class="author"><em>Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini</em></p>
-<p class="date"><em>2025-03-13</em></p>
+<p class="date"><em>2025-03-14</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> <strong>Introduction</strong><a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -237,9 +242,9 @@ div.csl-indent {
 <p>To address these challenges, the GloSIS database is structured as a harmonized relational database in PostgreSQL, following ISO 28258 standards for soil data storage. However, its complexity can pose difficulties for users unfamiliar with SQL or PostgreSQL programming, making it challenging to convert existing soil data into this standardized format.</p>
 <p>This Technical Manual provides guidance on implementing a PostgreSQL database aligned with the GloSIS schema and introduces the <code>glosis-shiny</code> service—a tool designed to simplify the conversion of soil data into the GloSIS format. By automating and harmonizing data integration, this application streamlines the workflow, making the process accessible to users without advanced SQL expertise. This step is crucial for building the GloSIS infrastructure, ensuring that soil data from various sources can be shared, compared, and utilized effectively on a global scale.</p>
 <p>This document provides a detailed technical manual on setting up two <strong>Docker-based</strong> services: 1) PostgreSQL database, and 2) R Shiny application for soil data injection and visualization of soil data. It covers the installation and deployment of the applications using <strong>Docker</strong>, the process of data preparation for the
-- Database configuration and credentials
+- Database configuration
 - Data injection workflow from <strong>Excel (xlsx) files</strong>
-- Explanation of the <strong>fill_tables.R</strong> script</p>
+- Visualization of the data</p>
 <div id="system-requirements" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> System Requirements<a href="index.html#system-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -247,7 +252,7 @@ div.csl-indent {
 <li>R and RStudio installed (for local debugging)</li>
 <li>PostgreSQL with PostGIS extension</li>
 </ul>
-<p>This document uses three soils profiles from undisturbed forests from the PhD dissertation <em>Soils,water and nutrients in a forest ecosystem in Suriname</em> <span class="citation">(<a href="#ref-poels1987" role="doc-biblioref">Poels 1987</a>)</span>, available at <a href="https://edepot.wur.nl/202240" class="uri">https://edepot.wur.nl/202240</a>, as an example for soil data harmonization.</p>
+<p>This document uses three soils profiles from undisturbed forests from the PhD dissertation <em>Soils,water and nutrients in a forest ecosystem in Suriname</em> <span class="citation">(<a href="#ref-poels1987" role="doc-biblioref">Poels 1987</a>)</span>, available at <a href="https://edepot.wur.nl/202240" class="uri">https://edepot.wur.nl/202240</a>, as an exercise for soil data harmonization.</p>
 
 </div>
 </div>

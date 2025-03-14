@@ -29,7 +29,7 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-13" />
+<meta name="date" content="2025-03-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,6 +58,10 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -189,6 +193,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#specimen-data-sheet"><i class="fa fa-check"></i><b>4.3</b> Specimen Data Sheet</a></li>
 <li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#procedures-sheet"><i class="fa fa-check"></i><b>4.4</b> Procedures Sheet</a></li>
 <li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#codelist-sheet"><i class="fa fa-check"></i><b>4.5</b> Codelist Sheet</a></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#original-data-sheet"><i class="fa fa-check"></i><b>4.6</b> Original Data Sheet</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="exercise-on-data-preparation.html"><a href="exercise-on-data-preparation.html"><i class="fa fa-check"></i><b>5</b> <strong>Exercise on data preparation</strong></a>
 <ul>
@@ -228,772 +233,2726 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="exercise-on-data-preparation" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> <strong>Exercise on data preparation</strong><a href="exercise-on-data-preparation.html#exercise-on-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The example presented in this section uses data from three soil profiles from undisturbed forests in Suriname <span class="citation">(<a href="#ref-poels1987" role="doc-biblioref">Poels 1987</a>)</span> collected with a soil auger: one Orthic Ferralsol (<em>Profile 35</em>, 8 horizons) and two Xanthic Ferralsols (<em>Profiles 36 and 37</em>, 9 horizons each). This data requires harmonization in coordinate systems, dates, soil properties, and laboratory methods before being included in the GloSIS database. For simplification, only analytical data for selected soil parameters have been included in this exercise.</p>
+<p>The example presented in this section uses data from three soil profiles from undisturbed forests in Suriname <span class="citation">(<a href="#ref-poels1987" role="doc-biblioref">Poels 1987</a>)</span> collected with a soil auger: one Orthic Ferralsol (<em>Profile 35</em>, 8 horizons) and two Xanthic Ferralsols (<em>Profiles 36 and 37</em>, 9 horizons each).</p>
+<p>This data requires harmonization in coordinate systems, dates, soil properties, laboratory methods and units of measurement before being included in the GloSIS database. For simplification, only analytical data for selected soil parameters have been included in this exercise.</p>
 <div id="filling-out-the-plot-data-sheet" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Filling out the plot data sheet<a href="exercise-on-data-preparation.html#filling-out-the-plot-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>All soil profiles have been collected within the same project. The <code>project_name</code> column for all profiles is set to <code>LH/UvS_01</code>.</p>
-<p>The <code>profile_code</code> attribute follows the names of the soil profiles in the original document.</p>
-<p><code>site_code</code> and <code>plot_code</code> inform about the location of the sample. In this case <code>site_code</code> has been set to the district (<code>Para</code>) and <code>site_code</code> to the protected area of <code>Kabo</code>, where all samples were collected.</p>
-<p>Since the samples were collected with an auger, the <code>plot_type</code> attribute must be set to <code>borehole</code> The available options are <code>borehole</code> for auger sampling and <code>pit</code> if an open pit was excavated.</p>
-<p>For each soil sampling point, the <code>n_layers</code> attribute correspond to the number of horizons/layers collected at that point. In this case, <code>n_layers</code> is equal to the number of horizons sampled by profile.</p>
-<p>The <code>date</code> format in the original document follows the <code>*DD Month YYYY*</code> format (e.g., 27 May 1983). This format must be converted to <code>*YYYY-MM-DD*</code> (1983-05-27), which is the standard format accepted by the GloSIS database.</p>
-<p>The original coordinates of the points were expressed in <strong>degrees and minutes</strong>, using a central point as a reference (5°15’N, 55°43’W) and including displacement information in meters. Additionally, the coordinate system (<strong>EPSG</strong>) was not defined. We estimated the coordinates for each soil sampling point, using the information provided, in relation to the <strong>EPSG::4326</strong> coordinate system (see Table <a href="exercise-on-data-preparation.html#tab:soil-coordinates">5.1</a>).</p>
-<p>No corrections were necessary for <code>altitude</code>. The <code>positional accuracy</code> was estimated at <em>1850 m</em>. <br><br></p>
-<table style="width:100%;">
-<caption><span id="tab:soil-coordinates">Table 5.1: </span>Table 1: Harmonized data for the plot data sheet for the exercise data.</caption>
-<colgroup>
-<col width="8%" />
-<col width="6%" />
-<col width="6%" />
-<col width="8%" />
-<col width="6%" />
-<col width="6%" />
-<col width="7%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="13%" />
-<col width="4%" />
-<col width="10%" />
-</colgroup>
+<p>As shown in Table <a href="exercise-on-data-preparation.html#tab:soil-coordinates">5.1</a>, the harmonized plot data for this example include soil samples with standardized codes, coordinates and positional metadata.</p>
+<ul>
+<li><p>All soil profiles have been collected within the same project. The <code>project_name</code> column for all profiles is set to <code>LH/UvS_01</code>.</p></li>
+<li><p>The <code>profile_code</code> attribute follows the names of the soil profiles in the original document.</p></li>
+<li><p>The <code>site_code</code> and <code>plot_code</code> inform about the location of the sample. In this case <code>site_code</code> has been set to the district <code>Para</code> and <code>site_code</code> to the protected area of <code>Kabo</code>, where all samples were collected.</p></li>
+<li><p>Since the samples were collected with an auger, the <code>plot_type</code> attribute must be set to <code>borehole</code> The available options are <code>borehole</code> for auger sampling and <code>pit</code> if an open pit was excavated.</p></li>
+<li><p>For each soil sampling point, the <code>n_layers</code> attribute correspond to the number of horizons/layers collected at that point. In this case, <code>n_layers</code> is equal to the number of horizons sampled by profile.</p></li>
+<li><p>The <code>date</code> format in the original document follows the <code>*DD Month YYYY*</code> format (e.g., 27 May 1983). This format must be converted to <code>*YYYY-MM-DD*</code> (1983-05-27), which is the standard format accepted by the GloSIS database.</p></li>
+<li><p>The original coordinates of the points were expressed in <strong>degrees and minutes</strong>, using a central point as a reference (5°15’N, 55°43’W) and including displacement information in meters. Additionally, the coordinate system (<strong>EPSG</strong>) was not defined. We estimated the coordinates for each soil sampling point, using the information provided, in relation to the <strong>EPSG::4326</strong> coordinate system (see Table <a href="exercise-on-data-preparation.html#tab:soil-coordinates">5.1</a>).</p></li>
+<li><p>No corrections were necessary for <code>altitude</code>. The <code>positional accuracy</code> was estimated at <em>1850 m</em>. <br><br></p></li>
+<li><p>The <code>extent</code> column refers to a surface plot. In this example, the samples are points, so no information on extent is applicable.</p></li>
+<li><p>The columns <code>altitude</code>, <code>positional accuracy</code> and <code>map_sheet_code</code> are optional.</p></li>
+</ul>
+<table class="table table-striped" style>
+<caption>
+<span id="tab:soil-coordinates">Table 5.1: </span>Harmonized data for the plot data sheet for the exercise data.
+</caption>
 <thead>
-<tr class="header">
-<th align="left">project_name</th>
-<th align="left">site_code</th>
-<th align="left">plot_code</th>
-<th align="left">profile_code</th>
-<th align="left">plot_type</th>
-<th align="right">n_layers</th>
-<th align="left">date</th>
-<th align="right">longitude</th>
-<th align="right">latitude</th>
-<th align="right">altitude</th>
-<th align="right">positional_accuracy</th>
-<th align="left">extent</th>
-<th align="left">map_sheet_code</th>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+project_name
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+site_code
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+plot_code
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+profile_code
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+plot_type
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+n_layers
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+date
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+longitude
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+latitude
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+altitude
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+positional_accuracy
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+extent
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+map_sheet_code
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">LH/UvS_01</td>
-<td align="left">Para</td>
-<td align="left">Kabo</td>
-<td align="left">Profile35</td>
-<td align="left">Borehole</td>
-<td align="right">8</td>
-<td align="left">1983-05-27</td>
-<td align="right">-55.7148</td>
-<td align="right">5.25</td>
-<td align="right">20</td>
-<td align="right">1850</td>
-<td align="left"></td>
-<td align="left"></td>
+<tr>
+<td style="text-align:left;">
+LH/UvS_01
+</td>
+<td style="text-align:left;">
+Para
+</td>
+<td style="text-align:left;">
+Kabo
+</td>
+<td style="text-align:left;">
+Profile35
+</td>
+<td style="text-align:left;">
+Borehole
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+1983-05-27
+</td>
+<td style="text-align:right;">
+-55.7148
+</td>
+<td style="text-align:right;">
+5.25
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+1850
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
 </tr>
-<tr class="even">
-<td align="left">LH/UvS_01</td>
-<td align="left">Para</td>
-<td align="left">Kabo</td>
-<td align="left">Profile36</td>
-<td align="left">Borehole</td>
-<td align="right">9</td>
-<td align="left">1978-08-10</td>
-<td align="right">-55.7166</td>
-<td align="right">5.25</td>
-<td align="right">27</td>
-<td align="right">1850</td>
-<td align="left"></td>
-<td align="left"></td>
+<tr>
+<td style="text-align:left;">
+LH/UvS_01
+</td>
+<td style="text-align:left;">
+Para
+</td>
+<td style="text-align:left;">
+Kabo
+</td>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Borehole
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+1978-08-10
+</td>
+<td style="text-align:right;">
+-55.7166
+</td>
+<td style="text-align:right;">
+5.25
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+1850
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
 </tr>
-<tr class="odd">
-<td align="left">LH/UvS_01</td>
-<td align="left">Para</td>
-<td align="left">Kabo</td>
-<td align="left">Profile37</td>
-<td align="left">Borehole</td>
-<td align="right">9</td>
-<td align="left">1983-06-02</td>
-<td align="right">-55.7131</td>
-<td align="right">5.25</td>
-<td align="right">39</td>
-<td align="right">1850</td>
-<td align="left"></td>
-<td align="left"></td>
+<tr>
+<td style="text-align:left;">
+LH/UvS_01
+</td>
+<td style="text-align:left;">
+Para
+</td>
+<td style="text-align:left;">
+Kabo
+</td>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Borehole
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+1983-06-02
+</td>
+<td style="text-align:right;">
+-55.7131
+</td>
+<td style="text-align:right;">
+5.25
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+1850
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
 </tr>
 </tbody>
 </table>
-<p><br>
-The <code>extent</code> column refers to a surface plot. In this example, the samples are points, so no information on extent is applicable.</p>
-<p>The columns <code>altitude</code>, <code>positional accuracy</code> and <code>map_sheet_code</code> are optional.</p>
+<p><br></p>
 </div>
 <div id="filling-out-the-specimen-data-sheet" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Filling out the specimen data sheet<a href="exercise-on-data-preparation.html#filling-out-the-specimen-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>specimen data</code> sheet contains information for each soil sample collected at each soil sampling location. The number of rows must therefore be equal to the total number of horizons/layers at each sampling location (<code>n_layers</code>). In this example, the total number of rows in this sheet is 26.</p>
-<p>Two different types of data are required in this sheet. First, the columns <code>profile_code</code>, <code>element_code</code>, <code>type</code>, <code>order_element</code>, <code>upper_depth</code>, <code>lower_depth</code>, and <code>specimen_code</code> serve as identifiers for samples, sample types, and soil depths. The remaining columns correspond to soil properties measured through laboratory analyses.</p>
-<p>The <code>profile_code</code> column references the same attribute from the previous sheet and must contain repetitions corresponding to the number of horizons collected at each sampling location.</p>
-<p>The <code>order_element</code> column is a sequential number that increases from top to bottom horizons, starting from 1.</p>
-<p>The <code>element_code</code> is generated by combining the <code>profile_code</code> and <code>order_element</code> to create a unique identifier for each horizon.</p>
-<p>The <code>type</code> attribute is set to <code>Horizon</code> for genetic soil horizons. If the sample is not collected based on pedogenetic criteria but is defined by specific boundaries, the option <code>Layer</code> is used.</p>
-<p>The <code>upper_depth</code> and <code>lower_depth</code> columns specify the depth range (in cm) of each horizon or layer within the soil profile. Except for the top horizon, the <code>upper_depth</code> value of each horizon must match the <code>lower_depth</code> value of the preceding horizon within the same profile.</p>
-<p>The <code>specimen_code</code> is an alphanumeric string that uniquely identifies each soil sample. In this case, the same value as <code>element_code</code> has been used for consistency. <br><br></p>
-<table>
-<caption><span id="tab:plotparameters1">Table 5.2: </span>Sample descriptors in the specimen data sheet for the exercise data.</caption>
-<colgroup>
-<col width="15%" />
-<col width="15%" />
-<col width="9%" />
-<col width="16%" />
-<col width="13%" />
-<col width="13%" />
-<col width="16%" />
-</colgroup>
+<p>Two different types of data are required in this sheet. First, the columns <code>profile_code</code>, <code>element_code</code>, <code>type</code>, <code>order_element</code>, <code>upper_depth</code>, <code>lower_depth</code>, and <code>specimen_code</code> serve as identifiers for samples, sample types, and soil depths (Table <a href="exercise-on-data-preparation.html#tab:plotparameters1">5.2</a>). The remaining columns correspond to soil properties measured through laboratory analyses.</p>
+<ul>
+<li><p>The <code>profile_code</code> column references the same attribute from the previous sheet and must contain repetitions corresponding to the number of horizons collected at each sampling location.</p></li>
+<li><p>The <code>order_element</code> column is a sequential number that increases from top to bottom horizons, starting from 1.</p></li>
+<li><p>The <code>element_code</code> is generated by combining the <code>profile_code</code> and <code>order_element</code> to create a unique identifier for each horizon.</p></li>
+<li><p>The <code>type</code> attribute is set to <code>Horizon</code> for genetic soil horizons. If the sample is not collected based on pedogenetic criteria but is defined by specific boundaries, the option <code>Layer</code> is used.</p></li>
+<li><p>The <code>upper_depth</code> and <code>lower_depth</code> columns specify the depth range (in cm) of each horizon or layer within the soil profile. Except for the top horizon, the <code>upper_depth</code> value of each horizon must match the <code>lower_depth</code> value of the preceding horizon within the same profile.</p></li>
+<li><p>The <code>specimen_code</code> is an alphanumeric string that uniquely identifies each soil sample. In this case, the same value as <code>element_code</code> has been used for consistency. <br><br></p></li>
+</ul>
+<table class="table table-striped" style>
+<caption>
+<span id="tab:plotparameters1">Table 5.2: </span>Sample descriptors in the specimen data sheet for the exercise data.
+</caption>
 <thead>
-<tr class="header">
-<th align="left">profile_code</th>
-<th align="left">element_code</th>
-<th align="left">type</th>
-<th align="right">order_element</th>
-<th align="right">upper_depth</th>
-<th align="right">lower_depth</th>
-<th align="left">specimen_code</th>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+profile_code
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+element_code
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+type
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+order_element
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+upper_depth
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lower_depth
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+specimen_code
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Profile35</td>
-<td align="left">Profile35_1</td>
-<td align="left">Horizon</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="left">Profile35_1</td>
+<tr>
+<td style="text-align:left;">
+Profile35
+</td>
+<td style="text-align:left;">
+Profile35_1
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Profile35_1
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile35</td>
-<td align="left">Profile35_2</td>
-<td align="left">Horizon</td>
-<td align="right">2</td>
-<td align="right">4</td>
-<td align="right">9</td>
-<td align="left">Profile35_2</td>
+<tr>
+<td style="text-align:left;">
+Profile35
+</td>
+<td style="text-align:left;">
+Profile35_2
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Profile35_2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile35</td>
-<td align="left">Profile35_3</td>
-<td align="left">Horizon</td>
-<td align="right">3</td>
-<td align="right">9</td>
-<td align="right">24</td>
-<td align="left">Profile35_3</td>
+<tr>
+<td style="text-align:left;">
+Profile35
+</td>
+<td style="text-align:left;">
+Profile35_3
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Profile35_3
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile35</td>
-<td align="left">Profile35_4</td>
-<td align="left">Horizon</td>
-<td align="right">4</td>
-<td align="right">24</td>
-<td align="right">50</td>
-<td align="left">Profile35_4</td>
+<tr>
+<td style="text-align:left;">
+Profile35
+</td>
+<td style="text-align:left;">
+Profile35_4
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+Profile35_4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile35</td>
-<td align="left">Profile35_5</td>
-<td align="left">Horizon</td>
-<td align="right">5</td>
-<td align="right">50</td>
-<td align="right">66</td>
-<td align="left">Profile35_5</td>
+<tr>
+<td style="text-align:left;">
+Profile35
+</td>
+<td style="text-align:left;">
+Profile35_5
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;">
+Profile35_5
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile35</td>
-<td align="left">Profile35_6</td>
-<td align="left">Horizon</td>
-<td align="right">6</td>
-<td align="right">66</td>
-<td align="right">104</td>
-<td align="left">Profile35_6</td>
+<tr>
+<td style="text-align:left;">
+Profile35
+</td>
+<td style="text-align:left;">
+Profile35_6
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+Profile35_6
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile35</td>
-<td align="left">Profile35_7</td>
-<td align="left">Horizon</td>
-<td align="right">7</td>
-<td align="right">104</td>
-<td align="right">134</td>
-<td align="left">Profile35_7</td>
+<tr>
+<td style="text-align:left;">
+Profile35
+</td>
+<td style="text-align:left;">
+Profile35_7
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:left;">
+Profile35_7
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile35</td>
-<td align="left">Profile35_8</td>
-<td align="left">Horizon</td>
-<td align="right">8</td>
-<td align="right">134</td>
-<td align="right">170</td>
-<td align="left">Profile35_8</td>
+<tr>
+<td style="text-align:left;">
+Profile35
+</td>
+<td style="text-align:left;">
+Profile35_8
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:left;">
+Profile35_8
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile36</td>
-<td align="left">Profile36_1</td>
-<td align="left">Horizon</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="left">Profile36_1</td>
+<tr>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Profile36_1
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Profile36_1
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile36</td>
-<td align="left">Profile36_2</td>
-<td align="left">Horizon</td>
-<td align="right">2</td>
-<td align="right">3</td>
-<td align="right">10</td>
-<td align="left">Profile36_2</td>
+<tr>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Profile36_2
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Profile36_2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile36</td>
-<td align="left">Profile36_3</td>
-<td align="left">Horizon</td>
-<td align="right">3</td>
-<td align="right">10</td>
-<td align="right">27</td>
-<td align="left">Profile36_3</td>
+<tr>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Profile36_3
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+Profile36_3
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile36</td>
-<td align="left">Profile36_4</td>
-<td align="left">Horizon</td>
-<td align="right">4</td>
-<td align="right">27</td>
-<td align="right">48</td>
-<td align="left">Profile36_4</td>
+<tr>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Profile36_4
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+Profile36_4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile36</td>
-<td align="left">Profile36_5</td>
-<td align="left">Horizon</td>
-<td align="right">5</td>
-<td align="right">48</td>
-<td align="right">63</td>
-<td align="left">Profile36_5</td>
+<tr>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Profile36_5
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:left;">
+Profile36_5
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile36</td>
-<td align="left">Profile36_6</td>
-<td align="left">Horizon</td>
-<td align="right">6</td>
-<td align="right">63</td>
-<td align="right">87</td>
-<td align="left">Profile36_6</td>
+<tr>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Profile36_6
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Profile36_6
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile36</td>
-<td align="left">Profile36_7</td>
-<td align="left">Horizon</td>
-<td align="right">7</td>
-<td align="right">87</td>
-<td align="right">102</td>
-<td align="left">Profile36_7</td>
+<tr>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Profile36_7
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+Profile36_7
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile36</td>
-<td align="left">Profile36_8</td>
-<td align="left">Horizon</td>
-<td align="right">8</td>
-<td align="right">102</td>
-<td align="right">130</td>
-<td align="left">Profile36_8</td>
+<tr>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Profile36_8
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:left;">
+Profile36_8
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile36</td>
-<td align="left">Profile36_9</td>
-<td align="left">Horizon</td>
-<td align="right">9</td>
-<td align="right">130</td>
-<td align="right">180</td>
-<td align="left">Profile36_9</td>
+<tr>
+<td style="text-align:left;">
+Profile36
+</td>
+<td style="text-align:left;">
+Profile36_9
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+180
+</td>
+<td style="text-align:left;">
+Profile36_9
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile37</td>
-<td align="left">Profile37_1</td>
-<td align="left">Horizon</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="left">Profile37_1</td>
+<tr>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Profile37_1
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Profile37_1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile37</td>
-<td align="left">Profile37_2</td>
-<td align="left">Horizon</td>
-<td align="right">2</td>
-<td align="right">4</td>
-<td align="right">15</td>
-<td align="left">Profile37_2</td>
+<tr>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Profile37_2
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Profile37_2
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile37</td>
-<td align="left">Profile37_3</td>
-<td align="left">Horizon</td>
-<td align="right">3</td>
-<td align="right">15</td>
-<td align="right">24</td>
-<td align="left">Profile37_3</td>
+<tr>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Profile37_3
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Profile37_3
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile37</td>
-<td align="left">Profile37_4</td>
-<td align="left">Horizon</td>
-<td align="right">4</td>
-<td align="right">24</td>
-<td align="right">41</td>
-<td align="left">Profile37_4</td>
+<tr>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Profile37_4
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+Profile37_4
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile37</td>
-<td align="left">Profile37_5</td>
-<td align="left">Horizon</td>
-<td align="right">5</td>
-<td align="right">41</td>
-<td align="right">52</td>
-<td align="left">Profile37_5</td>
+<tr>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Profile37_5
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+Profile37_5
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile37</td>
-<td align="left">Profile37_6</td>
-<td align="left">Horizon</td>
-<td align="right">6</td>
-<td align="right">52</td>
-<td align="right">87</td>
-<td align="left">Profile37_6</td>
+<tr>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Profile37_6
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Profile37_6
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile37</td>
-<td align="left">Profile37_7</td>
-<td align="left">Horizon</td>
-<td align="right">7</td>
-<td align="right">87</td>
-<td align="right">112</td>
-<td align="left">Profile37_7</td>
+<tr>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Profile37_7
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:left;">
+Profile37_7
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Profile37</td>
-<td align="left">Profile37_8</td>
-<td align="left">Horizon</td>
-<td align="right">8</td>
-<td align="right">112</td>
-<td align="right">143</td>
-<td align="left">Profile37_8</td>
+<tr>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Profile37_8
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:right;">
+143
+</td>
+<td style="text-align:left;">
+Profile37_8
+</td>
 </tr>
-<tr class="even">
-<td align="left">Profile37</td>
-<td align="left">Profile37_9</td>
-<td align="left">Horizon</td>
-<td align="right">9</td>
-<td align="right">143</td>
-<td align="right">180</td>
-<td align="left">Profile37_9</td>
+<tr>
+<td style="text-align:left;">
+Profile37
+</td>
+<td style="text-align:left;">
+Profile37_9
+</td>
+<td style="text-align:left;">
+Horizon
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+143
+</td>
+<td style="text-align:right;">
+180
+</td>
+<td style="text-align:left;">
+Profile37_9
+</td>
 </tr>
 </tbody>
 </table>
 <p><br>
-The parameters for soil properties must include, for each property, its measured value in the laboratory using the harmonized units of measurement defined in GloSIS, as specified in the <code>observation_phys_chem_id</code> column of the template. Any value reported in different units <strong>MUST</strong> be converted to the harmonized units before being entered into this sheet. Values that fall outside the predefined lower and upper thresholds in the database will be excluded, preventing full population of the database.</p>
-<table style="width:100%;">
-<caption><span id="tab:plotparameters2">Table 5.3: </span>Analytical properties in the specimen data sheet for the exercise data.</caption>
-<colgroup>
-<col width="4%" />
-<col width="4%" />
-<col width="4%" />
-<col width="4%" />
-<col width="3%" />
-<col width="6%" />
-<col width="6%" />
-<col width="4%" />
-<col width="4%" />
-<col width="4%" />
-<col width="3%" />
-<col width="3%" />
-<col width="6%" />
-<col width="4%" />
-<col width="6%" />
-<col width="6%" />
-<col width="7%" />
-<col width="11%" />
-<col width="4%" />
-</colgroup>
+The parameters for analytical soil properties in Table <a href="exercise-on-data-preparation.html#tab:plotparameters2">5.3</a> must include, for each property, its measured value in the laboratory using the harmonized units of measurement defined in GloSIS, as specified in the <code>observation_phys_chem_id</code> column of the template. Any value reported in different units <strong>MUST</strong> be converted to the harmonized units before being entered into this sheet. Values that fall outside the predefined lower and upper thresholds in the database will be excluded, preventing full population of the database.</p>
+<table class="table table-striped" style="font-size: 12px; ">
+<caption style="font-size: initial !important;">
+<span id="tab:plotparameters2">Table 5.3: </span>Analytical properties in the specimen data sheet for the exercise data.
+</caption>
 <thead>
-<tr class="header">
-<th align="right">Sand</th>
-<th align="right">Silt</th>
-<th align="right">Clay</th>
-<th align="right">C</th>
-<th align="right">N</th>
-<th align="right">pH_H2O</th>
-<th align="right">pH_KCl</th>
-<th align="right">CEC</th>
-<th align="right">Ca</th>
-<th align="right">Mg</th>
-<th align="right">K</th>
-<th align="right">Na</th>
-<th align="right">Al</th>
-<th align="right">ECEC</th>
-<th align="right">K_total</th>
-<th align="right">P_total</th>
-<th align="right">P_Bray_I</th>
-<th align="right">Bulk_Density</th>
-<th align="right">pF_2</th>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Sand (%)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Silt (%)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Clay (%)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+C (g/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+N (g/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pH-H₂O
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pH-KCl
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+CEC (cmol/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Ca (cmol/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Mg (cmol/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+K (cmol/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Na (cmol/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Al (cmol/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+ECEC (cmol/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+K total (cmol/kg)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+P total (%)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+P-Bray I (%)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Bulk Density (kg/dm3)
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pF 2 (m3/100 m3)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">83.5</td>
-<td align="right">13.6</td>
-<td align="right">2.9</td>
-<td align="right">11.7</td>
-<td align="right">0.8</td>
-<td align="right">4.0</td>
-<td align="right">3.3</td>
-<td align="right">26.0</td>
-<td align="right">1.25</td>
-<td align="right">1.15</td>
-<td align="right">0.4</td>
-<td align="right">0.2</td>
-<td align="right">1.2654</td>
-<td align="right">9.2</td>
-<td align="right">0.0513</td>
-<td align="right">0.0032</td>
-<td align="right">2e-04</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+83.5
+</td>
+<td style="text-align:right;">
+13.6
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+11.7
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+26.0
+</td>
+<td style="text-align:right;">
+1.25
+</td>
+<td style="text-align:right;">
+1.15
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+1.2654
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+0.0512821
+</td>
+<td style="text-align:right;">
+0.0032
+</td>
+<td style="text-align:right;">
+0.00022
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
 </tr>
-<tr class="even">
-<td align="right">76.2</td>
-<td align="right">17.6</td>
-<td align="right">6.3</td>
-<td align="right">12.0</td>
-<td align="right">0.9</td>
-<td align="right">3.7</td>
-<td align="right">3.4</td>
-<td align="right">28.4</td>
-<td align="right">0.40</td>
-<td align="right">0.50</td>
-<td align="right">0.3</td>
-<td align="right">0.5</td>
-<td align="right">4.1292</td>
-<td align="right">15.0</td>
-<td align="right">0.0615</td>
-<td align="right">0.0049</td>
-<td align="right">2e-04</td>
-<td align="right">1.41</td>
-<td align="right">23.2</td>
+<tr>
+<td style="text-align:right;">
+76.2
+</td>
+<td style="text-align:right;">
+17.6
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+28.4
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+4.1292
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:right;">
+0.0615385
+</td>
+<td style="text-align:right;">
+0.0049
+</td>
+<td style="text-align:right;">
+0.00022
+</td>
+<td style="text-align:right;">
+1.41
+</td>
+<td style="text-align:right;">
+23.2
+</td>
 </tr>
-<tr class="odd">
-<td align="right">68.5</td>
-<td align="right">17.9</td>
-<td align="right">13.6</td>
-<td align="right">8.2</td>
-<td align="right">0.6</td>
-<td align="right">4.4</td>
-<td align="right">3.8</td>
-<td align="right">23.2</td>
-<td align="right">0.15</td>
-<td align="right">0.25</td>
-<td align="right">0.1</td>
-<td align="right">0.3</td>
-<td align="right">3.9294</td>
-<td align="right">13.0</td>
-<td align="right">0.0615</td>
-<td align="right">0.0054</td>
-<td align="right">1e-04</td>
-<td align="right">1.28</td>
-<td align="right">22.4</td>
+<tr>
+<td style="text-align:right;">
+68.5
+</td>
+<td style="text-align:right;">
+17.9
+</td>
+<td style="text-align:right;">
+13.6
+</td>
+<td style="text-align:right;">
+8.2
+</td>
+<td style="text-align:right;">
+0.6
+</td>
+<td style="text-align:right;">
+4.4
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+23.2
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+3.9294
+</td>
+<td style="text-align:right;">
+13.0
+</td>
+<td style="text-align:right;">
+0.0615385
+</td>
+<td style="text-align:right;">
+0.0054
+</td>
+<td style="text-align:right;">
+0.00011
+</td>
+<td style="text-align:right;">
+1.28
+</td>
+<td style="text-align:right;">
+22.4
+</td>
 </tr>
-<tr class="even">
-<td align="right">63.8</td>
-<td align="right">18.8</td>
-<td align="right">17.6</td>
-<td align="right">5.6</td>
-<td align="right">0.4</td>
-<td align="right">4.8</td>
-<td align="right">4.0</td>
-<td align="right">22.8</td>
-<td align="right">0.15</td>
-<td align="right">0.15</td>
-<td align="right">0.1</td>
-<td align="right">0.2</td>
-<td align="right">4.0959</td>
-<td align="right">13.2</td>
-<td align="right">0.0769</td>
-<td align="right">0.0047</td>
-<td align="right">1e-04</td>
-<td align="right">1.56</td>
-<td align="right">25.2</td>
+<tr>
+<td style="text-align:right;">
+63.8
+</td>
+<td style="text-align:right;">
+18.8
+</td>
+<td style="text-align:right;">
+17.6
+</td>
+<td style="text-align:right;">
+5.6
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+4.0959
+</td>
+<td style="text-align:right;">
+13.2
+</td>
+<td style="text-align:right;">
+0.0769231
+</td>
+<td style="text-align:right;">
+0.0047
+</td>
+<td style="text-align:right;">
+0.00006
+</td>
+<td style="text-align:right;">
+1.56
+</td>
+<td style="text-align:right;">
+25.2
+</td>
 </tr>
-<tr class="odd">
-<td align="right">62.8</td>
-<td align="right">14.2</td>
-<td align="right">23.1</td>
-<td align="right">2.5</td>
-<td align="right">0.2</td>
-<td align="right">4.8</td>
-<td align="right">3.8</td>
-<td align="right">14.4</td>
-<td align="right">0.15</td>
-<td align="right">0.10</td>
-<td align="right">0.0</td>
-<td align="right">0.2</td>
-<td align="right">2.9970</td>
-<td align="right">9.7</td>
-<td align="right">0.0872</td>
-<td align="right">0.0052</td>
-<td align="right">0e+00</td>
-<td align="right">1.60</td>
-<td align="right">26.0</td>
+<tr>
+<td style="text-align:right;">
+62.8
+</td>
+<td style="text-align:right;">
+14.2
+</td>
+<td style="text-align:right;">
+23.1
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.10
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+2.9970
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+0.0871795
+</td>
+<td style="text-align:right;">
+0.0052
+</td>
+<td style="text-align:right;">
+0.00002
+</td>
+<td style="text-align:right;">
+1.60
+</td>
+<td style="text-align:right;">
+26.0
+</td>
 </tr>
-<tr class="even">
-<td align="right">64.2</td>
-<td align="right">12.4</td>
-<td align="right">23.6</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="right">4.8</td>
-<td align="right">4.0</td>
-<td align="right">12.2</td>
-<td align="right">0.15</td>
-<td align="right">0.05</td>
-<td align="right">0.0</td>
-<td align="right">0.1</td>
-<td align="right">2.5641</td>
-<td align="right">8.2</td>
-<td align="right">0.0769</td>
-<td align="right">0.0049</td>
-<td align="right">1e-04</td>
-<td align="right">1.65</td>
-<td align="right">25.9</td>
+<tr>
+<td style="text-align:right;">
+64.2
+</td>
+<td style="text-align:right;">
+12.4
+</td>
+<td style="text-align:right;">
+23.6
+</td>
+<td style="text-align:right;">
+1.4
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+12.2
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+2.5641
+</td>
+<td style="text-align:right;">
+8.2
+</td>
+<td style="text-align:right;">
+0.0769231
+</td>
+<td style="text-align:right;">
+0.0049
+</td>
+<td style="text-align:right;">
+0.00005
+</td>
+<td style="text-align:right;">
+1.65
+</td>
+<td style="text-align:right;">
+25.9
+</td>
 </tr>
-<tr class="odd">
-<td align="right">62.3</td>
-<td align="right">12.5</td>
-<td align="right">25.4</td>
-<td align="right">0.7</td>
-<td align="right">0.1</td>
-<td align="right">5.0</td>
-<td align="right">4.0</td>
-<td align="right">10.8</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">0.1</td>
-<td align="right">0.0</td>
-<td align="right">2.2977</td>
-<td align="right">7.0</td>
-<td align="right">0.1026</td>
-<td align="right">0.0037</td>
-<td align="right">1e-04</td>
-<td align="right">1.69</td>
-<td align="right">27.1</td>
+<tr>
+<td style="text-align:right;">
+62.3
+</td>
+<td style="text-align:right;">
+12.5
+</td>
+<td style="text-align:right;">
+25.4
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+10.8
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2.2977
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:right;">
+0.1025641
+</td>
+<td style="text-align:right;">
+0.0037
+</td>
+<td style="text-align:right;">
+0.00011
+</td>
+<td style="text-align:right;">
+1.69
+</td>
+<td style="text-align:right;">
+27.1
+</td>
 </tr>
-<tr class="even">
-<td align="right">58.1</td>
-<td align="right">14.3</td>
-<td align="right">27.8</td>
-<td align="right">0.6</td>
-<td align="right">0.1</td>
-<td align="right">5.0</td>
-<td align="right">4.1</td>
-<td align="right">9.8</td>
-<td align="right">0.15</td>
-<td align="right">0.00</td>
-<td align="right">0.0</td>
-<td align="right">0.1</td>
-<td align="right">2.2311</td>
-<td align="right">7.1</td>
-<td align="right">0.0872</td>
-<td align="right">0.0037</td>
-<td align="right">1e-04</td>
-<td align="right">1.69</td>
-<td align="right">29.7</td>
+<tr>
+<td style="text-align:right;">
+58.1
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+27.8
+</td>
+<td style="text-align:right;">
+0.6
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+9.8
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+2.2311
+</td>
+<td style="text-align:right;">
+7.1
+</td>
+<td style="text-align:right;">
+0.0871795
+</td>
+<td style="text-align:right;">
+0.0037
+</td>
+<td style="text-align:right;">
+0.00008
+</td>
+<td style="text-align:right;">
+1.69
+</td>
+<td style="text-align:right;">
+29.7
+</td>
 </tr>
-<tr class="odd">
-<td align="right">75.2</td>
-<td align="right">21.7</td>
-<td align="right">3.2</td>
-<td align="right">15.2</td>
-<td align="right">1.1</td>
-<td align="right">4.0</td>
-<td align="right">3.8</td>
-<td align="right">34.8</td>
-<td align="right">2.30</td>
-<td align="right">0.50</td>
-<td align="right">0.6</td>
-<td align="right">0.7</td>
-<td align="right">2.3643</td>
-<td align="right">14.0</td>
-<td align="right">0.1051</td>
-<td align="right">0.0054</td>
-<td align="right">2e-04</td>
-<td align="right">1.38</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+75.2
+</td>
+<td style="text-align:right;">
+21.7
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+<td style="text-align:right;">
+15.2
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+34.8
+</td>
+<td style="text-align:right;">
+2.30
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.6
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+<td style="text-align:right;">
+2.3643
+</td>
+<td style="text-align:right;">
+14.0
+</td>
+<td style="text-align:right;">
+0.1051282
+</td>
+<td style="text-align:right;">
+0.0054
+</td>
+<td style="text-align:right;">
+0.00021
+</td>
+<td style="text-align:right;">
+1.38
+</td>
+<td style="text-align:right;">
+</td>
 </tr>
-<tr class="even">
-<td align="right">75.6</td>
-<td align="right">16.4</td>
-<td align="right">8.0</td>
-<td align="right">8.6</td>
-<td align="right">0.8</td>
-<td align="right">4.0</td>
-<td align="right">3.6</td>
-<td align="right">26.6</td>
-<td align="right">0.30</td>
-<td align="right">0.25</td>
-<td align="right">0.3</td>
-<td align="right">0.3</td>
-<td align="right">3.6630</td>
-<td align="right">12.7</td>
-<td align="right">0.1513</td>
-<td align="right">0.0060</td>
-<td align="right">1e-04</td>
-<td align="right">1.47</td>
-<td align="right">20.4</td>
+<tr>
+<td style="text-align:right;">
+75.6
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+3.6
+</td>
+<td style="text-align:right;">
+26.6
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+3.6630
+</td>
+<td style="text-align:right;">
+12.7
+</td>
+<td style="text-align:right;">
+0.1512821
+</td>
+<td style="text-align:right;">
+0.0060
+</td>
+<td style="text-align:right;">
+0.00014
+</td>
+<td style="text-align:right;">
+1.47
+</td>
+<td style="text-align:right;">
+20.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+61.6
+</td>
+<td style="text-align:right;">
+18.8
+</td>
+<td style="text-align:right;">
+19.7
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+4.4
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.10
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+2.9970
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+0.1948718
+</td>
+<td style="text-align:right;">
+0.0066
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+1.51
+</td>
+<td style="text-align:right;">
+27.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+57.8
+</td>
+<td style="text-align:right;">
+17.1
+</td>
+<td style="text-align:right;">
+25.2
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+3.9
+</td>
+<td style="text-align:right;">
+19.6
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.10
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+3.5631
+</td>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:right;">
+0.1846154
+</td>
+<td style="text-align:right;">
+0.0082
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+29.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+56.9
+</td>
+<td style="text-align:right;">
+14.6
+</td>
+<td style="text-align:right;">
+28.6
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+17.2
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+3.0636
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+0.1051282
+</td>
+<td style="text-align:right;">
+0.0071
+</td>
+<td style="text-align:right;">
+0.00007
+</td>
+<td style="text-align:right;">
+1.49
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54.8
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:right;">
+30.3
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2.3643
+</td>
+<td style="text-align:right;">
+7.6
+</td>
+<td style="text-align:right;">
+0.2641026
+</td>
+<td style="text-align:right;">
+0.0076
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+1.53
+</td>
+<td style="text-align:right;">
+30.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+57.2
+</td>
+<td style="text-align:right;">
+12.7
+</td>
+<td style="text-align:right;">
+30.1
+</td>
+<td style="text-align:right;">
+1.5
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+4.9
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+11.6
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+2.3976
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+0.1230769
+</td>
+<td style="text-align:right;">
+0.0047
+</td>
+<td style="text-align:right;">
+0.00005
+</td>
+<td style="text-align:right;">
+1.57
+</td>
+<td style="text-align:right;">
+29.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+58.9
+</td>
+<td style="text-align:right;">
+13.3
+</td>
+<td style="text-align:right;">
+27.8
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2.0313
+</td>
+<td style="text-align:right;">
+6.8
+</td>
+<td style="text-align:right;">
+0.1128205
+</td>
+<td style="text-align:right;">
+0.0054
+</td>
+<td style="text-align:right;">
+0.00005
+</td>
+<td style="text-align:right;">
+1.58
+</td>
+<td style="text-align:right;">
+28.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+59.3
+</td>
+<td style="text-align:right;">
+13.4
+</td>
+<td style="text-align:right;">
+27.4
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+1.0989
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:right;">
+0.1025641
+</td>
+<td style="text-align:right;">
+0.0056
+</td>
+<td style="text-align:right;">
+0.00018
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+28.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+80.1
+</td>
+<td style="text-align:right;">
+18.8
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+15.1
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+31.0
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+<td style="text-align:right;">
+1.05
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.9324
+</td>
+<td style="text-align:right;">
+6.6
+</td>
+<td style="text-align:right;">
+0.0512821
+</td>
+<td style="text-align:right;">
+0.0024
+</td>
+<td style="text-align:right;">
+0.00021
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+90.3
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+8.1
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+4.4
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+13.0
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.10
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+1.8648
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+0.0769231
+</td>
+<td style="text-align:right;">
+0.0042
+</td>
+<td style="text-align:right;">
+0.00011
+</td>
+<td style="text-align:right;">
+1.32
+</td>
+<td style="text-align:right;">
+11.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+87.1
+</td>
+<td style="text-align:right;">
+8.1
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+4.5
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+4.5
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+13.0
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+2.3310
+</td>
+<td style="text-align:right;">
+7.6
+</td>
+<td style="text-align:right;">
+0.0769231
+</td>
+<td style="text-align:right;">
+0.0042
+</td>
+<td style="text-align:right;">
+0.00008
+</td>
+<td style="text-align:right;">
+1.38
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+83.4
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+9.8
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+3.1635
+</td>
+<td style="text-align:right;">
+9.6
+</td>
+<td style="text-align:right;">
+0.1025641
+</td>
+<td style="text-align:right;">
+0.0064
+</td>
+<td style="text-align:right;">
+0.00007
+</td>
+<td style="text-align:right;">
+1.45
+</td>
+<td style="text-align:right;">
+16.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+79.8
+</td>
+<td style="text-align:right;">
+7.7
+</td>
+<td style="text-align:right;">
+12.6
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+4.9
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+13.2
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+3.0636
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+0.1384615
+</td>
+<td style="text-align:right;">
+0.0066
+</td>
+<td style="text-align:right;">
+0.00015
+</td>
+<td style="text-align:right;">
+1.50
+</td>
+<td style="text-align:right;">
+15.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+81.5
+</td>
+<td style="text-align:right;">
+6.1
+</td>
+<td style="text-align:right;">
+12.4
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+4.9
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+1.0989
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+0.1230769
+</td>
+<td style="text-align:right;">
+0.0059
+</td>
+<td style="text-align:right;">
+0.00008
+</td>
+<td style="text-align:right;">
+1.45
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+77.9
+</td>
+<td style="text-align:right;">
+7.5
+</td>
+<td style="text-align:right;">
+19.6
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1.0989
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+0.1641026
+</td>
+<td style="text-align:right;">
+0.0068
+</td>
+<td style="text-align:right;">
+0.00008
+</td>
+<td style="text-align:right;">
+1.49
+</td>
+<td style="text-align:right;">
+20.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+70.7
+</td>
+<td style="text-align:right;">
+8.4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+2.4975
+</td>
+<td style="text-align:right;">
+8.1
+</td>
+<td style="text-align:right;">
+0.2358974
+</td>
+<td style="text-align:right;">
+0.0096
+</td>
+<td style="text-align:right;">
+0.00002
+</td>
+<td style="text-align:right;">
+1.49
+</td>
+<td style="text-align:right;">
+16.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+72.7
+</td>
+<td style="text-align:right;">
+8.8
+</td>
+<td style="text-align:right;">
+18.6
+</td>
+<td style="text-align:right;">
+0.6
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+7.2
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1.5651
+</td>
+<td style="text-align:right;">
+4.8
+</td>
+<td style="text-align:right;">
+0.2256410
+</td>
+<td style="text-align:right;">
+0.0103
+</td>
+<td style="text-align:right;">
+0.00003
+</td>
+<td style="text-align:right;">
+1.53
+</td>
+<td style="text-align:right;">
+18.3
+</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="filling-out-the-procedures-data-sheet" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Filling out the procedures data sheet<a href="exercise-on-data-preparation.html#filling-out-the-procedures-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The first column in the <code>Procedures</code> sheet <strong>MUST</strong> contain all soil analytical properties included in the <code>specimen data</code> and in the same order of entrance. The proper GloSIS names for soil properties, analysis methods and units <strong>MUST</strong> be defined for each soil property using the data provided in the <code>observation_phys_chem_id</code> sheet.</p>
-<p>The first column in the <code>Procedures</code> sheet <strong>MUST</strong> include all soil analytical properties listed in the specimen data sheet, maintaining the same order of entry. The correct GloSIS names for soil properties, analysis methods, and units <strong>MUST</strong> be assigned to each soil property using the data provided in the observation_phys_chem_id sheet. Properties that are not listed in the <code>observation_phys_chem_id</code> sheet are not allowed.</p>
-<table style="width:100%;">
-<caption><span id="tab:procedures">Table 5.4: </span>Soil Property Mapping Table for the exercise data</caption>
-<colgroup>
-<col width="16%" />
-<col width="41%" />
-<col width="26%" />
-<col width="15%" />
-</colgroup>
+<p>The <code>Procedures</code> sheet establishes the links between the original soil analytical property names and their corresponding standardized names, analytical methods, and units of measurement in the GloSIS database. Any analytical properties measured in units different from those specified in this sheet <strong>MUST</strong> be converted to the standard units before being entered into the specimen data sheet and uploaded to the <code>glosis-shiny</code> application.</p>
+<p>The first column in the <code>Procedures</code> sheet <strong>MUST</strong> contain all soil analytical properties included in the <code>specimen data</code> and in the same order of entrance. The proper GloSIS names for soil properties, analysis methods and units <strong>MUST</strong> be defined for each soil property using the data provided in the <code>observation_phys_chem_id</code> sheet. Properties that are not listed in the <code>observation_phys_chem_id</code> sheet are not allowed.</p>
+<table class="table table-striped" style>
+<caption>
+<span id="tab:procedures">Table 5.4: </span>Soil Property Mapping Table for the exercise data
+</caption>
 <thead>
-<tr class="header">
-<th align="left">soil_property</th>
-<th align="left">property_phys_chem_id</th>
-<th align="left">procedure_phys_chem_id</th>
-<th align="left">unit_of_measure_id</th>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+soil_property
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+property_phys_chem_id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+procedure_phys_chem_id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+unit_of_measure_id
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Sand (%)</td>
-<td align="left">Sand texture fraction</td>
-<td align="left">SaSiCl_2-20-2000u-disp-pipette</td>
-<td align="left">%</td>
+<tr>
+<td style="text-align:left;">
+Sand (%)
+</td>
+<td style="text-align:left;">
+Sand texture fraction
+</td>
+<td style="text-align:left;">
+SaSiCl_2-20-2000u-disp-pipette
+</td>
+<td style="text-align:left;">
+%
+</td>
 </tr>
-<tr class="even">
-<td align="left">Silt (%)</td>
-<td align="left">Silt texture fraction</td>
-<td align="left">SaSiCl_2-20-2000u-disp-pipette</td>
-<td align="left">%</td>
+<tr>
+<td style="text-align:left;">
+Silt (%)
+</td>
+<td style="text-align:left;">
+Silt texture fraction
+</td>
+<td style="text-align:left;">
+SaSiCl_2-20-2000u-disp-pipette
+</td>
+<td style="text-align:left;">
+%
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Clay (%)</td>
-<td align="left">Clay texture fraction</td>
-<td align="left">SaSiCl_2-20-2000u-disp-pipette</td>
-<td align="left">%</td>
+<tr>
+<td style="text-align:left;">
+Clay (%)
+</td>
+<td style="text-align:left;">
+Clay texture fraction
+</td>
+<td style="text-align:left;">
+SaSiCl_2-20-2000u-disp-pipette
+</td>
+<td style="text-align:left;">
+%
+</td>
 </tr>
-<tr class="even">
-<td align="left">C (%)</td>
-<td align="left">Carbon (C) - organic</td>
-<td align="left">OrgC_wc-cro3-walkleyblack</td>
-<td align="left">g/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+C (%)
+</td>
+<td style="text-align:left;color: red !important;">
+Carbon (C) - organic
+</td>
+<td style="text-align:left;color: red !important;">
+OrgC_wc-cro3-walkleyblack
+</td>
+<td style="text-align:left;color: red !important;">
+g/kg
+</td>
 </tr>
-<tr class="odd">
-<td align="left">N (%)</td>
-<td align="left">Nitrogen (N) - total</td>
-<td align="left">TotalN_kjeldahl</td>
-<td align="left">g/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+N (%)
+</td>
+<td style="text-align:left;color: red !important;">
+Nitrogen (N) - total
+</td>
+<td style="text-align:left;color: red !important;">
+TotalN_kjeldahl
+</td>
+<td style="text-align:left;color: red !important;">
+g/kg
+</td>
 </tr>
-<tr class="even">
-<td align="left">pH-H₂O</td>
-<td align="left">pH - Hydrogen potential</td>
-<td align="left">pHH2O</td>
-<td align="left">pH</td>
+<tr>
+<td style="text-align:left;">
+pH-H₂O
+</td>
+<td style="text-align:left;">
+pH - Hydrogen potential
+</td>
+<td style="text-align:left;">
+pHH2O
+</td>
+<td style="text-align:left;">
+pH
+</td>
 </tr>
-<tr class="odd">
-<td align="left">pH-KCl</td>
-<td align="left">pHProperty</td>
-<td align="left">pHKCl</td>
-<td align="left">pH</td>
+<tr>
+<td style="text-align:left;">
+pH-KCl
+</td>
+<td style="text-align:left;">
+pH - Hydrogen potential
+</td>
+<td style="text-align:left;">
+pHKCl
+</td>
+<td style="text-align:left;">
+pH
+</td>
 </tr>
-<tr class="even">
-<td align="left">CEC (me/100g)</td>
-<td align="left">cationExchangeCapacitySoil</td>
-<td align="left">CEC_ph7-nh4oac</td>
-<td align="left">cmol/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+CEC (me/100g)
+</td>
+<td style="text-align:left;color: red !important;">
+cationExchangeCapacitySoil
+</td>
+<td style="text-align:left;color: red !important;">
+CEC_ph7-nh4oac
+</td>
+<td style="text-align:left;color: red !important;">
+cmol/kg
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Ca (me/100g)</td>
-<td align="left">Calcium (Ca++) - exchangeable</td>
-<td align="left">ExchBases_ph7-nh4oac</td>
-<td align="left">cmol/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+Ca (me/100g)
+</td>
+<td style="text-align:left;color: red !important;">
+Calcium (Ca++) - exchangeable
+</td>
+<td style="text-align:left;color: red !important;">
+ExchBases_ph7-nh4oac
+</td>
+<td style="text-align:left;color: red !important;">
+cmol/kg
+</td>
 </tr>
-<tr class="even">
-<td align="left">Mg (me/100g)</td>
-<td align="left">Magnesium (Mg++) - exchangeable</td>
-<td align="left">ExchBases_ph7-nh4oac</td>
-<td align="left">cmol/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+Mg (me/100g)
+</td>
+<td style="text-align:left;color: red !important;">
+Magnesium (Mg++) - exchangeable
+</td>
+<td style="text-align:left;color: red !important;">
+ExchBases_ph7-nh4oac
+</td>
+<td style="text-align:left;color: red !important;">
+cmol/kg
+</td>
 </tr>
-<tr class="odd">
-<td align="left">K (me/100g)</td>
-<td align="left">Potassium (K+) - exchangeable</td>
-<td align="left">ExchBases_ph7-nh4oac</td>
-<td align="left">cmol/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+K (me/100g)
+</td>
+<td style="text-align:left;color: red !important;">
+Potassium (K+) - exchangeable
+</td>
+<td style="text-align:left;color: red !important;">
+ExchBases_ph7-nh4oac
+</td>
+<td style="text-align:left;color: red !important;">
+cmol/kg
+</td>
 </tr>
-<tr class="even">
-<td align="left">Na (me/100g)</td>
-<td align="left">Sodium (Na+) - exchangeable</td>
-<td align="left">ExchBases_ph7-nh4oac</td>
-<td align="left">cmol/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+Na (me/100g)
+</td>
+<td style="text-align:left;color: red !important;">
+Sodium (Na+) - exchangeable
+</td>
+<td style="text-align:left;color: red !important;">
+ExchBases_ph7-nh4oac
+</td>
+<td style="text-align:left;color: red !important;">
+cmol/kg
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Al (me/100g)</td>
-<td align="left">Aluminium (Al+++) - exchangeable</td>
-<td align="left">ExchBases_ph7-nh4oac</td>
-<td align="left">cmol/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+Al (me/100g)
+</td>
+<td style="text-align:left;color: red !important;">
+Aluminium (Al+++) - exchangeable
+</td>
+<td style="text-align:left;color: red !important;">
+ExchBases_ph7-nh4oac
+</td>
+<td style="text-align:left;color: red !important;">
+cmol/kg
+</td>
 </tr>
-<tr class="even">
-<td align="left">ECEC (me/100g)</td>
-<td align="left">effectiveCecProperty</td>
-<td align="left">EffCEC_calcul-ba</td>
-<td align="left">cmol/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+ECEC (me/100g)
+</td>
+<td style="text-align:left;color: red !important;">
+effectiveCecProperty
+</td>
+<td style="text-align:left;color: red !important;">
+EffCEC_calcul-ba
+</td>
+<td style="text-align:left;color: red !important;">
+cmol/kg
+</td>
 </tr>
-<tr class="odd">
-<td align="left">K total (ppm)</td>
-<td align="left">Potassium (K) - total</td>
-<td align="left">Total_h2so4</td>
-<td align="left">cmol/kg</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+K total (ppm)
+</td>
+<td style="text-align:left;color: red !important;">
+Potassium (K) - total
+</td>
+<td style="text-align:left;color: red !important;">
+Total_tp04
+</td>
+<td style="text-align:left;color: red !important;">
+cmol/kg
+</td>
 </tr>
-<tr class="even">
-<td align="left">P total (ppm)</td>
-<td align="left">Phosphorus (P) - total</td>
-<td align="left">Total_h2so4</td>
-<td align="left">%</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+P total (ppm)
+</td>
+<td style="text-align:left;color: red !important;">
+Phosphorus (P) - total
+</td>
+<td style="text-align:left;color: red !important;">
+Total_tp04
+</td>
+<td style="text-align:left;color: red !important;">
+%
+</td>
 </tr>
-<tr class="odd">
-<td align="left">P-Bray I (ppm)</td>
-<td align="left">Phosphorus (P) - extractable</td>
-<td align="left">Extr_hcl-nh4f-bray1</td>
-<td align="left">%</td>
+<tr>
+<td style="text-align:left;color: red !important;">
+P-Bray I (ppm)
+</td>
+<td style="text-align:left;color: red !important;">
+Phosphorus (P) - extractable
+</td>
+<td style="text-align:left;color: red !important;">
+Extr_hcl-nh4f-bray1
+</td>
+<td style="text-align:left;color: red !important;">
+%
+</td>
 </tr>
-<tr class="even">
-<td align="left">Bulk Density (kg/l)</td>
-<td align="left">bulkDensityFineEarthProperty</td>
-<td align="left">BlkDensF_fe-unkn</td>
-<td align="left">kg/dm3</td>
+<tr>
+<td style="text-align:left;color: dodgerblue !important;">
+Bulk Density (kg/l)
+</td>
+<td style="text-align:left;color: dodgerblue !important;">
+bulkDensityFineEarthProperty
+</td>
+<td style="text-align:left;color: dodgerblue !important;">
+BlkDensF_fe-unkn
+</td>
+<td style="text-align:left;color: dodgerblue !important;">
+kg/dm3
+</td>
 </tr>
-<tr class="odd">
-<td align="left">pF 2 (%)</td>
-<td align="left">Available water capacity - volumetric (FC to WP)</td>
-<td align="left">PAWHC_calcul-fc100wp</td>
-<td align="left">m3/100 m3</td>
+<tr>
+<td style="text-align:left;color: dodgerblue !important;">
+pF 2 (%)
+</td>
+<td style="text-align:left;color: dodgerblue !important;">
+Available water capacity - volumetric (FC to WP)
+</td>
+<td style="text-align:left;color: dodgerblue !important;">
+PAWHC_calcul-fc100wp
+</td>
+<td style="text-align:left;color: dodgerblue !important;">
+m3/100 m3
+</td>
 </tr>
 </tbody>
 </table>
-<p>This table ensures that all soil properties are named according to the GloSIS standard and that he corresponding methods and units are correctly defined</p>
+<p>Note that the soil properties marked in <span style="color:red;">red</span> in Table <a href="exercise-on-data-preparation.html#tab:procedures">5.4</a> have different units of measurement in the original data compared to those in the GloSIS database (column 4). For these properties, transformation of laboratory measurements using the appropriate correction factors must be performed in the <code>specimen data</code> data sheet. However, for <span style="color:dodgerblue">Bulk Density</span> and Available Water Capacity (<span style="color:dodgerblue;">pF 2</span>), although the units are written in a different format, they represent the same values.</p>
+<p>This sheet ensures that all soil properties are named according to the GloSIS standard and that the corresponding methods and units are correctly defined.</p>
 </div>
 <div id="special-considerations" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> <em>Special Considerations</em>:<a href="exercise-on-data-preparation.html#special-considerations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
