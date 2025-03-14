@@ -5,7 +5,6 @@ fig:plot-tab
 fig:specimen-tab
 fig:procedures-tab
 fig:codelist-tab
-fig:original-tab
 tab:soil-coordinates
 tab:plotparameters1
 tab:plotparameters2
