@@ -97,36 +97,34 @@ At this point, the sampling points contain only the information from the `Plot D
 - 4. Paste the following `SQL` query, click on the `Execute` button, and then click `Load`. Ensure that the `Load as a new layer` option is selected:
 
 ```bash
-SELECT 
-    p2.plot_id,
-    p2.plot_code,
-    p2.altitude,
-    p2.time_stamp,
-    p2.map_sheet_code,
-    p2.positional_accuracy,
-    p2."position" AS geom,
-    s2.code AS specimen_code,
-    r.result_phys_chem_id AS gid,
-    p.name,
-    s.site_id,
-    p3.profile_id, 
-    e.upper_depth,
-    e.lower_depth,
-    r.specimen_id,
-    o.property_phys_chem_id,
-    o.procedure_phys_chem_id,
-    r.value,
-    o.unit_of_measure_id
-FROM core.project p
-LEFT JOIN core.site_project sp ON sp.project_id = p.project_id
-LEFT JOIN core.site s ON s.site_id = sp.site_id
-LEFT JOIN core.plot p2 ON p2.site_id = s.site_id
-LEFT JOIN core.profile p3 ON p3.plot_id = p2.plot_id
-LEFT JOIN core."element" e ON e.profile_id = p3.profile_id
-LEFT JOIN core.specimen s2 ON s2.element_id = e.element_id
-LEFT JOIN core.result_phys_chem r ON r.specimen_id = s2.specimen_id
-LEFT JOIN core.observation_phys_chem o ON o.observation_phys_chem_id = r.observation_phys_chem_id 
-ORDER BY p2.plot_id, p.name, s.site_id, p3.profile_id, e.upper_depth, o.property_phys_chem_id;
+SELECT     
+    p.name AS project_name, 
+    s.site_code, 
+    p2.plot_code, 
+    p2.type AS plot_type, 
+    p2.altitude, 
+    p2.time_stamp, 
+    p2.map_sheet_code, 
+    p2.positional_accuracy, 
+    p2."position" AS geom, 
+    s2.code AS specimen_code, 
+    e.type AS element_type, 
+    e.upper_depth, 
+    e.lower_depth, 
+    o.property_phys_chem_id, 
+    o.procedure_phys_chem_id, 
+    r.value, 
+    o.unit_of_measure_id 
+FROM core.project p 
+LEFT JOIN core.site_project sp ON sp.project_id = p.project_id 
+LEFT JOIN core.site s ON s.site_id = sp.site_id 
+LEFT JOIN core.plot p2 ON p2.site_id = s.site_id 
+LEFT JOIN core.profile p3 ON p3.plot_id = p2.plot_id 
+LEFT JOIN core."element" e ON e.profile_id = p3.profile_id 
+LEFT JOIN core.specimen s2 ON s2.element_id = e.element_id 
+LEFT JOIN core.result_phys_chem r ON r.specimen_id = s2.specimen_id 
+LEFT JOIN core.observation_phys_chem o ON o.observation_phys_chem_id = r.observation_phys_chem_id  
+ORDER BY p.name, s.site_code, p2.plot_code, e.upper_depth, o.property_phys_chem_id;
 
 ```
 

@@ -358,36 +358,34 @@ Figure 7.8: Connect to an existing database from QGIS.
 <li>Paste the following <code>SQL</code> query, click on the <code>Execute</code> button, and then click <code>Load</code>. Ensure that the <code>Load as a new layer</code> option is selected:</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="visualization.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span> </span>
-<span id="cb17-2"><a href="visualization.html#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.plot_id,</span></span>
-<span id="cb17-3"><a href="visualization.html#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.plot_code,</span></span>
-<span id="cb17-4"><a href="visualization.html#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.altitude,</span></span>
-<span id="cb17-5"><a href="visualization.html#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.time_stamp,</span></span>
-<span id="cb17-6"><a href="visualization.html#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.map_sheet_code,</span></span>
-<span id="cb17-7"><a href="visualization.html#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.positional_accuracy,</span></span>
-<span id="cb17-8"><a href="visualization.html#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.</span><span class="st">&quot;position&quot;</span> AS geom,</span>
-<span id="cb17-9"><a href="visualization.html#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">s2.code</span> AS specimen_code,</span>
-<span id="cb17-10"><a href="visualization.html#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">r.result_phys_chem_id</span> AS gid,</span>
-<span id="cb17-11"><a href="visualization.html#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p.name,</span></span>
-<span id="cb17-12"><a href="visualization.html#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">s.site_id,</span></span>
-<span id="cb17-13"><a href="visualization.html#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p3.profile_id,</span> </span>
-<span id="cb17-14"><a href="visualization.html#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">e.upper_depth,</span></span>
-<span id="cb17-15"><a href="visualization.html#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">e.lower_depth,</span></span>
-<span id="cb17-16"><a href="visualization.html#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">r.specimen_id,</span></span>
-<span id="cb17-17"><a href="visualization.html#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">o.property_phys_chem_id,</span></span>
-<span id="cb17-18"><a href="visualization.html#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">o.procedure_phys_chem_id,</span></span>
-<span id="cb17-19"><a href="visualization.html#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">r.value,</span></span>
-<span id="cb17-20"><a href="visualization.html#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="ex">o.unit_of_measure_id</span></span>
-<span id="cb17-21"><a href="visualization.html#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> core.project p</span>
-<span id="cb17-22"><a href="visualization.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.site_project sp ON sp.project_id = p.project_id</span>
-<span id="cb17-23"><a href="visualization.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.site s ON s.site_id = sp.site_id</span>
-<span id="cb17-24"><a href="visualization.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.plot p2 ON p2.site_id = s.site_id</span>
-<span id="cb17-25"><a href="visualization.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.profile p3 ON p3.plot_id = p2.plot_id</span>
-<span id="cb17-26"><a href="visualization.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.<span class="st">&quot;element&quot;</span> e ON e.profile_id = p3.profile_id</span>
-<span id="cb17-27"><a href="visualization.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.specimen s2 ON s2.element_id = e.element_id</span>
-<span id="cb17-28"><a href="visualization.html#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.result_phys_chem r ON r.specimen_id = s2.specimen_id</span>
-<span id="cb17-29"><a href="visualization.html#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.observation_phys_chem o ON o.observation_phys_chem_id = r.observation_phys_chem_id </span>
-<span id="cb17-30"><a href="visualization.html#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="ex">ORDER</span> BY p2.plot_id, p.name, s.site_id, p3.profile_id, e.upper_depth, o.property_phys_chem_id<span class="kw">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="visualization.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span>     </span>
+<span id="cb17-2"><a href="visualization.html#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p.name</span> AS project_name, </span>
+<span id="cb17-3"><a href="visualization.html#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">s.site_code,</span> </span>
+<span id="cb17-4"><a href="visualization.html#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.plot_code,</span> </span>
+<span id="cb17-5"><a href="visualization.html#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.type</span> AS plot_type, </span>
+<span id="cb17-6"><a href="visualization.html#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.altitude,</span> </span>
+<span id="cb17-7"><a href="visualization.html#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.time_stamp,</span> </span>
+<span id="cb17-8"><a href="visualization.html#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.map_sheet_code,</span> </span>
+<span id="cb17-9"><a href="visualization.html#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.positional_accuracy,</span> </span>
+<span id="cb17-10"><a href="visualization.html#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.</span><span class="st">&quot;position&quot;</span> AS geom, </span>
+<span id="cb17-11"><a href="visualization.html#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">s2.code</span> AS specimen_code, </span>
+<span id="cb17-12"><a href="visualization.html#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">e.type</span> AS element_type, </span>
+<span id="cb17-13"><a href="visualization.html#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">e.upper_depth,</span> </span>
+<span id="cb17-14"><a href="visualization.html#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">e.lower_depth,</span> </span>
+<span id="cb17-15"><a href="visualization.html#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">o.property_phys_chem_id,</span> </span>
+<span id="cb17-16"><a href="visualization.html#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">o.procedure_phys_chem_id,</span> </span>
+<span id="cb17-17"><a href="visualization.html#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">r.value,</span> </span>
+<span id="cb17-18"><a href="visualization.html#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">o.unit_of_measure_id</span> </span>
+<span id="cb17-19"><a href="visualization.html#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> core.project p </span>
+<span id="cb17-20"><a href="visualization.html#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.site_project sp ON sp.project_id = p.project_id </span>
+<span id="cb17-21"><a href="visualization.html#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.site s ON s.site_id = sp.site_id </span>
+<span id="cb17-22"><a href="visualization.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.plot p2 ON p2.site_id = s.site_id </span>
+<span id="cb17-23"><a href="visualization.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.profile p3 ON p3.plot_id = p2.plot_id </span>
+<span id="cb17-24"><a href="visualization.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.<span class="st">&quot;element&quot;</span> e ON e.profile_id = p3.profile_id </span>
+<span id="cb17-25"><a href="visualization.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.specimen s2 ON s2.element_id = e.element_id </span>
+<span id="cb17-26"><a href="visualization.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.result_phys_chem r ON r.specimen_id = s2.specimen_id </span>
+<span id="cb17-27"><a href="visualization.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.observation_phys_chem o ON o.observation_phys_chem_id = r.observation_phys_chem_id  </span>
+<span id="cb17-28"><a href="visualization.html#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="ex">ORDER</span> BY p.name, s.site_code, p2.plot_code, e.upper_depth, o.property_phys_chem_id<span class="kw">;</span></span></code></pre></div>
 <p>You will see the resulting layer with the soil attribute table (Figure <a href="visualization.html#fig:qgis3">7.9</a>) in your QGIS view. Additional attributes can be added to the table using specific <code>SQL</code> queries.</p>
 <div class="figure"><span style="display:block;" id="fig:qgis3"></span>
 <img src="figures/query_table.png" alt=" QGIS Table with soil data." width="60%" />
