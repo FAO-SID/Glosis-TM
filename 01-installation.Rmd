@@ -1,6 +1,6 @@
 # **Installation and Setup**
 
-The **GloSIS database** services are provided as a **Docker container**, which allows users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates.  
+The **GloSIS database** services are provided as **Docker containers**, which allows users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates.  
 
 **Docker Compose** is a tool used to define and run multi-container Docker applications. It allows users to **orchestrate multiple services** using a single configuration file ( see Section **The docker-compose.yml file**). The key benefits of Docker Compose include:
 
