@@ -1,42 +1,207 @@
-
 # **Installation and Setup**
 
-This section explains how to set up the necessary environment to run the **GloSIS soil database** injection application, including **Docker**, **PostgreSQL with PostGIS**. The installation process is fully containerized using Docker, which means all dependencies and configurations are pre-defined and work consistently across different systems.
+The **GloSIS database service** is provided as a **Docker container**, which allows users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates.  
 
-The system consists of two main components: a **PostgreSQL database with PostGIS**, which stores the soil data following the **ISO 28258** standard, and a **Shiny application**, which allows users to inject structured Excel files into the database. These components are deployed together using **Docker Compose**, making the setup process straightforward and ensuring everything runs in a controlled environment.
+**Docker Compose** is a tool used to define and run multi-container Docker applications. It allows users to **orchestrate multiple services** using a single configuration file ( see Section **The docker-compose.yml file**). The key benefits of Docker Compose include:
 
----
+-  **Simplified Deployment** – Automatically pulls and runs multiple containers with a single command.  
+-  **Predefined Configuration** – Ensures all services are correctly configured and work together.  
+-  **Portability** – The same configuration can be used across different systems without installation issues.  
 
-## Installing Docker Desktop
+The system consists of two main **services**, both running as Docker containers:  
 
-Before proceeding with the installation, Docker Desktop must be installed. Docker is a tool that allows applications to run inside containers, ensuring they work the same way on any system. To install it, go to the official [Docker Desktop website](https://docs.docker.com/desktop/setup/install/windows-install/) and download the version appropriate for your operating system.
+1. **`glosis-db`** – A **GloSIS harmonized PostgreSQL database** that stores soil data following the **ISO 28258** standard.  
+2. **`glosis-shiny`** – A **Shiny web application** providing a graphical interface to inject structured Excel files into the database.  
 
-After installation, start **Docker Desktop** and verify that it is running by opening a terminal (or command prompt) and running:
+These services are **built from pre-configured Docker images** and automatically deployed as containers using **Docker Compose**, meaning all dependencies are pre-configured, ensuring a consistent and reproducible execution across different operating systems.  
+
+This section provides step-by-step instructions to set up the **GloSIS soil database**, including the installation of **Docker Desktop**, **PostgreSQL**, and **R**. The setup process is **containerized using Docker**, 
+
+
+## Install Docker Desktop
+
+Before proceeding, **Docker Desktop** must be installed in your computer.
+
+### Windows
+
+1. Enable **Hyper-V**
+Docker Desktop requires Hyper-V as well as the Hyper-V Module for Windows PowerShell to be installed and enabled. In most systems, the Docker Desktop installer enables it for you.
+
+  To test if Hyper-V is enabled, go to the start menu and type:
+  
+  ```bash
+  Turn Windows features on or off
+  ```
+  and press enter. In the subsequent screen, verify that Hyper-V is enabled.
+  
+  To install Hyper-V manually, see [Install Hyper-V on Windows 10](https://learn.microsoft.com/es-es/windows-server/virtualization/hyper-v/get-started/Install-Hyper-V?pivots=windows-server). A reboot is required after installation. If you install Hyper-V without rebooting, Docker Desktop does not work correctly.
+  
+  In some Windows systems [Virtualization](https://support.microsoft.com/en-gb/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1) must be enabled in the BIOS. Note that many Windows devices already have virtualization enabled, so this may not apply.
+
+2. Download **Docker Desktop for Windows** from the [official website](https://docs.docker.com/desktop/install/windows-install/).
+3. Run the installer and follow the on-screen instructions.
+4. After installation, restart your computer.
+5. Open **Docker Desktop** and ensure it is running.
+
+### MacOS
+1. Download **Docker Desktop for Mac** from the [official website](https://docs.docker.com/desktop/install/mac-install/).
+2. Open the `.dmg` file and drag **Docker** into the Applications folder.
+3. Start **Docker Desktop** and allow any requested system permissions.
+
+### Linux
+1. Open a terminal and run the following commands:
+   
+```bash
+   sudo apt update
+   sudo apt install docker.io -y
+   sudo systemctl start docker
+   sudo systemctl enable docker
+```
+Add your user to the Docker group (to run Docker without sudo):
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+
+Restart your computer and verify Docker is running:
 
 ```bash
 docker --version
 ```
-If the installation was successful, you should see an output displaying the installed version of Docker, such as:
+If the installation was successful, you should see output similar to:
 
 ```bash
-Docker version 20.10.21, build baeda1f
+Docker version 24.0.5, build 123456
 ```
-If Docker is running correctly, you are now ready to set up the GloSIS services.
 
-## Setting Up the GloSIS Database and Shiny App
-The database and the Shiny app are deployed using Docker Compose, which automates the process of downloading and running multiple containers. Instead of installing PostgreSQL, PostGIS, and the Shiny app separately, all configurations are predefined in a docker-compose.yml file, which allows both services to start together with a single command.
 
-The docker-compose.yml file defines the two services required for this project:
+## Install the GloSIS database services
+The easiest way to install the GloSIS database services is by pulling pre-built Docker images available in the GloSIS docker hub.
 
-The PostgreSQL database, which includes PostGIS extensions and is configured to store soil data.
-The Shiny web application, which provides a graphical interface for injecting data into the database.
-Below is the content of docker-compose.yml, which you will use to deploy the system:
+### **Steps**
+
+1. Ensure Docker Desktop is running.
+
+2. Download the [GloSIS repository from GitHub](https://github.com/FAO-SID/Docker-Apps.git):
+
+3. Go to:
+
+```bash
+`https://github.com/FAO-SID/Docker-Apps.git`.
+```
+
+4. Click the green `"Code"` button, then select Download ZIP (Figure \@ref(fig:clone).  
+
+```{r clone, echo=FALSE, out.width="60%",fig.cap = "Clonning the repository."}
+knitr::include_graphics("figures/clone.png")
+```
+
+
+5. Extract the *ZIP* file to a folder on your computer (e.g. in the `Desktop` folder).
+
+6. Open a Terminal or Command Prompt, navigate to the extracted folder:
+
+```bash
+cd Desktop/Glosis-TM
+```
+7. Start the GloSIS services by running:
+
+```bash
+docker-compose up -d
+```
+
+The first time you run this command, it may take a few minutes to download all required images.
+
+
+## Verify Installation
+
+- Using Docker Desktop
+Open Docker Desktop and check if the containers are running (Figure \@ref(fig:docker-desktop)).
+
+```{r docker-desktop, echo=FALSE, out.width="60%",fig.cap = "Docker desktop."}
+knitr::include_graphics("figures/docker_desktop.png")
+```
+
+If everything is working, the project and service icons should be green.
+If any service fails, the icon will appear orange (Figure \@ref(fig:docker-fail)).
+
+```{r docker-fail, echo=FALSE, out.width="60%",fig.cap = "Failure on some docker desktop service."}
+library(knitr)
+knitr::include_graphics("figures/docker_fail.png")
+```
+
+- Using the Terminal
+To manually check if the services are running, type:
+
+```bash
+docker ps
+```
+You should see an output similar to:
+
+```bash
+CONTAINER ID   IMAGE                          STATUS          PORTS
+973bf939       luislado/glosis-shiny:latest   Up 2 minutes    0.0.0.0:3838->3838/tcp
+4fd00c73       luislado/glosis-postgis:latest Up 2 minutes    0.0.0.0:5442->5432/tcp
+```
+To stop the services at any time, use: 
+
+```bash
+docker-compose down
+```
+This will stop and remove the containers, but your database data will remain intact in the data/postgis directory.
+
+
+## Accessing the Services
+
+**Shiny Web Application:**
+To open the `GloSIS Shiny` App, enter this address in your web browser:
+
+```bash
+http://localhost:3838/
+```
+
+This will load the interface where you can upload and inject soil data from .xlsx files (Figure \@ref(fig:glosis-shiny)).
+
+```{r glosis-shiny, echo=FALSE, out.width="40%",fig.cap = "GloSIS shiny application."}
+knitr::include_graphics("figures/glosis_shiny.png")
+```
+
+**GloSIS database:**
+The PostgreSQL GloSIS database is available to connect with other applications such as pgAdmin, DBeaver,QGIS, R, etc, at:
+
+```bash
+localhost:5442
+```
+The user and password for the connection is 'glosis' by default.
+
+## The docker-compose.yml File
+
+The `docker-compose.yml` file defines how the **GloSIS database service** and **Shiny web application** interact within a **Docker environment**. This configuration file ensures that both components are deployed together with the correct settings, storage locations, and networking.
+
+This file creates **two containers**:
+
+- **`glosis-db`**: A PostgreSQL database with **PostGIS** extensions for handling spatial data. This database stores all soil data in accordance with the **ISO 28258** standard.
+- **`glosis-shiny`**: A **Shiny web application** that provides a graphical interface for users to inject structured Excel files into the database.
+
+To ensure **persistent data storage**, the database files are stored outside the containers in the `data/postgis` directory. This means that even if the containers are stopped or removed, the database remains intact.
+
+### Networking and Port Configuration
+
+A dedicated **Docker network (`glosis-net`)** is created to allow seamless internal communication between the **database** and the **Shiny application**. This ensures the services can interact without interference from other network traffic on the host system.
+
+For PostgreSQL, **port 5442** is used instead of the default **5432**. This prevents potential conflicts with any existing PostgreSQL installation on the host machine. When the container is launched, PostgreSQL inside the container still listens on **5432**, but it is mapped externally to **5442** to avoid interference with other PostgreSQL instances that may already be running.
+
+The **Shiny application** is made accessible through **port 3838**, which remains unchanged from the standard port used by Shiny.
+
+### Structure of the docker-compose.yml file 
+
+The following `docker-compose.yml` configuration defines these services:
 
 ```yaml
-
 services:
   postgis:
-    image: luislado/glosis-postgis:latest  # Pre-configured PostgreSQL database
+    image: luislado/glosis-postgis:latest  # Pre-configured PostgreSQL database with PostGIS
     container_name: glosis-db
     restart: always
     environment:
@@ -47,10 +212,10 @@ services:
       DB_PASSWORD: glosis
       POSTGRES_PASSWORD: glosis
     ports:
-      - "5442:5432"  # Makes the database accessible from your machine
+      - "5442:5432"  # Maps internal PostgreSQL port 5432 to external port 5442 to avoid conflicts
     volumes:
-      - ./data/postgis:/var/lib/postgresql/data  # Persistent database storage
-      - ./init-scripts:/docker-entrypoint-initdb.d  # Schema initialization scripts
+      - ./data/postgis:/var/lib/postgresql/data  # Stores database files persistently
+      - ./init-scripts:/docker-entrypoint-initdb.d  # Includes schema initialization scripts
     networks:
       - glosis-net
 
@@ -59,110 +224,36 @@ services:
     container_name: glosis-shiny
     restart: always
     environment:
-      USER: shiny
-      PASSWORD: shiny
       DB_HOST: postgis
-      DB_PORT: 5442
+      DB_PORT: 5442  # Uses the externally mapped port to connect to PostgreSQL
       DB_NAME: postgres
       DB_USER: postgres
       DB_PASSWORD: glosis
     ports:
-      - "3838:3838"  # Allows access to the web interface
+      - "3838:3838"  # Exposes the Shiny application on port 3838
     volumes:
-      - ./init-scripts:/srv/shiny-server/init-scripts  # Shiny app scripts
+      - ./init-scripts:/srv/shiny-server/init-scripts  # Stores scripts and outputs
     depends_on:
-      - postgis  # Ensures PostgreSQL starts before the Shiny app
+      - postgis  # Ensures the database is running before starting the Shiny app
     networks:
       - glosis-net
 
 networks:
   glosis-net:
     driver: bridge
-    name: glosis-net
 ```
 
-This configuration does several things. It creates a network (`glosis-net`) that allows both services to communicate. It ensures that the database (`glosis-db`) is available before starting the Shiny app (`glosis-shiny`). It also maps port 5442 for PostgreSQL, so it can be accessed from outside the container, and port 3838 for the Shiny app, allowing users to interact with it via a web browser.
+This configuration ensures that:
 
-Additionally, two new folder are created in you installation directory:
-1. `/data/postgis` that will store the database outside the `glosis-db` container, and
-2. `/init-scripts/` that stores the newest version of the GloSIS database schemas (`.sql`) and additional outputs from running the `glosis-shiny` application.
+- The **database container** (`glosis-db`) starts first and runs independently.
 
-This ensures that both the database and outputs are stored outside the containers, preventing data loss when the system is restarted.
+- The **Shiny application** (`glosis-shiny`) waits for the database before launching.
 
-## Deploying  Services
-Once the docker-compose.yml file is in place, you can proceed with launching the system.
+- **Data is stored outside the containers** to prevent loss in case the containers are restarted or deleted.
 
-First, open a terminal and navigate to the directory where you saved the docker-compose.yml file:
+- **Port conflicts** are avoided by mapping PostgreSQL’s internal port 5432 to 5442 on the host machine.
 
-```bash
-cd /path/to/docker-compose-directory
-```
-Then, start the containers by running:
-
-```bash
-docker-compose up -d
-```
-This command will:
-
-1. Download the necessary container images (if they are not already present).
-2. Create and run the PostgreSQL database and Shiny app.
-3. Ensure that the services run in the background (`-d` flag for "detached mode").
-
-The first time you run this command, the process may take a few minutes as Docker downloads the required images.
-
-To check whether the containers are running correctly, open the Docker Desktop graphical interface (Figure \@ref(fig:docker-desktop)).
-
-```{r docker-desktop, echo=FALSE, out.width="60%",fig.cap = "Docker-desktop graphical interface."}
-library(knitr)
-knitr::include_graphics("figures/docker_desktop.png")
-```
-
-Note that, in Figure \@ref(fig:docker-desktop), both the project and services icons are in green colour. If some of the services fails from running, either the service icon or the project icon appear in orange color (Figure \@ref(fig:docker-fail)).
-
-```{r docker-fail, echo=FALSE, out.width="60%",fig.cap = "Docker-desktop graphical interface with shiny container not running."}
-library(knitr)
-knitr::include_graphics("figures/docker_fail.png")
-```
-
-
-You can also verify that docker containers are running correctly typing:
-
-```bash
-docker ps
-```
-If everything is working, you should see output similar to the following:
-
-```bash
-CONTAINER ID   IMAGE                          STATUS          PORTS
-973bf939       luislado/glosis-shiny:latest   Up 2 minutes    0.0.0.0:3838->3838/tcp
-4fd00c73       luislado/glosis-postgis:latest Up 2 minutes    0.0.0.0:5442->5432/tcp
-```
-If at any point you need to stop the services, use:
-
-
-```bash
-docker-compose down
-```
-This command stops and removes the running containers, but your database data remains intact because it is stored in the `data/postgis` directory.
-
-## Accessing the Services
-Once the containers are running, you can access the services as follows:
-
-The PostgreSQL database is available at `localhost:5442`. You can connect to it using tools like `pgAdmin`, `DBeaver`, or directly from `R` using the `DBI package`.
-
-The `glosis-shiny` app can be accessed from your web browser by navigating to:
-
-```bash
-http://localhost:3838/
-```
-
-This will open the graphical interface where you can upload and inject soil data into PostgreSQL from structured Excel files (Figure \@ref(fig:glosis-shiny)).
-
-
-```{r glosis-shiny, echo=FALSE, out.width="60%",fig.cap = "Graphical interface for the `glosis-shiny' service."}
-library(knitr)
-knitr::include_graphics("figures/glosis_shiny.png")
-```
+With this setup, users can easily run and manage the GloSIS database service and its Shiny web interface while ensuring stability and avoiding conflicts with other PostgreSQL installations.
 
 
 

@@ -29,7 +29,7 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-14" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,10 +175,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="installation-and-setup.html"><a href="installation-and-setup.html"><i class="fa fa-check"></i><b>2</b> <strong>Installation and Setup</strong></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#installing-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Installing Docker Desktop</a></li>
-<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#setting-up-the-glosis-database-and-shiny-app"><i class="fa fa-check"></i><b>2.2</b> Setting Up the GloSIS Database and Shiny App</a></li>
-<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#deploying-services"><i class="fa fa-check"></i><b>2.3</b> Deploying Services</a></li>
+<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Install Docker Desktop</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#windows"><i class="fa fa-check"></i><b>2.1.1</b> Windows</a></li>
+<li class="chapter" data-level="2.1.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#macos"><i class="fa fa-check"></i><b>2.1.2</b> MacOS</a></li>
+<li class="chapter" data-level="2.1.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#linux"><i class="fa fa-check"></i><b>2.1.3</b> Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-the-glosis-database-services"><i class="fa fa-check"></i><b>2.2</b> Install the GloSIS database services</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#steps"><i class="fa fa-check"></i><b>2.2.1</b> <strong>Steps</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#verify-installation"><i class="fa fa-check"></i><b>2.3</b> Verify Installation</a></li>
 <li class="chapter" data-level="2.4" data-path="installation-and-setup.html"><a href="installation-and-setup.html#accessing-the-services"><i class="fa fa-check"></i><b>2.4</b> Accessing the Services</a></li>
+<li class="chapter" data-level="2.5" data-path="installation-and-setup.html"><a href="installation-and-setup.html#the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5</b> The docker-compose.yml File</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#networking-and-port-configuration"><i class="fa fa-check"></i><b>2.5.1</b> Networking and Port Configuration</a></li>
+<li class="chapter" data-level="2.5.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5.2</b> Structure of the docker-compose.yml file</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="glosis-database.html"><a href="glosis-database.html"><i class="fa fa-check"></i><b>3</b> <strong>GloSIS Database</strong></a>
 <ul>
@@ -212,6 +225,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="7.1" data-path="visualization.html"><a href="visualization.html#view-data-on-the-dashboard"><i class="fa fa-check"></i><b>7.1</b> View Data on the Dashboard</a></li>
 <li class="chapter" data-level="7.2" data-path="visualization.html"><a href="visualization.html#view-data-on-the-data-viewer-app"><i class="fa fa-check"></i><b>7.2</b> View data on the Data Viewer App</a></li>
+<li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#view-data-on-the-qgis"><i class="fa fa-check"></i><b>7.3</b> View data on the QGIS</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><strong>References</strong></a></li>
 </ul>
@@ -241,11 +255,11 @@ div.csl-indent {
 <h2><span class="header-section-number">3.2</span> Database Credentials<a href="glosis-database.html#database-credentials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The connection to PostgreSQL requires the specification of the . The application defines default values for <code>Database Credentials</code>.
 These are stored in <code>credentials.R</code> and used by the <code>glosis-shiny</code> application:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="glosis-database.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">database_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
-<span id="cb10-2"><a href="glosis-database.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">host_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgis&quot;</span></span>
-<span id="cb10-3"><a href="glosis-database.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">port_number</span> <span class="op">&lt;</span>- <span class="st">&quot;5432&quot;</span></span>
-<span id="cb10-4"><a href="glosis-database.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">user_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
-<span id="cb10-5"><a href="glosis-database.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">password_name</span> <span class="op">&lt;</span>- <span class="st">&quot;glosis&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="glosis-database.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">database_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
+<span id="cb15-2"><a href="glosis-database.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">host_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgis&quot;</span></span>
+<span id="cb15-3"><a href="glosis-database.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">port_number</span> <span class="op">&lt;</span>- <span class="st">&quot;5432&quot;</span></span>
+<span id="cb15-4"><a href="glosis-database.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">user_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
+<span id="cb15-5"><a href="glosis-database.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">password_name</span> <span class="op">&lt;</span>- <span class="st">&quot;glosis&quot;</span></span></code></pre></div>
 </div>
 <div id="database-schema" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Database Schema<a href="glosis-database.html#database-schema" class="anchor-section" aria-label="Anchor link to header"></a></h2>

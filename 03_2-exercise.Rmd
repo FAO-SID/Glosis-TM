@@ -1,6 +1,6 @@
 # **Exercise on data preparation**
 
-The example presented in this section uses data from three soil profiles from undisturbed forests in Suriname [@poels1987] collected with a soil auger: one Orthic Ferralsol (*Profile 35*, 8 horizons) and two Xanthic Ferralsols (*Profiles 36 and 37*, 9 horizons each).  
+The example presented in this section uses data from three soil profiles from undisturbed forests in Suriname [@poels1987] collected with a soil auger: one Orthic Ferralsol (*Profile 35*, 8 horizons) and two Xanthic Ferralsols (*Profiles 36 and 37*, 9 horizons each). This file is available in the `test-data` folder in your installation folder. It is also available at the [GloSIS repository from GitHub](https://github.com/FAO-SID/Docker-Apps/blob/main/GloSIS-database/test_data/glosis_SUR.xlsx). 
 
 This data requires harmonization in coordinate systems, dates, soil properties, laboratory methods and units of measurement before being included in the GloSIS database. For simplification, only analytical data for selected soil parameters have been included in this exercise.
 

@@ -29,7 +29,7 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-14" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,10 +175,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="installation-and-setup.html"><a href="installation-and-setup.html"><i class="fa fa-check"></i><b>2</b> <strong>Installation and Setup</strong></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#installing-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Installing Docker Desktop</a></li>
-<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#setting-up-the-glosis-database-and-shiny-app"><i class="fa fa-check"></i><b>2.2</b> Setting Up the GloSIS Database and Shiny App</a></li>
-<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#deploying-services"><i class="fa fa-check"></i><b>2.3</b> Deploying Services</a></li>
+<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Install Docker Desktop</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#windows"><i class="fa fa-check"></i><b>2.1.1</b> Windows</a></li>
+<li class="chapter" data-level="2.1.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#macos"><i class="fa fa-check"></i><b>2.1.2</b> MacOS</a></li>
+<li class="chapter" data-level="2.1.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#linux"><i class="fa fa-check"></i><b>2.1.3</b> Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-the-glosis-database-services"><i class="fa fa-check"></i><b>2.2</b> Install the GloSIS database services</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#steps"><i class="fa fa-check"></i><b>2.2.1</b> <strong>Steps</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#verify-installation"><i class="fa fa-check"></i><b>2.3</b> Verify Installation</a></li>
 <li class="chapter" data-level="2.4" data-path="installation-and-setup.html"><a href="installation-and-setup.html#accessing-the-services"><i class="fa fa-check"></i><b>2.4</b> Accessing the Services</a></li>
+<li class="chapter" data-level="2.5" data-path="installation-and-setup.html"><a href="installation-and-setup.html#the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5</b> The docker-compose.yml File</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#networking-and-port-configuration"><i class="fa fa-check"></i><b>2.5.1</b> Networking and Port Configuration</a></li>
+<li class="chapter" data-level="2.5.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5.2</b> Structure of the docker-compose.yml file</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="glosis-database.html"><a href="glosis-database.html"><i class="fa fa-check"></i><b>3</b> <strong>GloSIS Database</strong></a>
 <ul>
@@ -212,6 +225,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="7.1" data-path="visualization.html"><a href="visualization.html#view-data-on-the-dashboard"><i class="fa fa-check"></i><b>7.1</b> View Data on the Dashboard</a></li>
 <li class="chapter" data-level="7.2" data-path="visualization.html"><a href="visualization.html#view-data-on-the-data-viewer-app"><i class="fa fa-check"></i><b>7.2</b> View data on the Data Viewer App</a></li>
+<li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#view-data-on-the-qgis"><i class="fa fa-check"></i><b>7.3</b> View data on the QGIS</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><strong>References</strong></a></li>
 </ul>
@@ -275,7 +289,7 @@ Figure 4.1: Information in the Plot_Data Tab.
 Figure 4.2: Information in the Specimen Data sheet.
 </p>
 </div>
-<p>As an illustration, the columns with red values in Figure <a href="data-preparation.html#fig:specimen-tab">4.2</a> indicate soil parameters that required unit conversions to align with GloSIS standard units of measurement, compared to their original values (Figure <a href="#fig:original-tab"><strong>??</strong></a>).</p>
+<p>As an illustration, the columns with red values in Figure <a href="data-preparation.html#fig:specimen-tab">4.2</a> indicate soil parameters that required unit conversions to align with GloSIS standard units of measurement, compared to their original values.</p>
 </div>
 <div id="procedures-sheet" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Procedures Sheet<a href="data-preparation.html#procedures-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h2>

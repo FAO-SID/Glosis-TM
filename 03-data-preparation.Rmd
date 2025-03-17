@@ -54,7 +54,7 @@ Additionally, the sheet records the corresponding physical and chemical values o
 knitr::include_graphics("figures/sheet2.png")
 ```
 
-As an illustration, the columns with red values in Figure \@ref(fig:specimen-tab) indicate soil parameters that required unit conversions to align with GloSIS standard units of measurement, compared to their original values (Figure \@ref(fig:original-tab)).
+As an illustration, the columns with red values in Figure \@ref(fig:specimen-tab) indicate soil parameters that required unit conversions to align with GloSIS standard units of measurement, compared to their original values.
 
 
 ## Procedures Sheet

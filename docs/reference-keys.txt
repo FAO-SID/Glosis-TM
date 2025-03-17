@@ -1,3 +1,4 @@
+fig:clone
 fig:docker-desktop
 fig:docker-fail
 fig:glosis-shiny
@@ -21,13 +22,23 @@ fig:dashboard1
 fig:dashboard4
 fig:viewer
 fig:viewer2
+fig:qgis1
+fig:qgis2
+fig:qgis3
 introduction
 system-requirements
 installation-and-setup
-installing-docker-desktop
-setting-up-the-glosis-database-and-shiny-app
-deploying-services
+install-docker-desktop
+windows
+macos
+linux
+install-the-glosis-database-services
+steps
+verify-installation
 accessing-the-services
+the-docker-compose.yml-file
+networking-and-port-configuration
+structure-of-the-docker-compose.yml-file
 glosis-database
 glosis-database-configuration
 database-credentials
@@ -51,3 +62,4 @@ delete-an-existing-database
 visualization
 view-data-on-the-dashboard
 view-data-on-the-data-viewer-app
+view-data-on-the-qgis

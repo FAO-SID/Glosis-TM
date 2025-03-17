@@ -29,7 +29,7 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-14" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,10 +175,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="installation-and-setup.html"><a href="installation-and-setup.html"><i class="fa fa-check"></i><b>2</b> <strong>Installation and Setup</strong></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#installing-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Installing Docker Desktop</a></li>
-<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#setting-up-the-glosis-database-and-shiny-app"><i class="fa fa-check"></i><b>2.2</b> Setting Up the GloSIS Database and Shiny App</a></li>
-<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#deploying-services"><i class="fa fa-check"></i><b>2.3</b> Deploying Services</a></li>
+<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Install Docker Desktop</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#windows"><i class="fa fa-check"></i><b>2.1.1</b> Windows</a></li>
+<li class="chapter" data-level="2.1.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#macos"><i class="fa fa-check"></i><b>2.1.2</b> MacOS</a></li>
+<li class="chapter" data-level="2.1.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#linux"><i class="fa fa-check"></i><b>2.1.3</b> Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-the-glosis-database-services"><i class="fa fa-check"></i><b>2.2</b> Install the GloSIS database services</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#steps"><i class="fa fa-check"></i><b>2.2.1</b> <strong>Steps</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#verify-installation"><i class="fa fa-check"></i><b>2.3</b> Verify Installation</a></li>
 <li class="chapter" data-level="2.4" data-path="installation-and-setup.html"><a href="installation-and-setup.html#accessing-the-services"><i class="fa fa-check"></i><b>2.4</b> Accessing the Services</a></li>
+<li class="chapter" data-level="2.5" data-path="installation-and-setup.html"><a href="installation-and-setup.html#the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5</b> The docker-compose.yml File</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#networking-and-port-configuration"><i class="fa fa-check"></i><b>2.5.1</b> Networking and Port Configuration</a></li>
+<li class="chapter" data-level="2.5.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5.2</b> Structure of the docker-compose.yml file</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="glosis-database.html"><a href="glosis-database.html"><i class="fa fa-check"></i><b>3</b> <strong>GloSIS Database</strong></a>
 <ul>
@@ -212,6 +225,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="7.1" data-path="visualization.html"><a href="visualization.html#view-data-on-the-dashboard"><i class="fa fa-check"></i><b>7.1</b> View Data on the Dashboard</a></li>
 <li class="chapter" data-level="7.2" data-path="visualization.html"><a href="visualization.html#view-data-on-the-data-viewer-app"><i class="fa fa-check"></i><b>7.2</b> View data on the Data Viewer App</a></li>
+<li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#view-data-on-the-qgis"><i class="fa fa-check"></i><b>7.3</b> View data on the QGIS</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><strong>References</strong></a></li>
 </ul>
@@ -290,6 +304,97 @@ Figure 7.6: Visualization app showing soil data from the selected database.
 </p>
 </div>
 <p>Similar to the dashboard, this tool is designed primarily for data verification and correction. In this app, soil data can be exported to other file formats.</p>
+</div>
+<div id="view-data-on-the-qgis" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> View data on the QGIS<a href="visualization.html#view-data-on-the-qgis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Alternatively, the database can be accessible from your computer opening a PostgreSQL connection from QGIS using the following credentials:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="visualization.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host:</span> <span class="st">&quot;localhost&quot;</span></span>
+<span id="cb16-2"><a href="visualization.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Port:</span> <span class="st">&quot;5442&quot;</span></span>
+<span id="cb16-3"><a href="visualization.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">User</span> name: <span class="st">&quot;glosis&quot;</span></span>
+<span id="cb16-4"><a href="visualization.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Password:</span> <span class="st">&quot;glosis&quot;</span></span></code></pre></div>
+<p>To connect from QGIS:</p>
+<ul>
+<li>Open QGIS</li>
+<li>Add a PostGIS layer ((Figure <a href="visualization.html#fig:qgis1">7.7</a>).</li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:qgis1"></span>
+<img src="figures/qgis1.png" alt="Adding a PostGIS layer in QGIS." width="40%" />
+<p class="caption">
+Figure 7.7: Adding a PostGIS layer in QGIS.
+</p>
+</div>
+<ul>
+<li>In <strong>Connections</strong> add a <code>New</code> connection and fill in the connection details (Figure <a href="visualization.html#fig:qgis2">7.8</a>):
+<ul>
+<li>Name the connection (in this example <code>glosis-docker</code>).</li>
+<li>Set the Host name to <code>locaohost</code>.</li>
+<li>Add the Port details (<code>5442</code>)</li>
+<li>Add the database name to connect to (in this example <code>glosis</code>). Change it to your database name if a different name has been used.</li>
+<li>In <strong>Authentication</strong> move to the <strong>Basic</strong> <code>tab</code> and enter the default User name (<code>glosis</code>) and password (<code>glosis</code>).</li>
+<li>Click on <strong>Test the connection</strong> to check if the database is accessible.</li>
+<li>Click on <strong>OK</strong>.</li>
+<li>Finally, in <strong>Connections</strong>, click on <strong>Connect</strong>. The system may prompt you again for the default username and password (<code>glosis</code>).</li>
+</ul></li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:qgis2"></span>
+<img src="figures/qgis2.png" alt="Connect to an existing database from QGIS." width="60%" />
+<p class="caption">
+Figure 7.8: Connect to an existing database from QGIS.
+</p>
+</div>
+<p>Once the database has been connected, the geographic features of the database will appear under the core dropdown menu. Select <code>plot</code>, click on <code>Add</code> and the connected database will appear in your layers.</p>
+<p>At this point, the sampling points contain only the information from the <code>Plot Data</code> sheet in the template. To add values for soil properties, the geographic elements of this table must be linked to the <code>property_phys_chem</code> table, which records such values. This can be done with an <code>SQL</code> query in QGIS.</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Go to <code>DB Manager</code> in the <code>Database</code> main menu.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Select <code>PostGIS</code> in the <code>Providers</code> menu in the left panel and double-click on your the database connection.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>Click on the <code>SQL Window</code> button (the second button on the top left).</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>Paste the following <code>SQL</code> query, click on the <code>Execute</code> button, and then click <code>Load</code>. Ensure that the <code>Load as a new layer</code> option is selected:</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="visualization.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span> </span>
+<span id="cb17-2"><a href="visualization.html#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.plot_id,</span></span>
+<span id="cb17-3"><a href="visualization.html#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.plot_code,</span></span>
+<span id="cb17-4"><a href="visualization.html#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.altitude,</span></span>
+<span id="cb17-5"><a href="visualization.html#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.time_stamp,</span></span>
+<span id="cb17-6"><a href="visualization.html#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.map_sheet_code,</span></span>
+<span id="cb17-7"><a href="visualization.html#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.positional_accuracy,</span></span>
+<span id="cb17-8"><a href="visualization.html#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p2.</span><span class="st">&quot;position&quot;</span> AS geom,</span>
+<span id="cb17-9"><a href="visualization.html#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">s2.code</span> AS specimen_code,</span>
+<span id="cb17-10"><a href="visualization.html#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">r.result_phys_chem_id</span> AS gid,</span>
+<span id="cb17-11"><a href="visualization.html#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p.name,</span></span>
+<span id="cb17-12"><a href="visualization.html#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">s.site_id,</span></span>
+<span id="cb17-13"><a href="visualization.html#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">p3.profile_id,</span> </span>
+<span id="cb17-14"><a href="visualization.html#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">e.upper_depth,</span></span>
+<span id="cb17-15"><a href="visualization.html#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">e.lower_depth,</span></span>
+<span id="cb17-16"><a href="visualization.html#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">r.specimen_id,</span></span>
+<span id="cb17-17"><a href="visualization.html#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">o.property_phys_chem_id,</span></span>
+<span id="cb17-18"><a href="visualization.html#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">o.procedure_phys_chem_id,</span></span>
+<span id="cb17-19"><a href="visualization.html#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">r.value,</span></span>
+<span id="cb17-20"><a href="visualization.html#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="ex">o.unit_of_measure_id</span></span>
+<span id="cb17-21"><a href="visualization.html#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> core.project p</span>
+<span id="cb17-22"><a href="visualization.html#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.site_project sp ON sp.project_id = p.project_id</span>
+<span id="cb17-23"><a href="visualization.html#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.site s ON s.site_id = sp.site_id</span>
+<span id="cb17-24"><a href="visualization.html#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.plot p2 ON p2.site_id = s.site_id</span>
+<span id="cb17-25"><a href="visualization.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.profile p3 ON p3.plot_id = p2.plot_id</span>
+<span id="cb17-26"><a href="visualization.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.<span class="st">&quot;element&quot;</span> e ON e.profile_id = p3.profile_id</span>
+<span id="cb17-27"><a href="visualization.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.specimen s2 ON s2.element_id = e.element_id</span>
+<span id="cb17-28"><a href="visualization.html#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.result_phys_chem r ON r.specimen_id = s2.specimen_id</span>
+<span id="cb17-29"><a href="visualization.html#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="ex">LEFT</span> JOIN core.observation_phys_chem o ON o.observation_phys_chem_id = r.observation_phys_chem_id </span>
+<span id="cb17-30"><a href="visualization.html#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="ex">ORDER</span> BY p2.plot_id, p.name, s.site_id, p3.profile_id, e.upper_depth, o.property_phys_chem_id<span class="kw">;</span></span></code></pre></div>
+<p>You will see the resulting layer with the soil attribute table (Figure <a href="visualization.html#fig:qgis3">7.9</a>) in your QGIS view. Additional attributes can be added to the table using specific <code>SQL</code> queries.</p>
+<div class="figure"><span style="display:block;" id="fig:qgis3"></span>
+<img src="figures/query_table.png" alt=" QGIS Table with soil data." width="60%" />
+<p class="caption">
+Figure 7.9:  QGIS Table with soil data.
+</p>
+</div>
 
 </div>
 </div>

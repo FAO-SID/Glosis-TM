@@ -29,7 +29,7 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-14" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,10 +175,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="installation-and-setup.html"><a href="installation-and-setup.html"><i class="fa fa-check"></i><b>2</b> <strong>Installation and Setup</strong></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#installing-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Installing Docker Desktop</a></li>
-<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#setting-up-the-glosis-database-and-shiny-app"><i class="fa fa-check"></i><b>2.2</b> Setting Up the GloSIS Database and Shiny App</a></li>
-<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#deploying-services"><i class="fa fa-check"></i><b>2.3</b> Deploying Services</a></li>
+<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Install Docker Desktop</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#windows"><i class="fa fa-check"></i><b>2.1.1</b> Windows</a></li>
+<li class="chapter" data-level="2.1.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#macos"><i class="fa fa-check"></i><b>2.1.2</b> MacOS</a></li>
+<li class="chapter" data-level="2.1.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#linux"><i class="fa fa-check"></i><b>2.1.3</b> Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-the-glosis-database-services"><i class="fa fa-check"></i><b>2.2</b> Install the GloSIS database services</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#steps"><i class="fa fa-check"></i><b>2.2.1</b> <strong>Steps</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#verify-installation"><i class="fa fa-check"></i><b>2.3</b> Verify Installation</a></li>
 <li class="chapter" data-level="2.4" data-path="installation-and-setup.html"><a href="installation-and-setup.html#accessing-the-services"><i class="fa fa-check"></i><b>2.4</b> Accessing the Services</a></li>
+<li class="chapter" data-level="2.5" data-path="installation-and-setup.html"><a href="installation-and-setup.html#the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5</b> The docker-compose.yml File</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#networking-and-port-configuration"><i class="fa fa-check"></i><b>2.5.1</b> Networking and Port Configuration</a></li>
+<li class="chapter" data-level="2.5.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5.2</b> Structure of the docker-compose.yml file</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="glosis-database.html"><a href="glosis-database.html"><i class="fa fa-check"></i><b>3</b> <strong>GloSIS Database</strong></a>
 <ul>
@@ -212,6 +225,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="7.1" data-path="visualization.html"><a href="visualization.html#view-data-on-the-dashboard"><i class="fa fa-check"></i><b>7.1</b> View Data on the Dashboard</a></li>
 <li class="chapter" data-level="7.2" data-path="visualization.html"><a href="visualization.html#view-data-on-the-data-viewer-app"><i class="fa fa-check"></i><b>7.2</b> View data on the Data Viewer App</a></li>
+<li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#view-data-on-the-qgis"><i class="fa fa-check"></i><b>7.3</b> View data on the QGIS</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><strong>References</strong></a></li>
 </ul>
@@ -234,17 +248,20 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Technical Manual for Data Injection into the GloSIS Database</h1>
 <p class="author"><em>Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini</em></p>
-<p class="date"><em>2025-03-14</em></p>
+<p class="date"><em>2025-03-17</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> <strong>Introduction</strong><a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The Global Soil Information System (GloSIS) is a key initiative under the Global Soil Partnership (GSP), designed to integrate and standardize soil data globally. However, soil information is often scattered across paper reports, scientific articles, and national archives, making it difficult to access, compare, and utilize effectively. Additionally, variability in laboratory analytical procedures, sampling methods, and classification systems leads to inconsistencies that hinder accurate global assessments. Harmonization is essential to standardize data formats, analytical methods, and reporting frameworks, ensuring comparability, accessibility, and reliability.</p>
 <p>To address these challenges, the GloSIS database is structured as a harmonized relational database in PostgreSQL, following ISO 28258 standards for soil data storage. However, its complexity can pose difficulties for users unfamiliar with SQL or PostgreSQL programming, making it challenging to convert existing soil data into this standardized format.</p>
 <p>This Technical Manual provides guidance on implementing a PostgreSQL database aligned with the GloSIS schema and introduces the <code>glosis-shiny</code> service—a tool designed to simplify the conversion of soil data into the GloSIS format. By automating and harmonizing data integration, this application streamlines the workflow, making the process accessible to users without advanced SQL expertise. This step is crucial for building the GloSIS infrastructure, ensuring that soil data from various sources can be shared, compared, and utilized effectively on a global scale.</p>
-<p>This document provides a detailed technical manual on setting up two <strong>Docker-based</strong> services: 1) PostgreSQL database, and 2) R Shiny application for soil data injection and visualization of soil data. It covers the installation and deployment of the applications using <strong>Docker</strong>, the process of data preparation for the
-- Database configuration
-- Data injection workflow from <strong>Excel (xlsx) files</strong>
-- Visualization of the data</p>
+<p>This document provides a detailed technical manual on setting up two <strong>Docker-based</strong> services:</p>
+<ul>
+<li>GloSIS PostgreSQL database (<code>glosis-db</code>).</li>
+<li>R Shiny application for soil data injection and visualization of soil data (<code>glosis-shiny</code>).</li>
+</ul>
+<p>It covers the installation and deployment of the applications using <strong>Docker</strong>, the process of data preparation for data injection workflow from <strong>Excel (xlsx) files</strong> and the visualization of the data.</p>
+<p>This document uses three soils profiles from undisturbed forests from the PhD dissertation <em>Soils, water and nutrients in a forest ecosystem in Suriname</em> <span class="citation">(<a href="#ref-poels1987" role="doc-biblioref">Poels 1987</a>)</span>, available at <a href="https://edepot.wur.nl/202240" class="uri">https://edepot.wur.nl/202240</a>, as an exercise for soil data harmonization.</p>
 <div id="system-requirements" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> System Requirements<a href="index.html#system-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -252,7 +269,6 @@ div.csl-indent {
 <li>R and RStudio installed (for local debugging)</li>
 <li>PostgreSQL with PostGIS extension</li>
 </ul>
-<p>This document uses three soils profiles from undisturbed forests from the PhD dissertation <em>Soils,water and nutrients in a forest ecosystem in Suriname</em> <span class="citation">(<a href="#ref-poels1987" role="doc-biblioref">Poels 1987</a>)</span>, available at <a href="https://edepot.wur.nl/202240" class="uri">https://edepot.wur.nl/202240</a>, as an exercise for soil data harmonization.</p>
 
 </div>
 </div>

@@ -53,4 +53,87 @@ knitr::include_graphics("figures/viewer2.png")
 
 Similar to the dashboard, this tool is designed primarily for data verification and correction. In this app, soil data can be exported to other file formats.
 
+## View data on the QGIS
+
+Alternatively, the database can be accessible from your computer opening a PostgreSQL connection from QGIS using the following credentials:
+
+```bash
+Host: "localhost"
+Port: "5442"
+User name: "glosis"
+Password: "glosis"
+```
+
+To connect from QGIS:
+
+- Open QGIS
+- Add a PostGIS layer ((Figure \@ref(fig:qgis1)).  
+
+```{r qgis1, echo=FALSE, out.width="40%",fig.cap = "Adding a PostGIS layer in QGIS."}
+knitr::include_graphics("figures/qgis1.png")
+```
+
+- In **Connections** add a `New` connection and fill in the connection details (Figure \@ref(fig:qgis2)):
+  - Name the connection (in this example `glosis-docker`).
+  - Set the Host name to `locaohost`.
+  - Add the Port details (`5442`)
+  - Add the database name to connect to (in this example `glosis`). Change it to your database name if a different name has been used.
+  - In **Authentication** move to the **Basic** `tab` and enter the default User name (`glosis`) and password  (`glosis`).
+  - Click on **Test the connection** to check if the database is accessible.
+  - Click on **OK**.
+  - Finally, in **Connections**, click on **Connect**. The system may prompt you again for the default username and password (`glosis`).
+
+```{r qgis2, echo=FALSE, out.width="60%",fig.cap = "Connect to an existing database from QGIS."}
+knitr::include_graphics("figures/qgis2.png")
+```
+
+Once the database has been connected, the geographic features of the database will appear under the core dropdown menu. Select `plot`, click on `Add` and the connected database will appear in your layers.
+
+At this point, the sampling points contain only the information from the `Plot Data` sheet in the template. To add values for soil properties, the geographic elements of this table must be linked to the `property_phys_chem` table, which records such values. This can be done with an `SQL` query in QGIS.
+
+- 1. Go to `DB Manager` in the `Database` main menu.
+- 2. Select `PostGIS` in the `Providers` menu in the left panel and double-click on your the database connection.
+- 3. Click on the `SQL Window` button (the second button on the top left).
+- 4. Paste the following `SQL` query, click on the `Execute` button, and then click `Load`. Ensure that the `Load as a new layer` option is selected:
+
+```bash
+SELECT 
+    p2.plot_id,
+    p2.plot_code,
+    p2.altitude,
+    p2.time_stamp,
+    p2.map_sheet_code,
+    p2.positional_accuracy,
+    p2."position" AS geom,
+    s2.code AS specimen_code,
+    r.result_phys_chem_id AS gid,
+    p.name,
+    s.site_id,
+    p3.profile_id, 
+    e.upper_depth,
+    e.lower_depth,
+    r.specimen_id,
+    o.property_phys_chem_id,
+    o.procedure_phys_chem_id,
+    r.value,
+    o.unit_of_measure_id
+FROM core.project p
+LEFT JOIN core.site_project sp ON sp.project_id = p.project_id
+LEFT JOIN core.site s ON s.site_id = sp.site_id
+LEFT JOIN core.plot p2 ON p2.site_id = s.site_id
+LEFT JOIN core.profile p3 ON p3.plot_id = p2.plot_id
+LEFT JOIN core."element" e ON e.profile_id = p3.profile_id
+LEFT JOIN core.specimen s2 ON s2.element_id = e.element_id
+LEFT JOIN core.result_phys_chem r ON r.specimen_id = s2.specimen_id
+LEFT JOIN core.observation_phys_chem o ON o.observation_phys_chem_id = r.observation_phys_chem_id 
+ORDER BY p2.plot_id, p.name, s.site_id, p3.profile_id, e.upper_depth, o.property_phys_chem_id;
+
+```
+
+
+You will see the resulting layer with the soil attribute table (Figure \@ref(fig:qgis3)) in your QGIS view. Additional attributes can be added to the table using specific `SQL` queries.
+
+```{r qgis3, echo=FALSE, out.width="60%",fig.cap = " QGIS Table with soil data."}
+knitr::include_graphics("figures/query_table.png")
+```
 

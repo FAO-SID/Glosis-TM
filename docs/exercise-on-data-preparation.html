@@ -29,7 +29,7 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-14" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,10 +175,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="installation-and-setup.html"><a href="installation-and-setup.html"><i class="fa fa-check"></i><b>2</b> <strong>Installation and Setup</strong></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#installing-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Installing Docker Desktop</a></li>
-<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#setting-up-the-glosis-database-and-shiny-app"><i class="fa fa-check"></i><b>2.2</b> Setting Up the GloSIS Database and Shiny App</a></li>
-<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#deploying-services"><i class="fa fa-check"></i><b>2.3</b> Deploying Services</a></li>
+<li class="chapter" data-level="2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-docker-desktop"><i class="fa fa-check"></i><b>2.1</b> Install Docker Desktop</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#windows"><i class="fa fa-check"></i><b>2.1.1</b> Windows</a></li>
+<li class="chapter" data-level="2.1.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#macos"><i class="fa fa-check"></i><b>2.1.2</b> MacOS</a></li>
+<li class="chapter" data-level="2.1.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#linux"><i class="fa fa-check"></i><b>2.1.3</b> Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-the-glosis-database-services"><i class="fa fa-check"></i><b>2.2</b> Install the GloSIS database services</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#steps"><i class="fa fa-check"></i><b>2.2.1</b> <strong>Steps</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#verify-installation"><i class="fa fa-check"></i><b>2.3</b> Verify Installation</a></li>
 <li class="chapter" data-level="2.4" data-path="installation-and-setup.html"><a href="installation-and-setup.html#accessing-the-services"><i class="fa fa-check"></i><b>2.4</b> Accessing the Services</a></li>
+<li class="chapter" data-level="2.5" data-path="installation-and-setup.html"><a href="installation-and-setup.html#the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5</b> The docker-compose.yml File</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#networking-and-port-configuration"><i class="fa fa-check"></i><b>2.5.1</b> Networking and Port Configuration</a></li>
+<li class="chapter" data-level="2.5.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5.2</b> Structure of the docker-compose.yml file</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="glosis-database.html"><a href="glosis-database.html"><i class="fa fa-check"></i><b>3</b> <strong>GloSIS Database</strong></a>
 <ul>
@@ -212,6 +225,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="7.1" data-path="visualization.html"><a href="visualization.html#view-data-on-the-dashboard"><i class="fa fa-check"></i><b>7.1</b> View Data on the Dashboard</a></li>
 <li class="chapter" data-level="7.2" data-path="visualization.html"><a href="visualization.html#view-data-on-the-data-viewer-app"><i class="fa fa-check"></i><b>7.2</b> View data on the Data Viewer App</a></li>
+<li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#view-data-on-the-qgis"><i class="fa fa-check"></i><b>7.3</b> View data on the QGIS</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><strong>References</strong></a></li>
 </ul>
@@ -233,7 +247,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="exercise-on-data-preparation" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> <strong>Exercise on data preparation</strong><a href="exercise-on-data-preparation.html#exercise-on-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The example presented in this section uses data from three soil profiles from undisturbed forests in Suriname <span class="citation">(<a href="#ref-poels1987" role="doc-biblioref">Poels 1987</a>)</span> collected with a soil auger: one Orthic Ferralsol (<em>Profile 35</em>, 8 horizons) and two Xanthic Ferralsols (<em>Profiles 36 and 37</em>, 9 horizons each).</p>
+<p>The example presented in this section uses data from three soil profiles from undisturbed forests in Suriname <span class="citation">(<a href="#ref-poels1987" role="doc-biblioref">Poels 1987</a>)</span> collected with a soil auger: one Orthic Ferralsol (<em>Profile 35</em>, 8 horizons) and two Xanthic Ferralsols (<em>Profiles 36 and 37</em>, 9 horizons each). This file is available in the <code>test-data</code> folder in your installation folder. It is also available at the <a href="https://github.com/FAO-SID/Docker-Apps/blob/main/GloSIS-database/test_data/glosis_SUR.xlsx">GloSIS repository from GitHub</a>.</p>
 <p>This data requires harmonization in coordinate systems, dates, soil properties, laboratory methods and units of measurement before being included in the GloSIS database. For simplification, only analytical data for selected soil parameters have been included in this exercise.</p>
 <div id="filling-out-the-plot-data-sheet" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Filling out the plot data sheet<a href="exercise-on-data-preparation.html#filling-out-the-plot-data-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
