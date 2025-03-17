@@ -1,6 +1,6 @@
 # **Installation and Setup**
 
-The **GloSIS database service** is provided as a **Docker container**, which allows users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates.  
+The **GloSIS database** services are provided as a **Docker container**, which allows users to deploy and manage the system without manually installing software dependencies. This approach ensures stability, compatibility, and easy updates.  
 
 **Docker Compose** is a tool used to define and run multi-container Docker applications. It allows users to **orchestrate multiple services** using a single configuration file ( see Section **The docker-compose.yml file**). The key benefits of Docker Compose include:
 
@@ -15,7 +15,7 @@ The system consists of two main **services**, both running as Docker containers:
 
 These services are **built from pre-configured Docker images** and automatically deployed as containers using **Docker Compose**, meaning all dependencies are pre-configured, ensuring a consistent and reproducible execution across different operating systems.  
 
-This section provides step-by-step instructions to set up the **GloSIS soil database**, including the installation of **Docker Desktop**, **PostgreSQL**, and **R**. The setup process is **containerized using Docker**, 
+This section provides step-by-step instructions to set up the **GloSIS database**, including the installation of **Docker Desktop**, **PostgreSQL**, and **R**. The setup process is **containerized using Docker**, 
 
 
 ## Install Docker Desktop
