@@ -79,7 +79,7 @@ Docker version 24.0.5, build 123456
 ## Install the GloSIS database services
 The easiest way to install the GloSIS database services is by pulling pre-built Docker images available in the GloSIS docker hub.
 
-### **Steps**
+### Steps
 
 1. Ensure Docker Desktop is running.
 
@@ -114,7 +114,7 @@ docker-compose up -d
 The first time you run this command, it may take a few minutes to download all required images.
 
 
-## Verify Installation
+### Verify Installation
 
 - Using Docker Desktop
 Open Docker Desktop and check if the containers are running (Figure \@ref(fig:docker-desktop)).

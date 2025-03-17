@@ -183,14 +183,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#install-the-glosis-database-services"><i class="fa fa-check"></i><b>2.2</b> Install the GloSIS database services</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#steps"><i class="fa fa-check"></i><b>2.2.1</b> <strong>Steps</strong></a></li>
+<li class="chapter" data-level="2.2.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#steps"><i class="fa fa-check"></i><b>2.2.1</b> Steps</a></li>
+<li class="chapter" data-level="2.2.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#verify-installation"><i class="fa fa-check"></i><b>2.2.2</b> Verify Installation</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#verify-installation"><i class="fa fa-check"></i><b>2.3</b> Verify Installation</a></li>
-<li class="chapter" data-level="2.4" data-path="installation-and-setup.html"><a href="installation-and-setup.html#accessing-the-services"><i class="fa fa-check"></i><b>2.4</b> Accessing the Services</a></li>
-<li class="chapter" data-level="2.5" data-path="installation-and-setup.html"><a href="installation-and-setup.html#the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5</b> The docker-compose.yml File</a>
+<li class="chapter" data-level="2.3" data-path="installation-and-setup.html"><a href="installation-and-setup.html#accessing-the-services"><i class="fa fa-check"></i><b>2.3</b> Accessing the Services</a></li>
+<li class="chapter" data-level="2.4" data-path="installation-and-setup.html"><a href="installation-and-setup.html#the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.4</b> The docker-compose.yml File</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#networking-and-port-configuration"><i class="fa fa-check"></i><b>2.5.1</b> Networking and Port Configuration</a></li>
-<li class="chapter" data-level="2.5.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.5.2</b> Structure of the docker-compose.yml file</a></li>
+<li class="chapter" data-level="2.4.1" data-path="installation-and-setup.html"><a href="installation-and-setup.html#networking-and-port-configuration"><i class="fa fa-check"></i><b>2.4.1</b> Networking and Port Configuration</a></li>
+<li class="chapter" data-level="2.4.2" data-path="installation-and-setup.html"><a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file"><i class="fa fa-check"></i><b>2.4.2</b> Structure of the docker-compose.yml file</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="glosis-database.html"><a href="glosis-database.html"><i class="fa fa-check"></i><b>3</b> <strong>GloSIS Database</strong></a>
@@ -314,7 +314,7 @@ Docker Desktop requires Hyper-V as well as the Hyper-V Module for Windows PowerS
 <h2><span class="header-section-number">2.2</span> Install the GloSIS database services<a href="installation-and-setup.html#install-the-glosis-database-services" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The easiest way to install the GloSIS database services is by pulling pre-built Docker images available in the GloSIS docker hub.</p>
 <div id="steps" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> <strong>Steps</strong><a href="installation-and-setup.html#steps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.2.1</span> Steps<a href="installation-and-setup.html#steps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>Ensure Docker Desktop is running.</p></li>
 <li><p>Download the <a href="https://github.com/FAO-SID/Glosis-App">GloSIS repository from GitHub</a>:</p></li>
@@ -341,9 +341,8 @@ Figure 2.1: Clonning the repository.
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="installation-and-setup.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> up <span class="at">-d</span></span></code></pre></div>
 <p>The first time you run this command, it may take a few minutes to download all required images.</p>
 </div>
-</div>
-<div id="verify-installation" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Verify Installation<a href="installation-and-setup.html#verify-installation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="verify-installation" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Verify Installation<a href="installation-and-setup.html#verify-installation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Using Docker Desktop
 Open Docker Desktop and check if the containers are running (Figure <a href="installation-and-setup.html#fig:docker-desktop">2.2</a>).</li>
@@ -375,8 +374,9 @@ To manually check if the services are running, type:</li>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="installation-and-setup.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> down</span></code></pre></div>
 <p>This will stop and remove the containers, but your database data will remain intact in the data/postgis directory.</p>
 </div>
-<div id="accessing-the-services" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Accessing the Services<a href="installation-and-setup.html#accessing-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="accessing-the-services" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Accessing the Services<a href="installation-and-setup.html#accessing-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Shiny Web Application:</strong>
 To open the <code>GloSIS Shiny</code> App, enter this address in your web browser:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="installation-and-setup.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">http://localhost:3838/</span></span></code></pre></div>
@@ -392,8 +392,8 @@ The PostgreSQL GloSIS database is available to connect with other applications s
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="installation-and-setup.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">localhost:5442</span></span></code></pre></div>
 <p>The user and password for the connection is ‘glosis’ by default.</p>
 </div>
-<div id="the-docker-compose.yml-file" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> The docker-compose.yml File<a href="installation-and-setup.html#the-docker-compose.yml-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-docker-compose.yml-file" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> The docker-compose.yml File<a href="installation-and-setup.html#the-docker-compose.yml-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>docker-compose.yml</code> file defines how the <strong>GloSIS database service</strong> and <strong>Shiny web application</strong> interact within a <strong>Docker environment</strong>. This configuration file ensures that both components are deployed together with the correct settings, storage locations, and networking.</p>
 <p>This file creates <strong>two containers</strong>:</p>
 <ul>
@@ -401,14 +401,14 @@ The PostgreSQL GloSIS database is available to connect with other applications s
 <li><strong><code>glosis-shiny</code></strong>: A <strong>Shiny web application</strong> that provides a graphical interface for users to inject structured Excel files into the database.</li>
 </ul>
 <p>To ensure <strong>persistent data storage</strong>, the database files are stored outside the containers in the <code>data/postgis</code> directory. This means that even if the containers are stopped or removed, the database remains intact.</p>
-<div id="networking-and-port-configuration" class="section level3 hasAnchor" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Networking and Port Configuration<a href="installation-and-setup.html#networking-and-port-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="networking-and-port-configuration" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Networking and Port Configuration<a href="installation-and-setup.html#networking-and-port-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A dedicated <strong>Docker network (<code>glosis-net</code>)</strong> is created to allow seamless internal communication between the <strong>database</strong> and the <strong>Shiny application</strong>. This ensures the services can interact without interference from other network traffic on the host system.</p>
 <p>For PostgreSQL, <strong>port 5442</strong> is used instead of the default <strong>5432</strong>. This prevents potential conflicts with any existing PostgreSQL installation on the host machine. When the container is launched, PostgreSQL inside the container still listens on <strong>5432</strong>, but it is mapped externally to <strong>5442</strong> to avoid interference with other PostgreSQL instances that may already be running.</p>
 <p>The <strong>Shiny application</strong> is made accessible through <strong>port 3838</strong>, which remains unchanged from the standard port used by Shiny.</p>
 </div>
-<div id="structure-of-the-docker-compose.yml-file" class="section level3 hasAnchor" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> Structure of the docker-compose.yml file<a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="structure-of-the-docker-compose.yml-file" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Structure of the docker-compose.yml file<a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following <code>docker-compose.yml</code> configuration defines these services:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="installation-and-setup.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
 <span id="cb14-2"><a href="installation-and-setup.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">postgis</span><span class="kw">:</span></span>
