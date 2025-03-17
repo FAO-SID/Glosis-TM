@@ -155,7 +155,7 @@ This will stop and remove the containers, but your database data will remain int
 ## Accessing the Services
 
 **Shiny Web Application:**
-To open the `GloSIS Shiny` App, enter this address in your web browser:
+To open the `glosis-shiny` service, enter this address in your web browser:
 
 ```bash
 http://localhost:3838/
@@ -163,12 +163,12 @@ http://localhost:3838/
 
 This will load the interface where you can upload and inject soil data from .xlsx files (Figure \@ref(fig:glosis-shiny)).
 
-```{r glosis-shiny, echo=FALSE, out.width="60%",fig.cap = "GloSIS shiny application."}
+```{r glosis-shiny, echo=FALSE, out.width="60%",fig.cap = "GloSIS shiny service."}
 knitr::include_graphics("figures/glosis_shiny.png")
 ```
 
 **GloSIS database:**
-The PostgreSQL GloSIS database is available to connect with other applications such as pgAdmin, DBeaver,QGIS, R, etc, at:
+The GloSIS database is available to connect with other applications such as pgAdmin, DBeaver,QGIS, R, etc, at:
 
 ```bash
 localhost:5442
@@ -192,7 +192,7 @@ A dedicated **Docker network (`glosis-net`)** is created to allow seamless inter
 
 For PostgreSQL, **port 5442** is used instead of the default **5432**. This prevents potential conflicts with any existing PostgreSQL installation on the host machine. When the container is launched, PostgreSQL inside the container still listens on **5432**, but it is mapped externally to **5442** to avoid interference with other PostgreSQL instances that may already be running.
 
-The **Shiny application** is made accessible through **port 3838**, which remains unchanged from the standard port used by Shiny.
+The **`glosis-shiny`** service is made accessible through **port 3838**, which remains unchanged from the standard port used by Shiny.
 
 ### Structure of the docker-compose.yml file 
 

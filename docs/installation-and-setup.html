@@ -378,17 +378,17 @@ To manually check if the services are running, type:</li>
 <div id="accessing-the-services" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Accessing the Services<a href="installation-and-setup.html#accessing-the-services" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Shiny Web Application:</strong>
-To open the <code>GloSIS Shiny</code> App, enter this address in your web browser:</p>
+To open the <code>glosis-shiny</code> service, enter this address in your web browser:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="installation-and-setup.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">http://localhost:3838/</span></span></code></pre></div>
 <p>This will load the interface where you can upload and inject soil data from .xlsx files (Figure <a href="installation-and-setup.html#fig:glosis-shiny">2.4</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:glosis-shiny"></span>
-<img src="figures/glosis_shiny.png" alt="GloSIS shiny application." width="60%" />
+<img src="figures/glosis_shiny.png" alt="GloSIS shiny service." width="60%" />
 <p class="caption">
-Figure 2.4: GloSIS shiny application.
+Figure 2.4: GloSIS shiny service.
 </p>
 </div>
 <p><strong>GloSIS database:</strong>
-The PostgreSQL GloSIS database is available to connect with other applications such as pgAdmin, DBeaver,QGIS, R, etc, at:</p>
+The GloSIS database is available to connect with other applications such as pgAdmin, DBeaver,QGIS, R, etc, at:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="installation-and-setup.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">localhost:5442</span></span></code></pre></div>
 <p>The user and password for the connection is ‘glosis’ by default.</p>
 </div>
@@ -405,7 +405,7 @@ The PostgreSQL GloSIS database is available to connect with other applications s
 <h3><span class="header-section-number">2.4.1</span> Networking and Port Configuration<a href="installation-and-setup.html#networking-and-port-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A dedicated <strong>Docker network (<code>glosis-net</code>)</strong> is created to allow seamless internal communication between the <strong>database</strong> and the <strong>Shiny application</strong>. This ensures the services can interact without interference from other network traffic on the host system.</p>
 <p>For PostgreSQL, <strong>port 5442</strong> is used instead of the default <strong>5432</strong>. This prevents potential conflicts with any existing PostgreSQL installation on the host machine. When the container is launched, PostgreSQL inside the container still listens on <strong>5432</strong>, but it is mapped externally to <strong>5442</strong> to avoid interference with other PostgreSQL instances that may already be running.</p>
-<p>The <strong>Shiny application</strong> is made accessible through <strong>port 3838</strong>, which remains unchanged from the standard port used by Shiny.</p>
+<p>The <strong><code>glosis-shiny</code></strong> service is made accessible through <strong>port 3838</strong>, which remains unchanged from the standard port used by Shiny.</p>
 </div>
 <div id="structure-of-the-docker-compose.yml-file" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Structure of the docker-compose.yml file<a href="installation-and-setup.html#structure-of-the-docker-compose.yml-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
