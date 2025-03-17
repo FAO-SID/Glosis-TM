@@ -163,7 +163,7 @@ http://localhost:3838/
 
 This will load the interface where you can upload and inject soil data from .xlsx files (Figure \@ref(fig:glosis-shiny)).
 
-```{r glosis-shiny, echo=FALSE, out.width="40%",fig.cap = "GloSIS shiny application."}
+```{r glosis-shiny, echo=FALSE, out.width="60%",fig.cap = "GloSIS shiny application."}
 knitr::include_graphics("figures/glosis_shiny.png")
 ```
 
