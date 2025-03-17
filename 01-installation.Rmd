@@ -83,12 +83,12 @@ The easiest way to install the GloSIS database services is by pulling pre-built 
 
 1. Ensure Docker Desktop is running.
 
-2. Download the [GloSIS repository from GitHub](https://github.com/FAO-SID/Docker-Apps.git):
+2. Download the [GloSIS repository from GitHub](https://github.com/FAO-SID/Glosis-App):
 
 3. Go to:
 
 ```bash
-`https://github.com/FAO-SID/Docker-Apps.git`.
+`https://github.com/FAO-SID/Glosis-App`.
 ```
 
 4. Click the green `"Code"` button, then select Download ZIP (Figure \@ref(fig:clone).  
@@ -103,7 +103,7 @@ knitr::include_graphics("figures/clone.png")
 6. Open a Terminal or Command Prompt, navigate to the extracted folder:
 
 ```bash
-cd Desktop/Glosis-TM
+cd Desktop/Glosis-App
 ```
 7. Start the GloSIS services by running:
 
