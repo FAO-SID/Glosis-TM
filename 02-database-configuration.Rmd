@@ -21,5 +21,24 @@ password_name <- "glosis"
 ## Database Schema
 
 
-The database schema follows ISO 28258 (GloSIS) standards. The main tables include:
+The GloSIS database schema follows ISO 28258 Data model. The model organizes soil-related data into six main categories, known as "features of interest," each with specific subcategories:
+
+
+- `Site` – Represents the broader environment where soil investigations occur, capturing terrain or land-use characteristics.
+
+- `Plot` – A specific location for soil investigation, where soil profiles and samples are collected. It is further classified into:
+  - `Surface` – A polygonal area where soil properties are assumed homogeneous.
+  - `TrialPit` – A manually excavated pit for detailed soil examination.
+  - `Borehole` – A drilled hole for subsurface soil sampling.
+
+- `Profile` – A vertical sequence of soil horizons or layers at a given location.
+
+- `Element` – Subdivisions of a profile based on depth, further categorized as:
+  - `Horizon` – A natural, homogeneous soil layer.
+  - `Layer` – An arbitrarily defined soil section, often for analysis.
+
+- `Specimen` – A physical sample extracted at a defined depth, typically analyzed in laboratories for chemical and physical properties.
+
+
+
 

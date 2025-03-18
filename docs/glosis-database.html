@@ -29,7 +29,7 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <meta name="author" content="Luis Rodríguez Lado, Eloi Ribeiro, Marcos Angelini" />
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,10 +58,6 @@ The HTML output format for this manual is bookdown::gitbook,</p>" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -255,15 +251,31 @@ div.csl-indent {
 <h2><span class="header-section-number">3.2</span> Database Credentials<a href="glosis-database.html#database-credentials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The connection to PostgreSQL requires the specification of the . The application defines default values for <code>Database Credentials</code>.
 These are stored in <code>credentials.R</code> and used by the <code>glosis-shiny</code> application:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="glosis-database.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">database_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
-<span id="cb15-2"><a href="glosis-database.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">host_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgis&quot;</span></span>
-<span id="cb15-3"><a href="glosis-database.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">port_number</span> <span class="op">&lt;</span>- <span class="st">&quot;5432&quot;</span></span>
-<span id="cb15-4"><a href="glosis-database.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">user_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
-<span id="cb15-5"><a href="glosis-database.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">password_name</span> <span class="op">&lt;</span>- <span class="st">&quot;glosis&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="glosis-database.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">database_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
+<span id="cb1-2"><a href="glosis-database.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">host_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgis&quot;</span></span>
+<span id="cb1-3"><a href="glosis-database.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">port_number</span> <span class="op">&lt;</span>- <span class="st">&quot;5432&quot;</span></span>
+<span id="cb1-4"><a href="glosis-database.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">user_name</span> <span class="op">&lt;</span>- <span class="st">&quot;postgres&quot;</span></span>
+<span id="cb1-5"><a href="glosis-database.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">password_name</span> <span class="op">&lt;</span>- <span class="st">&quot;glosis&quot;</span></span></code></pre></div>
 </div>
 <div id="database-schema" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Database Schema<a href="glosis-database.html#database-schema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The database schema follows ISO 28258 (GloSIS) standards. The main tables include:</p>
+<p>The GloSIS database schema follows ISO 28258 Data model. The model organizes soil-related data into six main categories, known as “features of interest,” each with specific subcategories:</p>
+<ul>
+<li><p>Site – Represents the broader environment where soil investigations occur, capturing terrain or land-use characteristics.</p></li>
+<li><p>Plot – A specific location for soil investigation, where soil profiles and samples are collected. It is further classified into:</p>
+<ul>
+<li>Surface – A polygonal area where soil properties are assumed homogeneous.</li>
+<li>TrialPit – A manually excavated pit for detailed soil examination.</li>
+<li>Borehole – A drilled hole for subsurface soil sampling.</li>
+</ul></li>
+<li><p>Profile – A vertical sequence of soil horizons or layers at a given location, fundamental for soil classification.</p></li>
+<li><p>Profile Element – Subdivisions of a profile based on depth, further categorized as:</p>
+<ul>
+<li>Horizon – A natural, homogeneous soil layer.</li>
+<li>Layer – An arbitrarily defined soil section, often for analysis.</li>
+</ul></li>
+<li><p>Soil Specimen – A physical sample extracted at a defined depth, typically analyzed in laboratories for chemical and physical properties.</p></li>
+</ul>
 
 </div>
 </div>

@@ -47,9 +47,9 @@ kbl(soil_profiles, caption = "Harmonized data for the plot data sheet for the ex
 <br>
 
 
-## Filling out the specimen data sheet
+## Filling out the Element Data sheet
 
-The `specimen data` sheet contains information for each soil sample collected at each soil sampling location. The number of rows must therefore be equal to the total number of horizons/layers at each sampling location (`n_layers`). In this example, the total number of rows in this sheet is 26.
+The `Element Data` sheet contains information for each soil sample collected at each soil sampling location. The number of rows must therefore be equal to the total number of horizons/layers at each sampling location (`n_layers`). In this example, the total number of rows in this sheet is 26.
 
 Two different types of data are required in this sheet. First, the columns `profile_code`, `element_code`, `type`, `order_element`, `upper_depth`, `lower_depth`, and `specimen_code` serve as identifiers for samples, sample types, and soil depths (Table \@ref(tab:plotparameters1)). The remaining columns correspond to soil properties measured through laboratory analyses.
 
@@ -72,7 +72,7 @@ Two different types of data are required in this sheet. First, the columns `prof
 soil_horizons <- read.xlsx("glosis_SUR.xlsx", sheetIndex = 2)[1:7] %>% na.omit()  # Create a data frame for the table
 
 # Print the table in a nicely formatted way
-kbl(soil_horizons, caption = "Sample descriptors in the specimen data sheet for the exercise data.") %>%
+kbl(soil_horizons, caption = "Sample descriptors in the Element Data sheet for the exercise data.") %>%
   kable_styling(bootstrap_options = "striped", position = "left",fixed_thead = T)
 ```
 
@@ -88,16 +88,16 @@ soil_lab <- soil_lab[,8:ncol(soil_lab)]
 names(soil_lab) <- c("Sand (%)","Silt (%)","Clay (%)","C (g/kg)","N (g/kg)","pH-H₂O","pH-KCl","CEC (cmol/kg)","Ca (cmol/kg)","Mg (cmol/kg)","K (cmol/kg)","Na (cmol/kg)","Al (cmol/kg)","ECEC (cmol/kg)","K total (cmol/kg)","P total (%)","P-Bray I (%)","Bulk Density (kg/dm3)","pF 2 (m3/100 m3)")
 
 # Render the table, hiding NA values
-kbl(soil_lab, caption = "Analytical properties in the specimen data sheet for the exercise data.") %>%
+kbl(soil_lab, caption = "Analytical properties in the Element Data sheet for the exercise data.") %>%
   kable_styling(bootstrap_options = "striped", position = "left",fixed_thead = T, font_size = 12)
 ```
 
 
 ## Filling out the procedures data sheet
 
-The `Procedures` sheet establishes the links between the original soil analytical property names and their corresponding standardized names, analytical methods, and units of measurement in the GloSIS database. Any analytical properties measured in units different from those specified in this sheet **MUST** be converted to the standard units before being entered into the specimen data sheet and uploaded to the `glosis-shiny` application.
+The `Procedures` sheet establishes the links between the original soil analytical property names and their corresponding standardized names, analytical methods, and units of measurement in the GloSIS database. Any analytical properties measured in units different from those specified in this sheet **MUST** be converted to the standard units before being entered into the `Element Data` sheet and uploaded to the `glosis-shiny` application.
 
-The first column in the `Procedures` sheet **MUST** contain all soil analytical properties included in the `specimen data` and in the same order of entrance. The proper GloSIS names for soil properties, analysis methods and units **MUST** be defined for each soil property using the data provided in the `observation_phys_chem_id` sheet. Properties that are not listed in the `observation_phys_chem_id` sheet are not allowed.  
+The first column in the `Procedures` sheet **MUST** contain all soil analytical properties included in the `Element Data` and in the same order of entrance. The proper GloSIS names for soil properties, analysis methods and units **MUST** be defined for each soil property using the data provided in the `observation_phys_chem_id` sheet. Properties that are not listed in the `observation_phys_chem_id` sheet are not allowed.  
 
 
 
@@ -113,7 +113,7 @@ kbl(soil_property_mapping, caption = "Soil Property Mapping Table for the exerci
 ```
   
 
-Note that the soil properties marked in <span style="color:red;">red</span> in Table \@ref(tab:procedures) have different units of measurement in the original data compared to those in the GloSIS database (column 4). For these properties, transformation of laboratory measurements using the appropriate correction factors must be performed in the `specimen data` data sheet. However, for <span style="color:dodgerblue">Bulk Density</span> and Available Water Capacity (<span style="color:dodgerblue;">pF 2</span>), although the units are written in a different format, they represent the same values.
+Note that the soil properties marked in <span style="color:red;">red</span> in Table \@ref(tab:procedures) have different units of measurement in the original data compared to those in the GloSIS database (column 4). For these properties, transformation of laboratory measurements using the appropriate correction factors must be performed in the `Element Data` data sheet. However, for <span style="color:dodgerblue">Bulk Density</span> and Available Water Capacity (<span style="color:dodgerblue;">pF 2</span>), although the units are written in a different format, they represent the same values.
 
 This sheet ensures that all soil properties are named according to the GloSIS standard and that the corresponding methods and units are correctly defined. 
 
@@ -122,5 +122,5 @@ This sheet ensures that all soil properties are named according to the GloSIS st
 - Any soil property value that is missing **MUST** be left empty in the `.xlsx` template. Entries such as `NA`, `nodata`, `-`, etc., are not permitted.  
 - Ensure that all numeric values are correctly formatted as numbers in the template. Any alphanumeric entry in a numeric column will cause the entire column to be treated as alphanumeric.  
 - Special characters such as `*`, `/`, `?`, etc., are not allowed. This includes the `<` symbol, commonly used for values below the detection limit of analytical equipment. In such cases, either leave the value empty or replace it by dividing the detection limit by a factor of two.  
-- All soil properties that are not listed in the `observation_phys_chem_id` **MUST** be removed from the analysis. They cannot be included in either the `specimen data` or the `Procedures` sheets. If they are left in these sheets, the database will not be correctly populated.
+- All soil properties that are not listed in the `observation_phys_chem_id` **MUST** be removed from the analysis. They cannot be included in either the `Element Data` or the `Procedures` sheets. If they are left in these sheets, the database will not be correctly populated.
 
